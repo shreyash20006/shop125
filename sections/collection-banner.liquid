@@ -1,68 +1,71 @@
-<section class="collection-banner">
-  <div class="collection-banner__media">
+<section class="drop-banner section-reveal">
+  <div class="drop-banner__media">
     {%- if section.settings.image != blank -%}
       {{
         section.settings.image
         | image_url: width: 2000
-        | image_tag: loading: 'lazy', sizes: '100vw', widths: '750,1100,1500,2000'
+        | image_tag: loading: 'lazy', sizes: '100vw', widths: '750,1100,1500,2000', class: 'drop-banner__bg'
       }}
     {%- else -%}
-      {{ 'collection-1' | placeholder_svg_tag }}
+      <div class="drop-banner__placeholder"></div>
     {%- endif -%}
+    <div class="drop-banner__overlay"></div>
   </div>
-  <div class="collection-banner__overlay"></div>
-  <div class="collection-banner__content">
-    <h2 class="collection-banner__title">{{ section.settings.title | default: '₹999 Drop' }}</h2>
-    {%- if section.settings.text != blank -%}
-      <p class="collection-banner__text">{{ section.settings.text }}</p>
-    {%- endif -%}
-    {%- if section.settings.button_label != blank -%}
-      <a href="{{ section.settings.button_link | default: '#' }}" class="btn btn--primary">
-        {{ section.settings.button_label }}
-      </a>
-    {%- endif -%}
+
+  <div class="drop-banner__content page-width">
+    <div class="drop-banner__inner">
+      <p class="section-label">{{ section.settings.label | default: '⚡ Limited Time' }}</p>
+      <h2 class="drop-banner__title">{{ section.settings.title | default: '₹999 Drop' }}</h2>
+      {%- if section.settings.text != blank -%}
+        <p class="drop-banner__text">{{ section.settings.text }}</p>
+      {%- else -%}
+        <p class="drop-banner__text">Buy 3 For ₹999. Limited-time combos and exclusive streetwear deals.</p>
+      {%- endif -%}
+
+      {%- if section.settings.show_countdown -%}
+        <div class="countdown" data-countdown="{{ section.settings.countdown_end | default: '' }}" aria-label="Time remaining">
+          <div class="countdown__unit">
+            <span class="countdown__num" data-countdown-hours>00</span>
+            <span class="countdown__label">Hours</span>
+          </div>
+          <span class="countdown__sep">:</span>
+          <div class="countdown__unit">
+            <span class="countdown__num" data-countdown-mins>00</span>
+            <span class="countdown__label">Mins</span>
+          </div>
+          <span class="countdown__sep">:</span>
+          <div class="countdown__unit">
+            <span class="countdown__num" data-countdown-secs>00</span>
+            <span class="countdown__label">Secs</span>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link | default: '#' }}" class="hero__btn hero__btn--primary" style="margin-top:2rem; display:inline-flex;">
+          {{ section.settings.button_label }}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      {%- endif -%}
+    </div>
   </div>
 </section>
 
 {% schema %}
 {
-  "name": "Collection banner",
+  "name": "Drop banner",
   "tag": "section",
   "class": "collection-banner-section",
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Background image"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "₹999 Drop"
-    },
-    {
-      "type": "textarea",
-      "id": "text",
-      "label": "Description",
-      "default": "Buy 3 For ₹999. Limited-time combos and exclusive streetwear deals."
-    },
-    {
-      "type": "text",
-      "id": "button_label",
-      "label": "Button label",
-      "default": "Shop the Drop"
-    },
-    {
-      "type": "url",
-      "id": "button_link",
-      "label": "Button link"
-    }
+    { "type": "image_picker", "id": "image", "label": "Background image" },
+    { "type": "text", "id": "label", "label": "Label", "default": "⚡ Limited Time" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "₹999 Drop" },
+    { "type": "textarea", "id": "text", "label": "Description", "default": "Buy 3 For ₹999. Limited-time combos and exclusive streetwear deals." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop the Drop" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "checkbox", "id": "show_countdown", "label": "Show countdown timer", "default": true },
+    { "type": "text", "id": "countdown_end", "label": "Countdown end time (ISO 8601)", "info": "e.g. 2026-12-31T23:59:59", "default": "2026-12-31T23:59:59" }
   ],
-  "presets": [
-    {
-      "name": "Collection banner"
-    }
-  ]
+  "presets": [{ "name": "Drop banner" }]
 }
 {% endschema %}

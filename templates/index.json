@@ -1,25 +1,15 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "hero": {
       "type": "hero-banner",
       "settings": {
         "image": "shopify://shop_images/WhatsApp_Image_2026-06-08_at_9.03.23_PM.jpg",
-        "show_content": false,
-        "eyebrow": "",
-        "heading": "",
-        "subheading": "",
-        "button_label": "",
+        "eyebrow": "New Season · 2026",
+        "heading": "ESCAPE THE ORDINARY",
+        "subheading": "Premium Streetwear for Every Drop",
+        "button_label": "Shop Now",
         "button_link": "shopify://collections/all",
-        "button_label_2": "",
+        "button_label_2": "Explore Collections",
         "button_link_2": ""
       }
     },
@@ -67,31 +57,17 @@
           }
         }
       },
-      "block_order": [
-        "cat-1",
-        "cat-2",
-        "cat-3",
-        "cat-4"
-      ],
+      "block_order": ["cat-1", "cat-2", "cat-3", "cat-4"],
       "settings": {
+        "label": "Collections",
         "title": "Shop by Category",
         "subtitle": "Curated streetwear for every vibe"
-      }
-    },
-    "new-arrivals": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "New Arrivals",
-        "subtitle": "Fresh drops every week",
-        "collection": "",
-        "products_to_show": 4,
-        "show_view_all": true,
-        "view_all_label": "View all"
       }
     },
     "best-sellers": {
       "type": "featured-collection",
       "settings": {
+        "label": "Fan Favourites",
         "title": "Best Sellers",
         "subtitle": "Community favorites",
         "collection": "",
@@ -100,137 +76,145 @@
         "view_all_label": "View all"
       }
     },
-    "trending": {
+    "new-arrivals": {
       "type": "featured-collection",
       "settings": {
-        "title": "Trending Now",
-        "subtitle": "What's hot in streetwear",
+        "label": "Just Dropped",
+        "title": "New Arrivals",
+        "subtitle": "Fresh drops every week",
         "collection": "",
         "products_to_show": 4,
         "show_view_all": true,
         "view_all_label": "View all"
       }
     },
-    "instagram": {
-      "type": "instagram-gallery",
-      "blocks": {
-        "ig-1": {
-          "type": "image",
-          "settings": {
-            "link": ""
-          }
-        },
-        "ig-2": {
-          "type": "image",
-          "settings": {
-            "link": ""
-          }
-        },
-        "ig-3": {
-          "type": "image",
-          "settings": {
-            "link": ""
-          }
-        },
-        "ig-4": {
-          "type": "image",
-          "settings": {
-            "link": ""
-          }
-        },
-        "ig-5": {
-          "type": "image",
-          "settings": {
-            "link": ""
-          }
-        },
-        "ig-6": {
-          "type": "image",
-          "settings": {
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "ig-1",
-        "ig-2",
-        "ig-3",
-        "ig-4",
-        "ig-5",
-        "ig-6"
-      ],
+    "drop-banner": {
+      "type": "collection-banner",
       "settings": {
-        "title": "@escapeclothing",
-        "subtitle": "Tag us in your fits"
+        "label": "⚡ Limited Time",
+        "title": "₹999 Drop",
+        "text": "Buy 3 For ₹999. Combo offers & limited-time drops you can't miss.",
+        "button_label": "Shop the Drop",
+        "button_link": "shopify://collections/all",
+        "show_countdown": true,
+        "countdown_end": "2026-12-31T23:59:59"
       }
     },
     "combo-deals": {
       "type": "featured-collection",
       "settings": {
-        "title": "₹999 Combo Deals",
-        "subtitle": "Buy 3 For ₹999 — Limited drops",
+        "label": "Limited Deals",
+        "title": "₹999 Drop Collection",
+        "subtitle": "Buy 3 For ₹999 — Limited drops only",
         "collection": "",
         "products_to_show": 4,
         "show_view_all": true,
         "view_all_label": "Shop ₹999 Drop"
       }
     },
-    "drop-banner": {
-      "type": "collection-banner",
+    "why-choose": {
+      "type": "why-choose-us",
       "settings": {
-        "title": "₹999 Drop",
-        "text": "Buy 3 For ₹999. Combo offers & limited-time drops you can't miss.",
-        "button_label": "Shop the Drop",
-        "button_link": "shopify://collections/all"
+        "label": "Our Promise",
+        "title": "Why Choose Escape Clothing 👣",
+        "subtitle": "Premium streetwear, built for India"
       }
     },
-    "featured": {
-      "type": "featured-collection",
+    "instagram": {
+      "type": "instagram-gallery",
+      "blocks": {
+        "ig-1": { "type": "image", "settings": { "link": "" } },
+        "ig-2": { "type": "image", "settings": { "link": "" } },
+        "ig-3": { "type": "image", "settings": { "link": "" } },
+        "ig-4": { "type": "image", "settings": { "link": "" } },
+        "ig-5": { "type": "image", "settings": { "link": "" } },
+        "ig-6": { "type": "image", "settings": { "link": "" } }
+      },
+      "block_order": ["ig-1", "ig-2", "ig-3", "ig-4", "ig-5", "ig-6"],
       "settings": {
-        "title": "Featured Collection",
-        "subtitle": "Handpicked streetwear essentials",
-        "collection": "",
-        "products_to_show": 4,
-        "show_view_all": true
+        "label": "Instagram",
+        "title": "@escapeclothing",
+        "subtitle": "Tag us in your fits for a chance to be featured",
+        "instagram_handle": "escapeclothing"
       }
     },
     "reviews": {
       "type": "customer-reviews",
+      "blocks": {
+        "r-1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "Best streetwear brand in India. Fast delivery and premium quality. I ordered three tees and all fit perfectly.",
+            "author": "Arjun K.",
+            "product": "Oversized Tee"
+          }
+        },
+        "r-2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "The ₹999 drop is an absolute steal. Already ordered twice! The jersey quality is unreal for the price.",
+            "author": "Priya M.",
+            "product": "₹999 Drop Jersey"
+          }
+        },
+        "r-3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "Jerseys are fire. Exactly like the photos. Packaging was clean and delivery was super fast. 10/10.",
+            "author": "Rohan S.",
+            "product": "NBA Jersey"
+          }
+        },
+        "r-4": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "Discovered Escape Clothing through Instagram and I'm obsessed. The cargos are so comfortable and stylish.",
+            "author": "Sneha T.",
+            "product": "Cargo Bottoms"
+          }
+        },
+        "r-5": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "text": "COD was super easy. No issues at all. Will definitely order again. Love the dark streetwear aesthetic.",
+            "author": "Karthik R.",
+            "product": "Graphic Tee"
+          }
+        }
+      },
+      "block_order": ["r-1", "r-2", "r-3", "r-4", "r-5"],
       "settings": {
+        "label": "Reviews",
         "title": "What Our Community Says",
         "subtitle": "Real reviews from real streetwear heads"
       }
     },
-    "why-choose": {
-      "type": "why-choose-us",
-      "settings": {}
-    },
     "newsletter-home": {
       "type": "newsletter",
       "settings": {
+        "label": "Stay in the loop",
         "title": "Join the Escape",
-        "subtitle": "Get early access to drops, exclusive deals & streetwear news."
+        "subtitle": "Get early access to drops, exclusive deals & streetwear news.",
+        "button_label": "Subscribe"
       }
-    },
-    "faq-home": {
-      "type": "faq",
-      "settings": {}
     }
   },
   "order": [
     "hero",
     "brand-scroll",
     "categories",
-    "new-arrivals",
     "best-sellers",
-    "trending",
-    "combo-deals",
+    "new-arrivals",
     "drop-banner",
-    "featured",
-    "reviews",
-    "instagram",
+    "combo-deals",
     "why-choose",
-    "newsletter-home",
-    "faq-home"
+    "instagram",
+    "reviews",
+    "newsletter-home"
   ]
 }

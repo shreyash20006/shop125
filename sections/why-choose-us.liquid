@@ -1,19 +1,29 @@
-<section class="section-padding why-choose">
+<section class="trust-section section-reveal">
   <div class="page-width">
     <div class="section-header">
-      <h2 class="section-header__title">{{ section.settings.title | default: 'Why Choose Escape' }}</h2>
-      {%- if section.settings.subtitle != blank -%}<p class="section-header__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
+      <p class="section-label">{{ section.settings.label | default: 'Our Promise' }}</p>
+      <h2 class="section-title">{{ section.settings.title | default: 'Why Choose Escape Clothing 👣' }}</h2>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
     </div>
-    <div class="why-choose__grid">
+
+    <div class="trust-grid">
       {%- for block in section.blocks -%}
-        <div class="why-choose__item" {{ block.shopify_attributes }}>
-          <div class="why-choose__icon">{{ block.settings.icon | default: '✦' }}</div>
-          <h3 class="why-choose__title">{{ block.settings.title }}</h3>
-          <p class="why-choose__text">{{ block.settings.text }}</p>
+        <div class="trust-card" {{ block.shopify_attributes }}>
+          <div class="trust-card__icon-wrap">
+            <span class="trust-card__icon">{{ block.settings.icon | default: '★' }}</span>
+          </div>
+          <h3 class="trust-card__title">{{ block.settings.title }}</h3>
+          <p class="trust-card__text">{{ block.settings.text }}</p>
         </div>
       {%- endfor -%}
     </div>
-    <div class="why-choose__payments">{% render 'payment-icons' %}</div>
+
+    <div class="trust-payments">
+      <p class="trust-payments__label">Accepted Payments</p>
+      {% render 'payment-icons' %}
+    </div>
   </div>
 </section>
 
@@ -24,7 +34,8 @@
   "class": "why-choose-section",
   "max_blocks": 6,
   "settings": [
-    { "type": "text", "id": "title", "label": "Heading", "default": "Why Choose Escape" },
+    { "type": "text", "id": "label", "label": "Section label", "default": "Our Promise" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Why Choose Escape Clothing" },
     { "type": "text", "id": "subtitle", "label": "Subheading", "default": "Premium streetwear, built for India" }
   ],
   "blocks": [
@@ -32,20 +43,19 @@
       "type": "feature",
       "name": "Feature",
       "settings": [
-        { "type": "text", "id": "icon", "label": "Icon", "default": "★" },
+        { "type": "text", "id": "icon", "label": "Icon (emoji)", "default": "★" },
         { "type": "text", "id": "title", "label": "Title", "default": "Premium Quality" },
-        { "type": "text", "id": "text", "label": "Text", "default": "Streetwear-grade fabrics and premium fits." }
+        { "type": "text", "id": "text", "label": "Description", "default": "Streetwear-grade fabrics and premium fits." }
       ]
     }
   ],
   "presets": [{
     "name": "Why choose us",
     "blocks": [
-      { "type": "feature", "settings": { "icon": "★", "title": "Premium Quality", "text": "Streetwear-grade fabrics and premium fits." } },
-      { "type": "feature", "settings": { "icon": "₹", "title": "Affordable Pricing", "text": "Premium style without the premium price tag." } },
-      { "type": "feature", "settings": { "icon": "🔒", "title": "Secure Payments", "text": "Cashfree protected checkout with UPI, cards & COD." } },
-      { "type": "feature", "settings": { "icon": "🚚", "title": "Fast Shipping", "text": "Pan-India delivery in 3-7 business days." } },
-      { "type": "feature", "settings": { "icon": "↩", "title": "Easy Returns", "text": "7-day hassle-free returns on unused items." } }
+      { "type": "feature", "settings": { "icon": "🎯", "title": "Premium Quality", "text": "Streetwear-grade fabrics, premium stitching, and fits that actually look good IRL." } },
+      { "type": "feature", "settings": { "icon": "🚚", "title": "Fast Shipping", "text": "Pan-India delivery in 3–7 business days. Free shipping above ₹999." } },
+      { "type": "feature", "settings": { "icon": "🔒", "title": "Secure Payments", "text": "Cashfree protected checkout with UPI, cards, net banking & Cash on Delivery." } },
+      { "type": "feature", "settings": { "icon": "↩", "title": "Easy Returns", "text": "7-day hassle-free returns on all unused, unwashed items." } }
     ]
   }]
 }

@@ -1,41 +1,41 @@
 {%- liquid
   assign selected_collection = collections[section.settings.collection]
   assign collection = selected_collection
-
   if collection == blank
     assign collection = collections.all
   endif
-
   assign products_to_show = section.settings.products_to_show | default: 4
 -%}
 
-<section class="section-padding">
+<section class="collection-section section-reveal">
   <div class="page-width">
-    <div class="section-header">
-      <h2 class="section-header__title">{{ section.settings.title }}</h2>
-      {%- if section.settings.subtitle != blank -%}
-        <p class="section-header__subtitle">{{ section.settings.subtitle }}</p>
+    <div class="section-header section-header--split">
+      <div>
+        {%- if section.settings.label != blank -%}
+          <p class="section-label">{{ section.settings.label }}</p>
+        {%- endif -%}
+        <h2 class="section-title">{{ section.settings.title | default: 'Collection' }}</h2>
+        {%- if section.settings.subtitle != blank -%}
+          <p class="section-subtitle--inline">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.show_view_all and collection != blank -%}
+        <a href="{{ collection.url | default: routes.all_products_collection_url }}" class="section-view-all">
+          {{ section.settings.view_all_label | default: 'View all' }}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       {%- endif -%}
     </div>
 
     {%- if collection != blank and collection.products.size > 0 -%}
-      <div class="product-grid">
+      <div class="product-grid product-grid--{{ products_to_show }}">
         {%- for product in collection.products limit: products_to_show -%}
           {% render 'product-card', card_product: product %}
         {%- endfor -%}
       </div>
-
-      {%- if section.settings.show_view_all -%}
-        <div style="text-align: center; margin-top: 2.5rem;">
-          <a href="{{ collection.url | default: routes.all_products_collection_url }}" class="btn btn--secondary">
-            {{ section.settings.view_all_label | default: 'View all' }}
-          </a>
-        </div>
-      {%- endif -%}
     {%- else -%}
-      <div class="collection-empty">
-        <p>{{ 'collections.empty' | t }}</p>
-        <p class="collection-empty__hint">Add products in Shopify Admin → Products, set status to <strong>Active</strong>, and publish to the <strong>Online Store</strong> sales channel.</p>
+      <div class="empty-state">
+        <p class="empty-state__text">No products yet. Add products in Shopify Admin → Products.</p>
       </div>
     {%- endif -%}
   </div>
@@ -50,6 +50,11 @@
     {
       "type": "paragraph",
       "content": "If no collection is selected, all store products are shown automatically."
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section label"
     },
     {
       "type": "text",

@@ -1,33 +1,42 @@
-<section class="section-padding">
+<section class="categories-section section-reveal">
   <div class="page-width">
-    {%- if section.settings.title != blank -%}
-      <div class="section-header">
-        <h2 class="section-header__title">{{ section.settings.title }}</h2>
+    {%- if section.settings.title != blank or section.settings.subtitle != blank -%}
+      <div class="section-header section-header--split">
+        <div>
+          {%- if section.settings.label != blank -%}
+            <p class="section-label">{{ section.settings.label }}</p>
+          {%- else -%}
+            <p class="section-label">Collections</p>
+          {%- endif -%}
+          <h2 class="section-title">{{ section.settings.title | default: 'Shop by Category' }}</h2>
+        </div>
         {%- if section.settings.subtitle != blank -%}
-          <p class="section-header__subtitle">{{ section.settings.subtitle }}</p>
+          <p class="section-subtitle">{{ section.settings.subtitle }}</p>
         {%- endif -%}
       </div>
     {%- endif -%}
 
-    <div class="category-grid">
+    <div class="cat-grid cat-grid--{{ section.blocks.size }}">
       {%- for block in section.blocks -%}
-        <a href="{{ block.settings.link | default: '#' }}" class="category-card" {{ block.shopify_attributes }}>
-          {%- if block.settings.image != blank -%}
-            {{
-              block.settings.image
-              | image_url: width: 800
-              | image_tag: loading: 'lazy', class: 'category-card__image', widths: '400,600,800', sizes: '(min-width: 750px) 25vw, 50vw'
-            }}
-          {%- else -%}
-            {{ 'collection-' | append: forloop.index | placeholder_svg_tag: 'category-card__image' }}
-          {%- endif -%}
-          <div class="category-card__overlay">
-            <div>
-              <p class="category-card__title">{{ block.settings.title }}</p>
-              {%- if block.settings.subtitle != blank -%}
-                <p class="category-card__count">{{ block.settings.subtitle }}</p>
-              {%- endif -%}
-            </div>
+        <a href="{{ block.settings.link | default: '#' }}" class="cat-card" {{ block.shopify_attributes }}>
+          <div class="cat-card__media">
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 800
+                | image_tag: loading: 'lazy', class: 'cat-card__img', widths: '400,600,800', sizes: '(min-width: 990px) 25vw, 50vw'
+              }}
+            {%- else -%}
+              {{ 'collection-' | append: forloop.index | placeholder_svg_tag: 'cat-card__img cat-card__img--placeholder' }}
+            {%- endif -%}
+            <div class="cat-card__overlay"></div>
+          </div>
+          <div class="cat-card__info">
+            <p class="cat-card__title">{{ block.settings.title | default: 'Category' }}</p>
+            {%- if block.settings.subtitle != blank -%}
+              <p class="cat-card__sub">{{ block.settings.subtitle }}</p>
+            {%- endif -%}
+            <span class="cat-card__cta">Shop Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
         </a>
       {%- endfor -%}
@@ -42,6 +51,12 @@
   "class": "featured-categories-section",
   "max_blocks": 8,
   "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section label",
+      "default": "Collections"
+    },
     {
       "type": "text",
       "id": "title",
@@ -88,10 +103,10 @@
     {
       "name": "Featured categories",
       "blocks": [
-        { "type": "category", "settings": { "title": "Jerseys" } },
-        { "type": "category", "settings": { "title": "Oversized Tees" } },
-        { "type": "category", "settings": { "title": "Shirts" } },
-        { "type": "category", "settings": { "title": "Bottoms" } }
+        { "type": "category", "settings": { "title": "Jerseys", "subtitle": "Korean · NBA · Football" } },
+        { "type": "category", "settings": { "title": "Oversized Tees", "subtitle": "Boxy · Graphic · Street" } },
+        { "type": "category", "settings": { "title": "Shirts", "subtitle": "Zara Style · Corduroy" } },
+        { "type": "category", "settings": { "title": "Bottoms", "subtitle": "Cargos · Denim · Track" } }
       ]
     }
   ]

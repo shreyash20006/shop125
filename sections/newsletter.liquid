@@ -1,43 +1,47 @@
-<section class="newsletter section-padding">
-  <div class="page-width">
-    <div class="newsletter__inner">
-      <h2 class="section-header__title">
+<section class="newsletter-section section-reveal">
+  <div class="newsletter-inner">
+    <div class="newsletter-content">
+      <p class="section-label section-label--light">{{ section.settings.label | default: 'Stay in the loop' }}</p>
+      <h2 class="newsletter-title">
         {%- if section.settings.title != blank -%}
           {{ section.settings.title }}
         {%- else -%}
-          {{ 'newsletter.title' | t }}
+          Join the Escape
         {%- endif -%}
       </h2>
-      <p class="section-header__subtitle">
+      <p class="newsletter-sub">
         {%- if section.settings.subtitle != blank -%}
           {{ section.settings.subtitle }}
         {%- else -%}
-          {{ 'newsletter.subtitle' | t }}
+          Get early access to drops, exclusive deals & streetwear news.
         {%- endif -%}
       </p>
 
-      {% form 'customer', class: 'newsletter__form' %}
+      {% form 'customer', class: 'newsletter-form' %}
         <input type="hidden" name="contact[tags]" value="newsletter">
-        <input
-          type="email"
-          name="contact[email]"
-          class="newsletter__input"
-          placeholder="{{ 'newsletter.placeholder' | t }}"
-          required
-          autocomplete="email"
-        >
-        <button type="submit" class="newsletter__submit">
-          {%- if section.settings.button_label != blank -%}
-            {{ section.settings.button_label }}
-          {%- else -%}
-            {{ 'newsletter.submit' | t }}
-          {%- endif -%}
-        </button>
+        <div class="newsletter-form__row">
+          <input
+            type="email"
+            name="contact[email]"
+            class="newsletter-form__input"
+            placeholder="{{ section.settings.placeholder | default: 'Enter your email address' }}"
+            required
+            autocomplete="email"
+          >
+          <button type="submit" class="newsletter-form__btn">
+            {%- if section.settings.button_label != blank -%}
+              {{ section.settings.button_label }}
+            {%- else -%}
+              Subscribe
+            {%- endif -%}
+          </button>
+        </div>
+        {%- if form.posted_successfully? -%}
+          <p class="newsletter-form__success">You're in. Welcome to the Escape. 🤘</p>
+        {%- endif -%}
       {% endform %}
 
-      {%- if form.posted_successfully? -%}
-        <p style="margin-top: 1rem; color: var(--color-text-muted);">{{ 'newsletter.success' | t }}</p>
-      {%- endif -%}
+      <p class="newsletter-disclaimer">No spam, ever. Unsubscribe any time.</p>
     </div>
   </div>
 </section>
@@ -46,26 +50,13 @@
 {
   "name": "Newsletter",
   "tag": "section",
-  "class": "newsletter-section",
+  "class": "newsletter-section-wrap",
   "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "Join the escape"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subheading",
-      "default": "Get early access to drops, exclusive deals & streetwear news."
-    },
-    {
-      "type": "text",
-      "id": "button_label",
-      "label": "Button label",
-      "default": "Subscribe"
-    }
+    { "type": "text", "id": "label", "label": "Section label", "default": "Stay in the loop" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "Join the Escape" },
+    { "type": "text", "id": "subtitle", "label": "Subheading", "default": "Get early access to drops, exclusive deals & streetwear news." },
+    { "type": "text", "id": "placeholder", "label": "Input placeholder", "default": "Enter your email address" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Subscribe" }
   ],
   "presets": [
     {

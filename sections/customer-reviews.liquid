@@ -1,26 +1,39 @@
-<section class="section-padding">
+<section class="reviews-section section-reveal">
   <div class="page-width">
     <div class="section-header">
-      <h2 class="section-header__title">{{ section.settings.title | default: 'Customer Reviews' }}</h2>
+      <p class="section-label">{{ section.settings.label | default: 'Reviews' }}</p>
+      <h2 class="section-title">{{ section.settings.title | default: 'What Our Community Says' }}</h2>
       {%- if section.settings.subtitle != blank -%}
-        <p class="section-header__subtitle">{{ section.settings.subtitle }}</p>
+        <p class="section-subtitle">{{ section.settings.subtitle }}</p>
       {%- endif -%}
     </div>
 
-    <div class="reviews-grid">
-      {%- for block in section.blocks -%}
-        <div class="review-card" {{ block.shopify_attributes }}>
-          <div class="review-card__stars" aria-label="{{ block.settings.rating }} out of 5 stars">
-            {%- for i in (1..block.settings.rating) -%}★{%- endfor -%}
+    <div class="reviews-track-wrap">
+      <div class="reviews-track" data-reviews-track>
+        {%- for block in section.blocks -%}
+          <div class="review-card" {{ block.shopify_attributes }}>
+            <div class="review-card__stars" aria-label="{{ block.settings.rating }} out of 5 stars">
+              {%- for i in (1..5) -%}
+                <span class="review-card__star{% if i <= block.settings.rating %} review-card__star--filled{% endif %}">★</span>
+              {%- endfor -%}
+            </div>
+            {%- if block.settings.text != blank -%}
+              <p class="review-card__text">"{{ block.settings.text }}"</p>
+            {%- endif -%}
+            <div class="review-card__footer">
+              <span class="review-card__dot"></span>
+              {%- if block.settings.author != blank -%}
+                <p class="review-card__author">{{ block.settings.author }}</p>
+              {%- endif -%}
+              {%- if block.settings.product != blank -%}
+                <p class="review-card__product">Verified Purchase · {{ block.settings.product }}</p>
+              {%- else -%}
+                <p class="review-card__product">Verified Purchase</p>
+              {%- endif -%}
+            </div>
           </div>
-          {%- if block.settings.text != blank -%}
-            <p class="review-card__text">"{{ block.settings.text }}"</p>
-          {%- endif -%}
-          {%- if block.settings.author != blank -%}
-            <p class="review-card__author">— {{ block.settings.author }}</p>
-          {%- endif -%}
-        </div>
-      {%- endfor -%}
+        {%- endfor -%}
+      </div>
     </div>
   </div>
 </section>
@@ -30,20 +43,11 @@
   "name": "Customer reviews",
   "tag": "section",
   "class": "customer-reviews-section",
-  "max_blocks": 6,
+  "max_blocks": 9,
   "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Heading",
-      "default": "What Our Community Says"
-    },
-    {
-      "type": "text",
-      "id": "subtitle",
-      "label": "Subheading",
-      "default": "Real reviews from real streetwear heads"
-    }
+    { "type": "text", "id": "label", "label": "Section label", "default": "Reviews" },
+    { "type": "text", "id": "title", "label": "Heading", "default": "What Our Community Says" },
+    { "type": "text", "id": "subtitle", "label": "Subheading", "default": "Real reviews from real streetwear heads" }
   ],
   "blocks": [
     {
@@ -53,24 +57,13 @@
         {
           "type": "range",
           "id": "rating",
-          "min": 1,
-          "max": 5,
-          "step": 1,
+          "min": 1, "max": 5, "step": 1,
           "label": "Rating",
           "default": 5
         },
-        {
-          "type": "textarea",
-          "id": "text",
-          "label": "Review text",
-          "default": "Quality is insane for the price. The oversized tee fits perfectly."
-        },
-        {
-          "type": "text",
-          "id": "author",
-          "label": "Author",
-          "default": "Verified Buyer"
-        }
+        { "type": "textarea", "id": "text", "label": "Review text", "default": "Quality is insane for the price. The oversized tee fits perfectly." },
+        { "type": "text", "id": "author", "label": "Author name", "default": "Verified Buyer" },
+        { "type": "text", "id": "product", "label": "Product name (optional)" }
       ]
     }
   ],
@@ -78,27 +71,11 @@
     {
       "name": "Customer reviews",
       "blocks": [
-        {
-          "type": "review",
-          "settings": {
-            "text": "Best streetwear brand in India. Fast delivery and premium quality.",
-            "author": "Arjun K."
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "text": "The ₹999 drop is a steal. Already ordered twice!",
-            "author": "Priya M."
-          }
-        },
-        {
-          "type": "review",
-          "settings": {
-            "text": "Jerseys are fire. Exactly like the photos. 10/10 would recommend.",
-            "author": "Rohan S."
-          }
-        }
+        { "type": "review", "settings": { "rating": 5, "text": "Best streetwear brand in India. Fast delivery and premium quality. I ordered three tees and all fit perfectly.", "author": "Arjun K.", "product": "Oversized Tee" } },
+        { "type": "review", "settings": { "rating": 5, "text": "The ₹999 drop is an absolute steal. Already ordered twice! The jersey quality is unreal for the price.", "author": "Priya M.", "product": "₹999 Drop Jersey" } },
+        { "type": "review", "settings": { "rating": 5, "text": "Jerseys are fire. Exactly like the photos. Packaging was clean and delivery was super fast. 10/10.", "author": "Rohan S.", "product": "NBA Jersey" } },
+        { "type": "review", "settings": { "rating": 5, "text": "Discovered Escape Clothing through Instagram and I'm obsessed. The cargos are so comfortable.", "author": "Sneha T.", "product": "Cargo Bottoms" } },
+        { "type": "review", "settings": { "rating": 5, "text": "COD was super easy. No issues at all. Will definitely order again. Love the dark streetwear aesthetic.", "author": "Karthik R.", "product": "Graphic Tee" } }
       ]
     }
   ]

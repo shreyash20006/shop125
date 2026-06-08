@@ -22,7 +22,27 @@
     };
   }
 
-  /* Sticky Header Scroll Animation */
+  /* ── Scroll Reveal ────────────────────────────────────────────── */
+  function initScrollReveal() {
+    const els = qsa('.section-reveal');
+    if (!els.length) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }
+    );
+
+    els.forEach((el) => io.observe(el));
+  }
+
+  /* ── Sticky Header ────────────────────────────────────────────── */
   function initStickyHeader() {
     const headerGroup = qs('.header-group');
     if (!headerGroup) return;
@@ -30,7 +50,7 @@
     let ticking = false;
 
     function updateHeader() {
-      const scrolled = window.scrollY > 40;
+      const scrolled = window.scrollY > 60;
       headerGroup.classList.toggle('is-scrolled', scrolled);
       ticking = false;
     }
@@ -45,7 +65,7 @@
     updateHeader();
   }
 
-  /* Mobile Menu */
+  /* ── Mobile Menu ──────────────────────────────────────────────── */
   function initMobileMenu() {
     const toggle = qs('[data-mobile-menu-toggle]');
     const menu = qs('[data-mobile-menu]');
@@ -56,30 +76,35 @@
     function openMenu() {
       menu.classList.add('is-open');
       document.body.style.overflow = 'hidden';
+      menu.setAttribute('aria-hidden', 'false');
     }
 
     function closeMenu() {
       menu.classList.remove('is-open');
       document.body.style.overflow = '';
+      menu.setAttribute('aria-hidden', 'true');
     }
 
     toggle.addEventListener('click', openMenu);
     closeButtons.forEach((btn) => btn.addEventListener('click', closeMenu));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) closeMenu();
+    });
   }
 
-  /* Search Modal */
+  /* ── Search Modal ─────────────────────────────────────────────── */
   function initSearch() {
     const openButtons = qsa('[data-search-open]');
     const modal = qs('#search-modal');
-    const closeButtons = qsa('[data-search-close]', modal);
-
     if (!modal) return;
+    const closeButtons = qsa('[data-search-close]', modal);
 
     function openSearch() {
       modal.classList.add('is-open');
       modal.setAttribute('aria-hidden', 'false');
       const input = qs('.search-modal__input', modal);
-      if (input) input.focus();
+      if (input) setTimeout(() => input.focus(), 50);
     }
 
     function closeSearch() {
@@ -89,20 +114,18 @@
 
     openButtons.forEach((btn) => btn.addEventListener('click', openSearch));
     closeButtons.forEach((btn) => btn.addEventListener('click', closeSearch));
+    qs('.search-modal__overlay', modal)?.addEventListener('click', closeSearch);
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
-        closeSearch();
-      }
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeSearch();
     });
   }
 
-  /* Cart Drawer */
+  /* ── Cart Drawer ──────────────────────────────────────────────── */
   class CartDrawer {
     constructor() {
       this.drawer = qs('[data-cart-drawer]');
       if (!this.drawer) return;
-
       this.init();
     }
 
@@ -146,7 +169,6 @@
         const doc = parser.parseFromString(html, 'text/html');
         const newContent = doc.querySelector('[data-cart-drawer-content]');
         const currentContent = qs('[data-cart-drawer-content]', this.drawer);
-
         if (newContent && currentContent) {
           currentContent.innerHTML = newContent.innerHTML;
           this.bindEvents();
@@ -171,13 +193,11 @@
           const input = qs('[data-quantity-input]', wrapper);
           const key = wrapper.dataset.cartItem;
           let qty = parseInt(input.value, 10);
-
           if (btn.hasAttribute('data-quantity-minus')) {
             qty = Math.max(0, qty - 1);
           } else {
             qty += 1;
           }
-
           await this.updateItem(key, qty);
         });
       });
@@ -185,11 +205,7 @@
 
     async updateItem(key, quantity) {
       const config = fetchConfig();
-      config.body = JSON.stringify({
-        id: key,
-        quantity: quantity
-      });
-
+      config.body = JSON.stringify({ id: key, quantity });
       await fetch(settings.routes.cartChangeUrl, config);
       this.refresh();
       this.updateCartCount();
@@ -222,16 +238,14 @@
 
       if (response.ok) {
         this.updateCartCount();
-        if (settings.cartType === 'drawer') {
-          this.open();
-        }
+        if (settings.cartType === 'drawer') this.open();
       }
 
       return data;
     }
   }
 
-  /* Product Form */
+  /* ── Product Form ─────────────────────────────────────────────── */
   function initProductForms(cartDrawer) {
     qsa('[data-product-form]').forEach((form) => {
       const jsonEl = document.querySelector('[id^="ProductJson-"]');
@@ -249,18 +263,13 @@
           const variant = product.variants.find((v) =>
             v.options.every((opt, i) => opt === selectedOptions[i])
           );
-
           if (variant) {
             variantInputs.forEach((vi) => { vi.value = variant.id; });
             if (addBtn) {
               addBtn.disabled = !variant.available;
-              addBtn.textContent = variant.available
-                ? settings.strings.addToCart
-                : settings.strings.soldOut;
+              addBtn.textContent = variant.available ? settings.strings.addToCart : settings.strings.soldOut;
             }
-            if (priceEl) {
-              priceEl.innerHTML = formatMoney(variant.price);
-            }
+            if (priceEl) priceEl.innerHTML = formatMoney(variant.price);
           }
         });
       });
@@ -277,9 +286,7 @@
       if (buyBtn) {
         buyBtn.addEventListener('click', async () => {
           const formData = new FormData(form);
-          if (cartDrawer) {
-            await cartDrawer.addItem(formData);
-          }
+          if (cartDrawer) await cartDrawer.addItem(formData);
           window.location.href = '/checkout';
         });
       }
@@ -293,7 +300,7 @@
     }).format(cents / 100);
   }
 
-  /* Product Gallery */
+  /* ── Product Gallery ──────────────────────────────────────────── */
   function initProductGallery() {
     const gallery = qs('[data-product-gallery]');
     if (!gallery) return;
@@ -321,7 +328,7 @@
     }
   }
 
-  /* Quantity Selector */
+  /* ── Quantity Selector ────────────────────────────────────────── */
   function initQuantitySelectors() {
     qsa('[data-quantity-selector]').forEach((selector) => {
       const input = qs('[data-quantity-input]', selector);
@@ -334,16 +341,13 @@
     });
   }
 
-  /* Wishlist (localStorage) */
+  /* ── Wishlist ─────────────────────────────────────────────────── */
   function initWishlist() {
     const STORAGE_KEY = 'escape_wishlist';
 
     function getWishlist() {
-      try {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-      } catch {
-        return [];
-      }
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+      catch { return []; }
     }
 
     function saveWishlist(items) {
@@ -364,13 +368,11 @@
         e.stopPropagation();
         const id = btn.dataset.productId;
         let wishlist = getWishlist();
-
         if (wishlist.includes(id)) {
           wishlist = wishlist.filter((item) => item !== id);
         } else {
           wishlist.push(id);
         }
-
         saveWishlist(wishlist);
         updateUI();
       });
@@ -379,7 +381,7 @@
     updateUI();
   }
 
-  /* Size Chart Modal */
+  /* ── Size Chart Modal ─────────────────────────────────────────── */
   function initSizeChart() {
     const modal = qs('[data-size-chart-modal]');
     if (!modal) return;
@@ -398,13 +400,10 @@
 
     qsa('[data-size-chart-open]').forEach((btn) => btn.addEventListener('click', open));
     qsa('[data-size-chart-close]', modal).forEach((btn) => btn.addEventListener('click', close));
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') close();
-    });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
   }
 
-  /* Recently Viewed */
+  /* ── Recently Viewed ──────────────────────────────────────────── */
   function initRecentlyViewed() {
     const section = qs('[data-recently-viewed]');
     if (!section) return;
@@ -413,11 +412,8 @@
     const STORAGE_KEY = 'escape_recently_viewed';
     let recent = [];
 
-    try {
-      recent = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-    } catch {
-      recent = [];
-    }
+    try { recent = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
+    catch { recent = []; }
 
     if (productId) {
       recent = recent.filter((id) => id !== productId);
@@ -427,33 +423,104 @@
     }
   }
 
-  /* Quick Add */
+  /* ── Quick Add ────────────────────────────────────────────────── */
   function initQuickAdd(cartDrawer) {
     qsa('.product-card__quick-add').forEach((form) => {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        if (cartDrawer) {
-          await cartDrawer.addItem(new FormData(form));
+        const btn = qs('button[type="submit"]', form);
+        if (btn) {
+          const orig = btn.textContent;
+          btn.textContent = '✓ Added';
+          btn.disabled = true;
+          setTimeout(() => {
+            btn.textContent = orig;
+            btn.disabled = false;
+          }, 1600);
         }
+        if (cartDrawer) await cartDrawer.addItem(new FormData(form));
       });
     });
   }
 
-  /* Init */
+  /* ── Hero Parallax ────────────────────────────────────────────── */
+  function initHeroParallax() {
+    const hero = qs('.hero');
+    const media = qs('.hero__media');
+    if (!hero || !media) return;
+
+    let ticking = false;
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          if (scrollY < window.innerHeight) {
+            media.style.transform = `translateY(${scrollY * 0.35}px)`;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  /* ── Countdown Timer ──────────────────────────────────────────── */
+  function initCountdowns() {
+    qsa('[data-countdown]').forEach((el) => {
+      const endStr = el.dataset.countdown;
+      if (!endStr) return;
+      const endTime = new Date(endStr).getTime();
+      if (isNaN(endTime)) return;
+
+      const hoursEl = qs('[data-countdown-hours]', el);
+      const minsEl = qs('[data-countdown-mins]', el);
+      const secsEl = qs('[data-countdown-secs]', el);
+      if (!hoursEl || !minsEl || !secsEl) return;
+
+      function pad(n) { return String(n).padStart(2, '0'); }
+
+      function tick() {
+        const now = Date.now();
+        const diff = endTime - now;
+        if (diff <= 0) {
+          hoursEl.textContent = '00';
+          minsEl.textContent = '00';
+          secsEl.textContent = '00';
+          return;
+        }
+        const totalSecs = Math.floor(diff / 1000);
+        const h = Math.floor(totalSecs / 3600);
+        const m = Math.floor((totalSecs % 3600) / 60);
+        const s = totalSecs % 60;
+        hoursEl.textContent = pad(h);
+        minsEl.textContent = pad(m);
+        secsEl.textContent = pad(s);
+      }
+
+      tick();
+      setInterval(tick, 1000);
+    });
+  }
+
+  /* ── Init ─────────────────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', () => {
+    initScrollReveal();
     initStickyHeader();
     initMobileMenu();
+    initCountdowns();
     initSearch();
     initQuantitySelectors();
     initWishlist();
     initSizeChart();
     initRecentlyViewed();
     initProductGallery();
+    initHeroParallax();
 
     const cartDrawer = new CartDrawer();
-    if (cartDrawer.drawer) {
-      cartDrawer.bindEvents();
-    }
+    if (cartDrawer.drawer) cartDrawer.bindEvents();
 
     initProductForms(cartDrawer);
     initQuickAdd(cartDrawer);
