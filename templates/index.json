@@ -1,9 +1,17 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero-banner",
       "settings": {
-        "image": "shopify://shop_images/WhatsApp_Image_2026-06-08_at_9.03.23_PM.jpg",
         "eyebrow": "New Season · 2026",
         "heading": "ESCAPE THE ORDINARY",
         "subheading": "Premium Streetwear for Every Drop",
@@ -15,6 +23,7 @@
     },
     "brand-scroll": {
       "type": "home-brand-scroll",
+      "disabled": true,
       "settings": {
         "tagline": "Escape The Ordinary",
         "speed": 30,
@@ -57,7 +66,12 @@
           }
         }
       },
-      "block_order": ["cat-1", "cat-2", "cat-3", "cat-4"],
+      "block_order": [
+        "cat-1",
+        "cat-2",
+        "cat-3",
+        "cat-4"
+      ],
       "settings": {
         "label": "Collections",
         "title": "Shop by Category",
@@ -123,14 +137,51 @@
     "instagram": {
       "type": "instagram-gallery",
       "blocks": {
-        "ig-1": { "type": "image", "settings": { "link": "" } },
-        "ig-2": { "type": "image", "settings": { "link": "" } },
-        "ig-3": { "type": "image", "settings": { "link": "" } },
-        "ig-4": { "type": "image", "settings": { "link": "" } },
-        "ig-5": { "type": "image", "settings": { "link": "" } },
-        "ig-6": { "type": "image", "settings": { "link": "" } }
+        "ig-1": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "ig-2": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "ig-3": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "ig-4": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "ig-5": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "ig-6": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        }
       },
-      "block_order": ["ig-1", "ig-2", "ig-3", "ig-4", "ig-5", "ig-6"],
+      "block_order": [
+        "ig-1",
+        "ig-2",
+        "ig-3",
+        "ig-4",
+        "ig-5",
+        "ig-6"
+      ],
       "settings": {
         "label": "Instagram",
         "title": "@escapeclothing",
@@ -187,7 +238,13 @@
           }
         }
       },
-      "block_order": ["r-1", "r-2", "r-3", "r-4", "r-5"],
+      "block_order": [
+        "r-1",
+        "r-2",
+        "r-3",
+        "r-4",
+        "r-5"
+      ],
       "settings": {
         "label": "Reviews",
         "title": "What Our Community Says",
@@ -200,6 +257,7 @@
         "label": "Stay in the loop",
         "title": "Join the Escape",
         "subtitle": "Get early access to drops, exclusive deals & streetwear news.",
+        "placeholder": "Enter your email address",
         "button_label": "Subscribe"
       }
     }
