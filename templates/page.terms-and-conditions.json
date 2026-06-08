@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "legal-page",
+      "settings": {
+        "default_content": "<h2>Terms & Conditions</h2><p>By using escapeclothing.shop you agree to these terms.</p><h3>Products</h3><p>We strive for accurate product images and descriptions. Minor color variations may occur due to screen settings.</p><h3>Pricing</h3><p>All prices are in INR (₹). We reserve the right to change prices without notice.</p><h3>Orders</h3><p>We reserve the right to cancel orders due to stock unavailability, pricing errors, or suspected fraud.</p><h3>Payments</h3><p>Payments are processed securely via Cashfree. We accept UPI, Cards, Net Banking, Wallets, and COD.</p><h3>Intellectual Property</h3><p>All content, logos, and designs are property of Escape Clothing.</p><h3>Governing Law</h3><p>These terms are governed by the laws of India.</p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

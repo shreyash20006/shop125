@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "legal-page",
+      "settings": {
+        "default_content": "<h2>Refund Policy</h2><p>At Escape Clothing, customer satisfaction is our priority.</p><h3>Return Window</h3><p>7 days from date of delivery.</p><h3>Eligibility</h3><ul><li>Product must be unused, unwashed, with original tags attached</li><li>Damaged or defective products are eligible for refund or exchange</li><li>Sale items may have different return terms</li></ul><h3>Refund Method</h3><p>Refunds are processed to the original payment method within 5-7 business days after we receive and inspect the returned item.</p><h3>Exchange</h3><p>Exchanges are available for size/fit issues subject to stock availability.</p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

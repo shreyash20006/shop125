@@ -1,98 +1,55 @@
-# Escape Clothing 👣 — Shopify Theme
+# Escape Clothing 👣 — Production Shopify Theme v2.0
 
-Premium dark streetwear theme for **Escape Clothing**. Built on Shopify Online Store 2.0 with full Theme Editor support.
+Premium dark streetwear theme for India. Cashfree-ready, INR (₹), COD supported.
 
-**Tagline:** Escape The Ordinary
+## Launch Checklist
 
-## Deploy to Shopify
+### 1. Shopify Admin Setup
+- [ ] Add products (Active + Online Store channel)
+- [ ] Create collections: New Arrivals, Best Sellers, Trending, ₹999 Drop
+- [ ] Assign collections in Theme Editor homepage sections
+- [ ] Create navigation menu `main-menu` with all links
+- [ ] Create pages with correct handles and templates:
 
-### Option 1: GitHub Integration (recommended)
+| Page Title | Handle | Template |
+|------------|--------|----------|
+| Privacy Policy | privacy-policy | page.privacy-policy |
+| Refund Policy | refund-policy | page.refund-policy |
+| Return Policy | return-policy | page.return-policy |
+| Shipping Policy | shipping-policy | page.shipping-policy |
+| Cancellation Policy | cancellation-policy | page.cancellation-policy |
+| Terms & Conditions | terms-and-conditions | page.terms-and-conditions |
+| About Us | about-us | page.about-us |
+| FAQ | faq | page.faq |
+| Contact Us | contact | page.contact |
+| Track Order | track-order | page.track-order |
+| Wishlist | wishlist | page.wishlist |
 
-1. Push this repo to GitHub on the `main` branch
-2. In Shopify Admin → **Online Store → Themes**
-3. Click **Add theme → Connect from GitHub**
-4. Select this repository and `main` branch
-5. Publish when ready
+### 2. Payments (Cashfree)
+1. Install **Cashfree Payments** from Shopify App Store
+2. Enable in Settings → Payments
+3. Enable COD if available
+4. Test a live order in test mode first
 
-### Option 2: Shopify CLI
+### 3. Analytics
+Theme Editor → Theme settings → Analytics:
+- Google Analytics ID (GA4)
+- Facebook Pixel ID
 
+### 4. Deploy
 ```bash
-npm install -g @shopify/cli @shopify/theme
-shopify theme push --store your-store.myshopify.com
+git push origin main
 ```
-
-## Post-install setup
-
-### 1. Navigation menu (`main-menu`)
-
-Create a menu in **Online Store → Navigation** with these items:
-
-| Menu Item | Suggested Sub-items |
-|-----------|---------------------|
-| Home | — |
-| New Arrivals | — |
-| Jerseys | Korean Jerseys, NBA Jerseys, Football Club Jerseys, Sports Jerseys |
-| Oversized Tees | Boxy Fit Tees, Graphic Tees, Streetwear Tees |
-| Shirts | Zara Style Shirts, Printed Shirts, Casual Shirts, Corduroy Zip-Ups |
-| Bottoms | 6 Pocket Cargos, Utility Pants, Track Pants, Wide Leg Jeans, Baggy Denim |
-| ₹999 Drop | Buy 3 For ₹999 Deals, Combo Offers, Limited-Time Drops |
-| Contact | Link to `/pages/contact` |
-
-Assign this menu in **Theme Editor → Header → Main menu**.
-
-### 2. Collections
-
-Create collections matching your catalog and assign them in homepage sections (New Arrivals, Best Sellers, Trending, ₹999 Drop banner link).
-
-### 3. Homepage
-
-Open **Theme Editor** and configure:
-
-- Hero banner image/video
-- Featured category images & links
-- Collection picks for product sections
-- Instagram gallery images
-- Customer review blocks
-
-### 4. Payments (India)
-
-Checkout uses **Shopify native checkout**. Enable in **Settings → Payments**:
-
-- **Razorpay** — Install from Shopify App Store
-- **PayU** — Install from Shopify App Store  
-- **UPI / Cards** — Via Razorpay or Shopify Payments India
-- **Cash on Delivery** — Enable in payment settings or via app
-
-### 5. Contact page
-
-Create a page with handle `contact` and assign the **page.contact** template.
-
-## Theme structure
-
-```
-escape-clothing-theme/
-├── assets/           # CSS, JS
-├── config/           # Theme settings
-├── layout/           # theme.liquid, password.liquid
-├── locales/          # Translations
-├── sections/         # OS 2.0 sections
-├── snippets/         # Reusable Liquid components
-└── templates/        # JSON templates
-```
+Or connect GitHub repo in Shopify Admin → Themes → Connect from GitHub
 
 ## Features
-
-- Premium dark UI (black, charcoal, white)
-- Mobile-first responsive design
-- Slide-out cart drawer with AJAX updates
-- Product gallery with zoom
-- Size & quantity selectors
-- Wishlist (localStorage)
-- Recently viewed products
-- SEO: Open Graph, Schema.org structured data
-- Fully editable via Theme Editor
-- No hardcoded products
-
-## License
-
-Proprietary — Escape Clothing
+- Sticky header with logo, search, account, wishlist, cart drawer
+- Running announcement bar
+- Full homepage sections (hero, categories, products, FAQ, newsletter)
+- Product page with size chart, zoom, trust badges
+- Cart drawer with delivery estimate & recommendations
+- 5-column footer with legal links
+- Legal page templates pre-filled
+- Customer login/register/account
+- SEO schema markup
+- Google Analytics & Facebook Pixel ready

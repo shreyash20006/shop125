@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "legal-page",
+      "settings": {
+        "default_content": "<h2>About Escape Clothing 👣</h2><p><strong>Escape The Ordinary.</strong></p><p>Escape Clothing is a premium streetwear brand built for students, Gen-Z, and streetwear enthusiasts across India. We curate oversized tees, jerseys, shirts, bottoms, and exclusive ₹999 drops that deliver premium quality at affordable prices.</p><h3>Our Mission</h3><p>To make premium streetwear accessible to every young Indian who wants to stand out — without breaking the bank.</p><h3>Why Escape?</h3><ul><li>Premium quality fabrics and fits</li><li>Affordable pricing with regular drops</li><li>Secure Cashfree payments with COD</li><li>Fast PAN India shipping</li><li>7-day easy returns</li></ul>"
+      }
+    }
+  },
+  "order": ["main"]
+}

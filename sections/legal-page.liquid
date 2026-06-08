@@ -1,0 +1,23 @@
+<div class="page-content page-width legal-page">
+  {% render 'breadcrumbs' %}
+  <h1 class="page-content__title">{{ page.title | escape }}</h1>
+  <div class="legal-page__content rte">
+    {%- if page.content != blank -%}
+      {{ page.content }}
+    {%- else -%}
+      {{ section.settings.default_content }}
+    {%- endif -%}
+  </div>
+  <p class="legal-page__updated">Last updated: {{ 'now' | date: '%B %d, %Y' }}</p>
+</div>
+
+{% schema %}
+{
+  "name": "Legal page",
+  "tag": "section",
+  "class": "legal-page-section",
+  "settings": [
+    { "type": "richtext", "id": "default_content", "label": "Default content (shown if page is empty)" }
+  ]
+}
+{% endschema %}

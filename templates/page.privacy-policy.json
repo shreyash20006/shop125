@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "legal-page",
+      "settings": {
+        "default_content": "<h2>Privacy Policy</h2><p>Escape Clothing respects your privacy. We collect information you provide during checkout including name, email, phone, and shipping address to process orders.</p><h3>Data We Collect</h3><ul><li>Contact and shipping information</li><li>Payment details (processed securely via Cashfree)</li><li>Order history and preferences</li></ul><h3>How We Use Data</h3><p>To process orders, provide customer support, send order updates, and improve our services. We never sell your personal data.</p><h3>Cookies</h3><p>We use cookies for cart functionality, analytics, and marketing pixels (Google Analytics, Facebook Pixel when enabled).</p><h3>Contact</h3><p>For privacy concerns, email support@escapeclothing.shop</p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

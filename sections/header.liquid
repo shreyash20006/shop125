@@ -1,37 +1,24 @@
 <header class="site-header" data-sticky-header data-section-id="{{ section.id }}" data-section-type="header">
   <div class="page-width">
     <div class="site-header__inner">
-      <button
-        type="button"
-        class="site-header__icon site-header__menu-toggle"
-        data-mobile-menu-toggle
-        aria-label="{{ 'accessibility.open_menu' | t }}"
-      >
+      <button type="button" class="site-header__icon site-header__menu-toggle" data-mobile-menu-toggle aria-label="{{ 'accessibility.open_menu' | t }}">
         {% render 'icon-menu' %}
       </button>
 
       <nav class="main-nav" aria-label="Main navigation">
         <ul class="main-nav__list">
-          <li class="main-nav__item">
-            <a href="{{ routes.root_url }}" class="main-nav__link">Home</a>
-          </li>
+          <li class="main-nav__item"><a href="{{ routes.root_url }}" class="main-nav__link">Home</a></li>
           {%- for link in section.settings.menu.links -%}
             {%- unless link.title == 'Home' -%}
               <li class="main-nav__item{% if link.links.size > 0 %} has-dropdown{% endif %}">
                 <a href="{{ link.url }}" class="main-nav__link">
                   {{ link.title }}
-                  {%- if link.links.size > 0 -%}
-                    {% render 'icon-chevron' %}
-                  {%- endif -%}
+                  {%- if link.links.size > 0 -%}{% render 'icon-chevron' %}{%- endif -%}
                 </a>
                 {%- if link.links.size > 0 -%}
                   <ul class="main-nav__dropdown">
                     {%- for child_link in link.links -%}
-                      <li>
-                        <a href="{{ child_link.url }}" class="main-nav__dropdown-link">
-                          {{ child_link.title }}
-                        </a>
-                      </li>
+                      <li><a href="{{ child_link.url }}" class="main-nav__dropdown-link">{{ child_link.title }}</a></li>
                     {%- endfor -%}
                   </ul>
                 {%- endif -%}
@@ -43,25 +30,21 @@
 
       {% render 'logo', class: 'site-header__logo', logo_width: settings.logo_width %}
 
+      <form action="{{ routes.search_url }}" method="get" role="search" class="header-search">
+        <input type="search" name="q" placeholder="{{ 'general.search_placeholder' | t }}" class="header-search__input" autocomplete="off">
+        <input type="hidden" name="type" value="product">
+        <button type="submit" class="header-search__btn" aria-label="{{ 'general.search' | t }}">{% render 'icon-search' %}</button>
+      </form>
+
       <div class="site-header__icons">
-        <button type="button" class="site-header__icon" data-search-open aria-label="{{ 'general.search' | t }}">
+        <button type="button" class="site-header__icon site-header__search-toggle" data-search-open aria-label="{{ 'general.search' | t }}">
           {% render 'icon-search' %}
         </button>
-
-        <a href="{{ routes.account_url }}" class="site-header__icon" aria-label="{{ 'header.account' | t }}">
-          {% render 'icon-account' %}
-        </a>
-
-        <a
-          href="{{ routes.cart_url }}"
-          class="site-header__icon"
-          data-cart-open
-          aria-label="{{ 'header.cart' | t }}"
-        >
+        <a href="{{ routes.account_url }}" class="site-header__icon" aria-label="{{ 'header.account' | t }}">{% render 'icon-account' %}</a>
+        <a href="{{ pages['wishlist'].url | default: '/pages/wishlist' }}" class="site-header__icon" data-wishlist-link aria-label="{{ 'header.wishlist' | t }}">{% render 'icon-wishlist' %}</a>
+        <a href="{{ routes.cart_url }}" class="site-header__icon" data-cart-open aria-label="{{ 'header.cart' | t }}">
           {% render 'icon-cart' %}
-          <span class="site-header__cart-count" data-cart-count{% if cart.item_count == 0 %} style="display:none"{% endif %}>
-            {{ cart.item_count }}
-          </span>
+          <span class="site-header__cart-count" data-cart-count{% if cart.item_count == 0 %} style="display:none"{% endif %}>{{ cart.item_count }}</span>
         </a>
       </div>
     </div>
@@ -72,10 +55,12 @@
     <div class="mobile-menu__panel">
       <div class="mobile-menu__header">
         {% render 'logo', class: 'mobile-menu__logo', logo_width: 100 %}
-        <button type="button" data-mobile-menu-close aria-label="{{ 'accessibility.close_menu' | t }}">
-          {% render 'icon-close' %}
-        </button>
+        <button type="button" data-mobile-menu-close aria-label="{{ 'accessibility.close_menu' | t }}">{% render 'icon-close' %}</button>
       </div>
+      <form action="{{ routes.search_url }}" method="get" role="search" class="mobile-menu__search">
+        <input type="search" name="q" placeholder="{{ 'general.search_placeholder' | t }}" class="mobile-menu__search-input">
+        <input type="hidden" name="type" value="product">
+      </form>
       <nav aria-label="Mobile navigation">
         <a href="{{ routes.root_url }}" class="mobile-menu__nav-link">Home</a>
         {%- for link in section.settings.menu.links -%}
@@ -96,12 +81,7 @@
   "name": "Header",
   "class": "header-section",
   "settings": [
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "Main menu",
-      "default": "main-menu"
-    }
+    { "type": "link_list", "id": "menu", "label": "Main menu", "default": "main-menu" }
   ]
 }
 {% endschema %}

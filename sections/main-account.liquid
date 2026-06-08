@@ -1,0 +1,12 @@
+<div class="page-content page-width customer-page">
+  <h1 class="page-content__title">My Account</h1>
+  <p>Welcome, {{ customer.first_name }}!</p>
+  <div style="margin-top:2rem;display:flex;flex-direction:column;gap:0.75rem;">
+    <a href="{{ routes.account_orders_url }}" class="btn btn--secondary">Order History</a>
+    <a href="{{ routes.account_addresses_url }}" class="btn btn--secondary">Addresses</a>
+    <a href="{{ pages['wishlist'].url | default: '/pages/wishlist' }}" class="btn btn--secondary">Wishlist</a>
+    <a href="{{ pages['track-order'].url | default: '/pages/track-order' }}" class="btn btn--secondary">Track Order</a>
+    <a href="{{ routes.account_logout_url }}" class="btn btn--secondary">Logout</a>
+  </div>
+</div>
+{% schema %}{ "name": "Account", "settings": [] }{% endschema %}

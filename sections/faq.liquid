@@ -1,0 +1,49 @@
+<section class="section-padding faq-section" id="faq">
+  <div class="page-width">
+    <div class="section-header">
+      <h2 class="section-header__title">{{ section.settings.title | default: 'FAQ' }}</h2>
+      {%- if section.settings.subtitle != blank -%}<p class="section-header__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
+    </div>
+    <div class="faq-list">
+      {%- for block in section.blocks -%}
+        <details class="faq-item" {{ block.shopify_attributes }}>
+          <summary class="faq-item__question">{{ block.settings.question }}</summary>
+          <div class="faq-item__answer rte">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "class": "faq-section-block",
+  "max_blocks": 20,
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Frequently Asked Questions" },
+    { "type": "text", "id": "subtitle", "label": "Subheading", "default": "Everything you need to know" }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "What is your return policy?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>We offer 7-day returns on unused products with tags attached.</p>" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "FAQ",
+    "blocks": [
+      { "type": "question", "settings": { "question": "What payment methods do you accept?", "answer": "<p>We accept UPI, Credit/Debit Cards, Net Banking, Wallets via Cashfree, and Cash on Delivery.</p>" } },
+      { "type": "question", "settings": { "question": "How long does shipping take?", "answer": "<p>Orders are processed in 1-3 business days. Delivery takes 3-7 business days across India.</p>" } },
+      { "type": "question", "settings": { "question": "What is your return policy?", "answer": "<p>7-day return window. Product must be unused with tags. Refund to original payment method.</p>" } },
+      { "type": "question", "settings": { "question": "Is Cash on Delivery available?", "answer": "<p>Yes, COD is available on eligible orders across India.</p>" } },
+      { "type": "question", "settings": { "question": "How do I track my order?", "answer": "<p>Use our Track Order page with your order number and email, or check your account orders.</p>" } }
+    ]
+  }]
+}
+{% endschema %}

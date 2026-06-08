@@ -11,6 +11,24 @@
     <div data-cart-drawer-content>
       {% render 'cart-drawer-content' %}
     </div>
+
+    {%- assign rec_collection = collections[section.settings.recommended_collection] | default: collections.all -%}
+    {%- if rec_collection.products.size > 0 -%}
+      <div class="cart-drawer__recommended">
+        <p class="cart-drawer__recommended-title">{{ 'cart.recommended' | t }}</p>
+        <div class="cart-drawer__recommended-grid">
+          {%- for product in rec_collection.products limit: 2 -%}
+            <a href="{{ product.url }}" class="cart-drawer__rec-item">
+              {%- if product.featured_media -%}
+                {{ product.featured_media | image_url: width: 120 | image_tag: loading: 'lazy', class: 'cart-drawer__rec-image' }}
+              {%- endif -%}
+              <span>{{ product.title | truncate: 30 }}</span>
+              <span>{{ product.price | money }}</span>
+            </a>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
   </div>
 </div>
 

@@ -2,7 +2,7 @@
   {
     "name": "theme_info",
     "theme_name": "Escape Clothing",
-    "theme_version": "1.0.0",
+    "theme_version": "2.0.0",
     "theme_author": "Escape Clothing",
     "theme_documentation_url": "https://github.com",
     "theme_support_url": "https://github.com"
@@ -135,6 +135,13 @@
         "label": "Enable cart note",
         "default": false
       }
+    ]
+  },
+  {
+    "name": "Analytics",
+    "settings": [
+      { "type": "text", "id": "google_analytics_id", "label": "Google Analytics ID (G-XXXXXXXX)", "info": "Paste your GA4 measurement ID" },
+      { "type": "text", "id": "facebook_pixel_id", "label": "Facebook Pixel ID", "info": "Paste your Meta Pixel ID" }
     ]
   },
   {

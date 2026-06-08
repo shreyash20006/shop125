@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "legal-page",
+      "settings": {
+        "default_content": "<h2>Cancellation Policy</h2><h3>Before Dispatch</h3><p>Orders can be cancelled before they are shipped. Contact us at support@escapeclothing.shop or WhatsApp with your order number.</p><h3>After Shipping</h3><p>Orders cannot be cancelled once shipped. You may refuse delivery or initiate a return as per our Return Policy.</p><h3>Refund on Cancellation</h3><p>If cancelled before dispatch, full refund is processed within 3-5 business days to the original payment method.</p>"
+      }
+    }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,52 @@
+<section class="section-padding why-choose">
+  <div class="page-width">
+    <div class="section-header">
+      <h2 class="section-header__title">{{ section.settings.title | default: 'Why Choose Escape' }}</h2>
+      {%- if section.settings.subtitle != blank -%}<p class="section-header__subtitle">{{ section.settings.subtitle }}</p>{%- endif -%}
+    </div>
+    <div class="why-choose__grid">
+      {%- for block in section.blocks -%}
+        <div class="why-choose__item" {{ block.shopify_attributes }}>
+          <div class="why-choose__icon">{{ block.settings.icon | default: '✦' }}</div>
+          <h3 class="why-choose__title">{{ block.settings.title }}</h3>
+          <p class="why-choose__text">{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+    <div class="why-choose__payments">{% render 'payment-icons' %}</div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why choose us",
+  "tag": "section",
+  "class": "why-choose-section",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "Why Choose Escape" },
+    { "type": "text", "id": "subtitle", "label": "Subheading", "default": "Premium streetwear, built for India" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon", "default": "★" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Premium Quality" },
+        { "type": "text", "id": "text", "label": "Text", "default": "Streetwear-grade fabrics and premium fits." }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Why choose us",
+    "blocks": [
+      { "type": "feature", "settings": { "icon": "★", "title": "Premium Quality", "text": "Streetwear-grade fabrics and premium fits." } },
+      { "type": "feature", "settings": { "icon": "₹", "title": "Affordable Pricing", "text": "Premium style without the premium price tag." } },
+      { "type": "feature", "settings": { "icon": "🔒", "title": "Secure Payments", "text": "Cashfree protected checkout with UPI, cards & COD." } },
+      { "type": "feature", "settings": { "icon": "🚚", "title": "Fast Shipping", "text": "Pan-India delivery in 3-7 business days." } },
+      { "type": "feature", "settings": { "icon": "↩", "title": "Easy Returns", "text": "7-day hassle-free returns on unused items." } }
+    ]
+  }]
+}
+{% endschema %}

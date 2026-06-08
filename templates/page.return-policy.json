@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "legal-page",
+      "settings": {
+        "default_content": "<h2>Return Policy</h2><p>We accept returns within 7 days of delivery.</p><h3>How to Return</h3><ol><li>Email support@escapeclothing.shop with your order number</li><li>We will provide return instructions and address</li><li>Ship the product back in original packaging</li><li>Refund or exchange processed after inspection</li></ol><h3>Conditions</h3><ul><li>Items must be unused with tags attached</li><li>Innerwear and customized items are non-returnable</li><li>Return shipping may be borne by customer unless product is defective</li></ul>"
+      }
+    }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,21 @@
+<div class="page-content page-width">
+  {% render 'breadcrumbs' %}
+  <h1 class="page-content__title">{{ section.settings.title | default: 'My Wishlist' }}</h1>
+  <div id="wishlist-page" class="product-grid" data-wishlist-page>
+    <p class="collection-empty" data-wishlist-empty style="grid-column:1/-1;">Your wishlist is empty. Save items by clicking the heart icon on products.</p>
+  </div>
+  <div style="text-align:center;margin-top:2rem;">
+    <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary">Continue Shopping</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Wishlist page",
+  "tag": "section",
+  "class": "wishlist-page-section",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Heading", "default": "My Wishlist" }
+  ]
+}
+{% endschema %}

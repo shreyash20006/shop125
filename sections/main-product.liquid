@@ -43,7 +43,12 @@
       </div>
 
       <div class="product-info">
-        <h1 class="product-info__title">{{ product.title | escape }}</h1>
+        <div class="product-info__header">
+          <h1 class="product-info__title">{{ product.title | escape }}</h1>
+          <button type="button" class="product-info__wishlist" data-wishlist-toggle data-product-id="{{ product.id }}" aria-label="{{ 'header.wishlist' | t }}">
+            {% render 'icon-wishlist' %}
+          </button>
+        </div>
 
         <div class="product-info__price" data-product-price>
           {% render 'price', product: product %}
@@ -56,7 +61,12 @@
           {%- unless product.has_only_default_variant -%}
             {%- for option in product.options_with_values -%}
               <fieldset class="product-form__option">
-                <legend class="product-form__label">{{ option.name }}</legend>
+                <legend class="product-form__label">
+                  {{ option.name }}
+                  {%- if option.name == 'Size' or option.name == 'size' -%}
+                    <button type="button" class="size-chart-trigger" data-size-chart-open>Size Chart</button>
+                  {%- endif -%}
+                </legend>
                 <div class="variant-selector">
                   {%- for value in option.values -%}
                     <div class="variant-selector__option">
@@ -110,6 +120,7 @@
         {%- if section.settings.show_trust_badges -%}
           {% render 'trust-badges', blocks: section.blocks %}
         {%- endif -%}
+        <div class="product-info__payments">{% render 'payment-icons' %}</div>
 
         {%- if product.description != blank -%}
           <div class="product-info__description rte">
@@ -122,18 +133,17 @@
   </div>
 </div>
 
+{% render 'size-chart-modal', chart_image: section.settings.size_chart_image, chart_content: section.settings.size_chart_content %}
+
 {% schema %}
 {
   "name": "Product information",
   "tag": "section",
   "class": "main-product-section",
   "settings": [
-    {
-      "type": "checkbox",
-      "id": "show_trust_badges",
-      "label": "Show trust badges",
-      "default": true
-    }
+    { "type": "checkbox", "id": "show_trust_badges", "label": "Show trust badges", "default": true },
+    { "type": "image_picker", "id": "size_chart_image", "label": "Size chart image" },
+    { "type": "html", "id": "size_chart_content", "label": "Size chart HTML (optional)" }
   ],
   "blocks": [
     {
@@ -159,24 +169,19 @@
     "blocks": [
       {
         "type": "badge",
-        "settings": {
-          "title": "Secure Checkout",
-          "text": "UPI, Cards, COD & Razorpay ready"
-        }
+        "settings": { "title": "Secure Checkout", "text": "256-bit encrypted checkout" }
       },
       {
         "type": "badge",
-        "settings": {
-          "title": "Premium Quality",
-          "text": "Streetwear-grade fabrics & fits"
-        }
+        "settings": { "title": "Cashfree Protected", "text": "UPI, Cards, Net Banking & Wallets" }
       },
       {
         "type": "badge",
-        "settings": {
-          "title": "Fast Shipping",
-          "text": "Pan-India delivery in 3-7 days"
-        }
+        "settings": { "title": "COD Available", "text": "Cash on Delivery across India" }
+      },
+      {
+        "type": "badge",
+        "settings": { "title": "Easy Returns", "text": "7-day hassle-free returns" }
       }
     ]
   }

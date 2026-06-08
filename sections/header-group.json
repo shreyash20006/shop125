@@ -14,29 +14,12 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "msg-1": {
-          "type": "message",
-          "settings": {
-            "text": "Free shipping on orders over ₹999",
-            "link": ""
-          }
-        },
-        "msg-2": {
-          "type": "message",
-          "settings": {
-            "text": "Escape The Ordinary — New drops every week",
-            "link": ""
-          }
-        },
-        "msg-3": {
-          "type": "message",
-          "settings": {
-            "text": "₹999 Drop — Buy 3 For ₹999",
-            "link": ""
-          }
-        }
+        "msg-1": { "type": "message", "settings": { "text": "Free Shipping Above ₹999", "link": "" } },
+        "msg-2": { "type": "message", "settings": { "text": "Secure Payments via Cashfree", "link": "" } },
+        "msg-3": { "type": "message", "settings": { "text": "Cash On Delivery Available", "link": "" } },
+        "msg-4": { "type": "message", "settings": { "text": "Easy Returns — 7 Day Policy", "link": "" } }
       },
-      "block_order": ["msg-1", "msg-2", "msg-3"],
+      "block_order": ["msg-1", "msg-2", "msg-3", "msg-4"],
       "settings": {
         "text": "Free shipping on orders over ₹999 · Escape The Ordinary",
         "link": "",

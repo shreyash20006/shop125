@@ -100,15 +100,6 @@
         "view_all_label": "View all"
       }
     },
-    "drop-banner": {
-      "type": "collection-banner",
-      "settings": {
-        "title": "₹999 Drop",
-        "text": "Buy 3 For ₹999. Combo offers & limited-time drops you can't miss.",
-        "button_label": "Shop the Drop",
-        "button_link": ""
-      }
-    },
     "trending": {
       "type": "featured-collection",
       "settings": {
@@ -173,12 +164,57 @@
         "subtitle": "Tag us in your fits"
       }
     },
+    "combo-deals": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "₹999 Combo Deals",
+        "subtitle": "Buy 3 For ₹999 — Limited drops",
+        "collection": "",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "view_all_label": "Shop ₹999 Drop"
+      }
+    },
+    "drop-banner": {
+      "type": "collection-banner",
+      "settings": {
+        "title": "₹999 Drop",
+        "text": "Buy 3 For ₹999. Combo offers & limited-time drops you can't miss.",
+        "button_label": "Shop the Drop",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured Collection",
+        "subtitle": "Handpicked streetwear essentials",
+        "collection": "",
+        "products_to_show": 4,
+        "show_view_all": true
+      }
+    },
     "reviews": {
       "type": "customer-reviews",
       "settings": {
         "title": "What Our Community Says",
         "subtitle": "Real reviews from real streetwear heads"
       }
+    },
+    "why-choose": {
+      "type": "why-choose-us",
+      "settings": {}
+    },
+    "newsletter-home": {
+      "type": "newsletter",
+      "settings": {
+        "title": "Join the Escape",
+        "subtitle": "Get early access to drops, exclusive deals & streetwear news."
+      }
+    },
+    "faq-home": {
+      "type": "faq",
+      "settings": {}
     }
   },
   "order": [
@@ -187,9 +223,14 @@
     "categories",
     "new-arrivals",
     "best-sellers",
-    "drop-banner",
     "trending",
+    "combo-deals",
+    "drop-banner",
+    "featured",
+    "reviews",
     "instagram",
-    "reviews"
+    "why-choose",
+    "newsletter-home",
+    "faq-home"
   ]
 }
