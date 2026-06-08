@@ -13,12 +13,13 @@
       "type": "hero-banner",
       "settings": {
         "image": "shopify://shop_images/Gemini_Generated_Image_v95udnv95udnv95u.png",
+        "show_content": false,
         "eyebrow": "",
         "heading": "",
         "subheading": "",
         "button_label": "",
         "button_link": "",
-        "button_label_2": "New Arrivals",
+        "button_label_2": "",
         "button_link_2": ""
       }
     },
