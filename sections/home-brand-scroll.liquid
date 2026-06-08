@@ -1,0 +1,76 @@
+<section
+  class="home-brand-scroll"
+  aria-label="Escape Clothing brand"
+  style="--brand-scroll-speed: {{ section.settings.speed }}s;"
+  {% if section.settings.pause_on_hover %}data-brand-scroll-pause{% endif %}
+>
+  <div class="home-brand-scroll__track">
+    <div class="home-brand-scroll__content">
+      {%- for i in (1..6) -%}
+        <a href="{{ routes.root_url }}" class="home-brand-scroll__item">
+          <span class="home-brand-scroll__logo-wrap">
+            {%- if settings.logo != blank -%}
+              {{ settings.logo | image_url: width: 200 | image_tag: loading: 'lazy', class: 'home-brand-scroll__logo', alt: shop.name }}
+            {%- else -%}
+              <img src="{{ 'escape-logo.jpg' | asset_url }}" alt="{{ shop.name }}" class="home-brand-scroll__logo" width="120" height="40" loading="lazy">
+            {%- endif -%}
+          </span>
+          <span class="home-brand-scroll__text">{{ section.settings.tagline | default: settings.brand_tagline }}</span>
+          <span class="home-brand-scroll__dot" aria-hidden="true">✦</span>
+        </a>
+      {%- endfor -%}
+    </div>
+    <div class="home-brand-scroll__content" aria-hidden="true">
+      {%- for i in (1..6) -%}
+        <a href="{{ routes.root_url }}" class="home-brand-scroll__item">
+          <span class="home-brand-scroll__logo-wrap">
+            {%- if settings.logo != blank -%}
+              {{ settings.logo | image_url: width: 200 | image_tag: loading: 'lazy', class: 'home-brand-scroll__logo', alt: shop.name }}
+            {%- else -%}
+              <img src="{{ 'escape-logo.jpg' | asset_url }}" alt="{{ shop.name }}" class="home-brand-scroll__logo" width="120" height="40" loading="lazy">
+            {%- endif -%}
+          </span>
+          <span class="home-brand-scroll__text">{{ section.settings.tagline | default: settings.brand_tagline }}</span>
+          <span class="home-brand-scroll__dot" aria-hidden="true">✦</span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand logo scroll",
+  "tag": "section",
+  "class": "home-brand-scroll-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Escape The Ordinary"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 15,
+      "max": 60,
+      "step": 3,
+      "unit": "s",
+      "label": "Scroll speed",
+      "default": 30
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on hover",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand logo scroll"
+    }
+  ]
+}
+{% endschema %}

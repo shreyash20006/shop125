@@ -1,4 +1,4 @@
-<header class="site-header" data-section-id="{{ section.id }}" data-section-type="header">
+<header class="site-header" data-sticky-header data-section-id="{{ section.id }}" data-section-type="header">
   <div class="page-width">
     <div class="site-header__inner">
       <button
@@ -12,43 +12,36 @@
 
       <nav class="main-nav" aria-label="Main navigation">
         <ul class="main-nav__list">
+          <li class="main-nav__item">
+            <a href="{{ routes.root_url }}" class="main-nav__link">Home</a>
+          </li>
           {%- for link in section.settings.menu.links -%}
-            <li class="main-nav__item{% if link.links.size > 0 %} has-dropdown{% endif %}">
-              <a href="{{ link.url }}" class="main-nav__link">
-                {{ link.title }}
+            {%- unless link.title == 'Home' -%}
+              <li class="main-nav__item{% if link.links.size > 0 %} has-dropdown{% endif %}">
+                <a href="{{ link.url }}" class="main-nav__link">
+                  {{ link.title }}
+                  {%- if link.links.size > 0 -%}
+                    {% render 'icon-chevron' %}
+                  {%- endif -%}
+                </a>
                 {%- if link.links.size > 0 -%}
-                  {% render 'icon-chevron' %}
+                  <ul class="main-nav__dropdown">
+                    {%- for child_link in link.links -%}
+                      <li>
+                        <a href="{{ child_link.url }}" class="main-nav__dropdown-link">
+                          {{ child_link.title }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
                 {%- endif -%}
-              </a>
-              {%- if link.links.size > 0 -%}
-                <ul class="main-nav__dropdown">
-                  {%- for child_link in link.links -%}
-                    <li>
-                      <a href="{{ child_link.url }}" class="main-nav__dropdown-link">
-                        {{ child_link.title }}
-                      </a>
-                    </li>
-                  {%- endfor -%}
-                </ul>
-              {%- endif -%}
-            </li>
+              </li>
+            {%- endunless -%}
           {%- endfor -%}
         </ul>
       </nav>
 
-      <a href="{{ routes.root_url }}" class="site-header__logo" style="--logo-width: {{ settings.logo_width }}px;">
-        {%- if settings.logo != blank -%}
-          {{
-            settings.logo
-            | image_url: width: 400
-            | image_tag: loading: 'eager', alt: shop.name
-          }}
-        {%- else -%}
-          <span class="site-header__logo-text">
-            Escape Clothing <span>👣</span>
-          </span>
-        {%- endif -%}
-      </a>
+      {% render 'logo', class: 'site-header__logo', logo_width: settings.logo_width %}
 
       <div class="site-header__icons">
         <button type="button" class="site-header__icon" data-search-open aria-label="{{ 'general.search' | t }}">
@@ -82,17 +75,20 @@
     <div class="mobile-menu__overlay" data-mobile-menu-close></div>
     <div class="mobile-menu__panel">
       <div class="mobile-menu__header">
-        <span class="site-header__logo-text">Escape Clothing 👣</span>
+        {% render 'logo', class: 'mobile-menu__logo', logo_width: 100 %}
         <button type="button" data-mobile-menu-close aria-label="{{ 'accessibility.close_menu' | t }}">
           {% render 'icon-close' %}
         </button>
       </div>
       <nav aria-label="Mobile navigation">
+        <a href="{{ routes.root_url }}" class="mobile-menu__nav-link">Home</a>
         {%- for link in section.settings.menu.links -%}
-          <a href="{{ link.url }}" class="mobile-menu__nav-link">{{ link.title }}</a>
-          {%- for child_link in link.links -%}
-            <a href="{{ child_link.url }}" class="mobile-menu__sub-link">{{ child_link.title }}</a>
-          {%- endfor -%}
+          {%- unless link.title == 'Home' -%}
+            <a href="{{ link.url }}" class="mobile-menu__nav-link">{{ link.title }}</a>
+            {%- for child_link in link.links -%}
+              <a href="{{ child_link.url }}" class="mobile-menu__sub-link">{{ child_link.title }}</a>
+            {%- endfor -%}
+          {%- endunless -%}
         {%- endfor -%}
       </nav>
     </div>

@@ -22,6 +22,29 @@
     };
   }
 
+  /* Sticky Header Scroll Animation */
+  function initStickyHeader() {
+    const headerGroup = qs('.header-group');
+    if (!headerGroup) return;
+
+    let ticking = false;
+
+    function updateHeader() {
+      const scrolled = window.scrollY > 40;
+      headerGroup.classList.toggle('is-scrolled', scrolled);
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    updateHeader();
+  }
+
   /* Mobile Menu */
   function initMobileMenu() {
     const toggle = qs('[data-mobile-menu-toggle]');
@@ -406,6 +429,7 @@
 
   /* Init */
   document.addEventListener('DOMContentLoaded', () => {
+    initStickyHeader();
     initMobileMenu();
     initSearch();
     initQuantitySelectors();

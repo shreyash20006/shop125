@@ -23,6 +23,14 @@
         "button_link_2": ""
       }
     },
+    "brand-scroll": {
+      "type": "home-brand-scroll",
+      "settings": {
+        "tagline": "Escape The Ordinary",
+        "speed": 30,
+        "pause_on_hover": true
+      }
+    },
     "categories": {
       "type": "featured-categories",
       "blocks": {
@@ -175,6 +183,7 @@
   },
   "order": [
     "hero",
+    "brand-scroll",
     "categories",
     "new-arrivals",
     "best-sellers",

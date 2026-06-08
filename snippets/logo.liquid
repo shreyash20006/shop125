@@ -1,0 +1,32 @@
+{%- liquid
+  assign logo_alt = shop.name | default: 'Escape Clothing'
+  assign logo_width = logo_width | default: settings.logo_width | default: 120
+  assign logo_link = logo_link | default: routes.root_url
+  assign logo_tag = logo_tag | default: 'a'
+-%}
+
+<{{ logo_tag }}
+  {% if logo_tag == 'a' %}href="{{ logo_link }}"{% endif %}
+  class="brand-logo{% if class != blank %} {{ class }}{% endif %}"
+  style="--logo-width: {{ logo_width }}px;"
+  {% if logo_tag == 'a' %}aria-label="{{ logo_alt }}"{% endif %}
+>
+  <span class="brand-logo__wrap">
+    {%- if settings.logo != blank -%}
+      {{
+        settings.logo
+        | image_url: width: 400
+        | image_tag: loading: 'eager', class: 'brand-logo__img', alt: logo_alt, widths: '120,200,400', sizes: '(max-width: 749px) 100px, 140px'
+      }}
+    {%- else -%}
+      <img
+        src="{{ 'escape-logo.jpg' | asset_url }}"
+        alt="{{ logo_alt }}"
+        class="brand-logo__img"
+        width="140"
+        height="48"
+        loading="eager"
+      >
+    {%- endif -%}
+  </span>
+</{{ logo_tag }}>
