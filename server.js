@@ -15,6 +15,7 @@ const MIME = {
   '.jpeg': 'image/jpeg',
   '.png': 'image/png',
   '.svg': 'image/svg+xml',
+  '.webp': 'image/webp',
   '.md': 'text/plain',
   '.txt': 'text/plain',
 };
@@ -66,15 +67,16 @@ function renderIndex() {
   .children { padding-left: 8px; }
   .children.hidden { display: none; }
   #main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-  #topbar { background: #111; border-bottom: 1px solid #2a2a2a; padding: 10px 20px; font-size: 12px; color: #666; }
+  #topbar { background: #111; border-bottom: 1px solid #2a2a2a; padding: 10px 20px; font-size: 12px; color: #666; display: flex; justify-content: space-between; align-items: center; }
   #topbar strong { color: #ccc; }
+  #topbar a.view-store { color: #4caf50; text-decoration: none; font-weight: bold; background: #1a3322; padding: 4px 12px; border-radius: 4px; border: 1px solid #388e3c; }
+  #topbar a.view-store:hover { background: #2e7d32; color: #fff; }
   #content { flex: 1; overflow: auto; padding: 24px; }
   #content pre { background: #111; border: 1px solid #222; border-radius: 6px; padding: 20px; font-size: 13px; line-height: 1.6; color: #ccc; overflow-x: auto; white-space: pre-wrap; word-break: break-word; }
   #welcome { text-align: center; margin-top: 80px; color: #444; }
   #welcome h2 { font-size: 22px; color: #666; margin-bottom: 12px; }
   #welcome p { font-size: 14px; }
   .badge { display: inline-block; background: #1a1a1a; border: 1px solid #333; border-radius: 4px; padding: 2px 8px; font-size: 11px; color: #888; margin: 2px; }
-  #img-preview { max-width: 100%; border: 1px solid #222; border-radius: 6px; margin-top: 12px; }
 </style>
 </head>
 <body>
@@ -83,11 +85,14 @@ function renderIndex() {
   <div class="tree-root">${tree}</div>
 </div>
 <div id="main">
-  <div id="topbar">Shopify Theme Browser &mdash; <strong>Escape Clothing v2.0</strong> &mdash; Select a file on the left to view its contents</div>
+  <div id="topbar">
+    <div>Shopify Theme Browser &mdash; <strong>Escape Clothing v2.0</strong></div>
+    <a href="/" class="view-store">⚡ Live Store Preview</a>
+  </div>
   <div id="content">
     <div id="welcome">
-      <h2>Shopify Liquid Theme</h2>
-      <p>This theme is deployed to Shopify, not run locally.<br>Browse the source files using the sidebar.</p>
+      <h2>Shopify Liquid Theme Code Browser</h2>
+      <p>Select a file on the left to browse and edit its source code.</p>
       <br>
       <div>
         <span class="badge">Liquid Templates</span>
@@ -112,27 +117,6 @@ function renderIndex() {
       }
     });
   });
-
-  const params = new URLSearchParams(location.search);
-  if (params.has('f')) {
-    const f = params.get('f');
-    document.querySelector('#topbar strong').textContent = f;
-    document.querySelectorAll('li.file a').forEach(a => {
-      if (decodeURIComponent(a.href.split('?f=')[1] || '') === f) {
-        a.style.background = '#1e3a2f';
-        a.style.color = '#4caf50';
-        let p = a.closest('.children');
-        while (p) {
-          p.classList.remove('hidden');
-          const tog = p.previousElementSibling && p.previousElementSibling.querySelector ? null : null;
-          const parentLi = p.parentElement && p.parentElement.closest('li.dir');
-          const t = p.closest('li.dir') && p.closest('li.dir').querySelector('.toggle');
-          if (t) t.classList.add('open');
-          p = p.parentElement && p.parentElement.closest('.children');
-        }
-      }
-    });
-  }
 </script>
 </body>
 </html>`;
@@ -175,14 +159,16 @@ function renderFile(filePath, res) {
   li.file a:hover, li.file a.active { background: #1e3a2f; color: #4caf50; }
   li.dir { margin: 2px 0; }
   .toggle { cursor: pointer; font-size: 10px; color: #555; user-select: none; display: inline-block; width: 14px; }
-  .toggle.open { display: inline-block; }
   .dirname { font-size: 13px; color: #777; cursor: pointer; font-weight: 600; }
   .children { padding-left: 8px; }
   .children.hidden { display: none; }
   #main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
-  #topbar { background: #111; border-bottom: 1px solid #2a2a2a; padding: 10px 20px; font-size: 12px; color: #666; display: flex; align-items: center; gap: 8px; }
+  #topbar { background: #111; border-bottom: 1px solid #2a2a2a; padding: 10px 20px; font-size: 12px; color: #666; display: flex; align-items: center; justify-content: space-between; }
+  #topbar .nav-left { display: flex; align-items: center; gap: 8px; }
   #topbar strong { color: #ccc; }
-  #topbar a { color: #4caf50; text-decoration: none; font-size: 12px; }
+  #topbar a.back-link { color: #4caf50; text-decoration: none; }
+  #topbar a.view-store { color: #4caf50; text-decoration: none; font-weight: bold; background: #1a3322; padding: 4px 12px; border-radius: 4px; border: 1px solid #388e3c; }
+  #topbar a.view-store:hover { background: #2e7d32; color: #fff; }
   #content { flex: 1; overflow: auto; padding: 0; }
   pre { background: #0e0e0e; padding: 24px; font-size: 13px; line-height: 1.7; color: #ccc; overflow-x: auto; white-space: pre-wrap; word-break: break-word; min-height: 100%; }
 </style>
@@ -194,10 +180,13 @@ function renderFile(filePath, res) {
 </div>
 <div id="main">
   <div id="topbar">
-    <a href="/">← Home</a>
-    <span>/</span>
-    <strong>${escapeHtml(filePath)}</strong>
-    <span style="margin-left:auto;background:#1a1a1a;border:1px solid #333;border-radius:4px;padding:2px 8px;font-size:11px;color:#888">${ext || 'file'}</span>
+    <div class="nav-left">
+      <a href="/browse" class="back-link">← Code Explorer</a>
+      <span>/</span>
+      <strong>${escapeHtml(filePath)}</strong>
+      <span style="background:#1a1a1a;border:1px solid #333;border-radius:4px;padding:2px 8px;font-size:11px;color:#888">${ext || 'file'}</span>
+    </div>
+    <a href="/" class="view-store">⚡ Live Store Preview</a>
   </div>
   <div id="content"><pre>${escapeHtml(content)}</pre></div>
 </div>
@@ -234,21 +223,46 @@ function renderFile(filePath, res) {
 
 const server = http.createServer((req, res) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
-  const url = new URL(req.url, `http://localhost:${PORT}`);
+  
+  // Clean URL parsing
+  const parsedUrl = req.url.split('?');
+  const pathname = parsedUrl[0];
+  const searchParams = new URLSearchParams(parsedUrl[1] || '');
 
-  if (url.pathname === '/' || url.pathname === '') {
-    const f = url.searchParams.get('f');
-    if (f) {
-      renderFile(f, res);
+  // 1. Static file / Assets serving
+  if (pathname.startsWith('/assets/') || pathname.startsWith('/config/') || pathname.startsWith('/sections/')) {
+    const safePath = path.normalize(path.join(ROOT, pathname)).replace(/^(\.\.(\/|\\))+/, '');
+    if (fs.existsSync(safePath) && fs.statSync(safePath).isFile()) {
+      const ext = path.extname(safePath).toLowerCase();
+      res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream' });
+      fs.createReadStream(safePath).pipe(res);
+      return;
+    }
+  }
+
+  // 2. Render Live Store Preview (Home)
+  if (pathname === '/' || pathname === '') {
+    const previewFile = path.join(ROOT, 'preview.html');
+    if (fs.existsSync(previewFile)) {
+      res.writeHead(200, { 'Content-Type': 'text/html' });
+      fs.createReadStream(previewFile).pipe(res);
     } else {
       res.writeHead(200, { 'Content-Type': 'text/html' });
-      res.end(renderIndex());
+      res.end(`<h1>Escape Clothing Preview</h1><p>Please wait while preview.html is being created...</p><script>setTimeout(() => location.reload(), 1000);</script>`);
     }
     return;
   }
 
-  if (url.pathname === '/view') {
-    const f = url.searchParams.get('f');
+  // 3. Render Code Explorer (Browse)
+  if (pathname === '/browse') {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end(renderIndex());
+    return;
+  }
+
+  // 4. View specific file code
+  if (pathname === '/view') {
+    const f = searchParams.get('f');
     if (!f) { res.writeHead(400); res.end('Missing file param'); return; }
     renderFile(f, res);
     return;
@@ -258,5 +272,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-  console.log(`Escape Clothing theme browser running at http://0.0.0.0:${PORT}`);
+  console.log(`Escape Clothing theme browser running at http://localhost:${PORT}`);
 });

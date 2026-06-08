@@ -121,6 +121,39 @@
     });
   }
 
+  /* ── Localhost Mock Cart Engine Data ─────────────────────────── */
+  const isLocalhost = window.location.port === '5000' || window.location.hostname === 'localhost';
+
+  const MOCK_PRODUCTS = {
+    "1": { title: "Seoul Street Jersey", price: 1499.00, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=600&auto=format&fit=crop" },
+    "2": { title: "Brooklyn Retro Jersey", price: 1299.00, img: "https://images.unsplash.com/photo-1571945153237-4929e78394a9?q=80&w=600&auto=format&fit=crop" },
+    "3": { title: "Parachute Cargo Pants", price: 2199.00, img: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=600&auto=format&fit=crop" },
+    "4": { title: "Zara Style Corduroy Shirt", price: 1699.00, img: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=600&auto=format&fit=crop" },
+    "5": { title: "Vintage Wash Graphic Tee", price: 1199.00, img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=600&auto=format&fit=crop" },
+    "6": { title: "Chronicles Graffiti Tee", price: 999.00, img: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=600&auto=format&fit=crop" },
+    "7": { title: "Cabana Oversized Shirt", price: 1599.00, img: "https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=600&auto=format&fit=crop" },
+    "8": { title: "Raw Edge Denim Shorts", price: 1899.00, img: "https://images.unsplash.com/photo-1565084888279-aca607ecad0c?q=80&w=600&auto=format&fit=crop" },
+    "9": { title: "Boxy Drop Shoulder Blank", price: 999.00, img: "https://images.unsplash.com/photo-1554568218-0f1715e72254?q=80&w=600&auto=format&fit=crop" },
+    "10": { title: "Escape Streetwear Cap", price: 999.00, img: "https://images.unsplash.com/photo-1534215754734-18e55d13ce35?q=80&w=600&auto=format&fit=crop" },
+    "11": { title: "Heavyweight Jersey Tee", price: 999.00, img: "https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=600&auto=format&fit=crop" },
+    "12": { title: "Relaxed Cargo Shorts", price: 999.00, img: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=600&auto=format&fit=crop" }
+  };
+
+  function getLocalCart() {
+    try {
+      const cart = localStorage.getItem('escape_mock_cart');
+      if (cart) return JSON.parse(cart);
+    } catch (e) {}
+    return [
+      { id: "1", qty: 1 },
+      { id: "5", qty: 1 }
+    ];
+  }
+
+  function saveLocalCart(items) {
+    localStorage.setItem('escape_mock_cart', JSON.stringify(items));
+  }
+
   /* ── Cart Drawer ──────────────────────────────────────────────── */
   class CartDrawer {
     constructor() {
@@ -148,6 +181,10 @@
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') this.close();
       });
+
+      if (isLocalhost) {
+        this.updateCartCount();
+      }
     }
 
     open() {
@@ -162,6 +199,11 @@
     }
 
     async refresh() {
+      if (isLocalhost) {
+        this.renderMockCart();
+        return;
+      }
+
       try {
         const response = await fetch(`${settings.routes.cartUrl}?section_id=cart-drawer`);
         const html = await response.text();
@@ -176,6 +218,78 @@
       } catch (err) {
         console.error('Cart refresh failed', err);
       }
+    }
+
+    renderMockCart() {
+      const items = getLocalCart();
+      const contentEl = qs('[data-cart-drawer-content]', this.drawer);
+      if (!contentEl) return;
+
+      if (items.length === 0) {
+        contentEl.innerHTML = `<div style="text-align:center;padding:6rem 2rem;color:rgba(255,255,255,0.4)">
+          <p style="margin-bottom:1.5rem;font-size:0.95rem;letter-spacing:0.05em;">Your cart is empty.</p>
+          <button type="button" class="checkout-btn" data-cart-close style="max-width:220px;display:inline-block;margin:0 auto;">START SHOPPING</button>
+        </div>`;
+        this.bindEvents();
+        return;
+      }
+
+      let subtotal = 0;
+      let itemsHtml = '<div class="cart-drawer__items">';
+
+      items.forEach(item => {
+        const prod = MOCK_PRODUCTS[item.id] || { title: "Streetwear Blanks", price: 999.00, img: "" };
+        const price = prod.price * item.qty;
+        subtotal += price;
+
+        itemsHtml += `
+          <div class="cart-item" data-cart-item="${item.id}">
+            <img src="${prod.img}" class="cart-item__image" alt="${prod.title}">
+            <div class="cart-item__details">
+              <h4 class="cart-item__title">${prod.title}</h4>
+              <p class="cart-item__option">Size: L</p>
+              <div class="cart-item__qty-price">
+                <div class="quantity-selector" data-quantity-selector>
+                  <button type="button" data-quantity-minus>-</button>
+                  <input type="text" value="${item.qty}" readonly data-quantity-input>
+                  <button type="button" data-quantity-plus>+</button>
+                </div>
+                <span class="cart-item__price">₹${(prod.price * item.qty).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</span>
+              </div>
+              <button type="button" class="cart-item__remove" data-cart-remove="${item.id}">Remove</button>
+            </div>
+          </div>`;
+      });
+      itemsHtml += '</div>';
+
+      const progress = Math.min(100, (subtotal / 999) * 100);
+      const diff = 999 - subtotal;
+      const shippingText = diff > 0 
+        ? `You are <strong>₹${diff.toLocaleString('en-IN')}</strong> away from <strong>FREE SHIPPING</strong>!`
+        : `✨ You've unlocked <strong>FREE SHIPPING</strong>!`;
+
+      itemsHtml += `
+        <div class="cart-drawer__footer">
+          <div class="free-shipping-bar">
+            <div class="free-shipping-bar__text">${shippingText}</div>
+            <div class="free-shipping-bar__progress" style="--progress: ${progress}%"></div>
+          </div>
+          <div class="cart-drawer__summary">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <strong>₹${subtotal.toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2})}</strong>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span>${diff > 0 ? '₹99.00' : 'FREE'}</span>
+            </div>
+          </div>
+          <button type="button" class="checkout-btn">PROCEED TO SECURE CHECKOUT</button>
+          <p class="checkout-footer-text">🔒 256-bit SSL encrypted checkout powered by Cashfree</p>
+        </div>`;
+
+      contentEl.innerHTML = itemsHtml;
+      this.bindEvents();
     }
 
     bindEvents() {
@@ -201,9 +315,29 @@
           await this.updateItem(key, qty);
         });
       });
+
+      // Handle start shopping close button inside mock cart
+      const startShoppingBtn = qs('[data-cart-close]', this.drawer);
+      if (startShoppingBtn) {
+        startShoppingBtn.addEventListener('click', () => this.close());
+      }
     }
 
     async updateItem(key, quantity) {
+      if (isLocalhost) {
+        let items = getLocalCart();
+        if (quantity === 0) {
+          items = items.filter(item => item.id !== key);
+        } else {
+          const item = items.find(item => item.id === key);
+          if (item) item.qty = quantity;
+        }
+        saveLocalCart(items);
+        this.refresh();
+        this.updateCartCount();
+        return;
+      }
+
       const config = fetchConfig();
       config.body = JSON.stringify({ id: key, quantity });
       await fetch(settings.routes.cartChangeUrl, config);
@@ -212,6 +346,16 @@
     }
 
     async updateCartCount() {
+      if (isLocalhost) {
+        const items = getLocalCart();
+        const count = items.reduce((acc, item) => acc + item.qty, 0);
+        qsa('[data-cart-count]').forEach((el) => {
+          el.textContent = count;
+          el.style.display = count > 0 ? 'flex' : 'none';
+        });
+        return;
+      }
+
       try {
         const response = await fetch(`${settings.routes.cartUrl}.js`);
         const cart = await response.json();
@@ -225,6 +369,22 @@
     }
 
     async addItem(formData) {
+      if (isLocalhost) {
+        const id = formData.get('id');
+        const qty = parseInt(formData.get('quantity') || '1', 10);
+        let items = getLocalCart();
+        const existing = items.find(item => item.id === id);
+        if (existing) {
+          existing.qty += qty;
+        } else {
+          items.push({ id, qty });
+        }
+        saveLocalCart(items);
+        this.updateCartCount();
+        this.open();
+        return { success: true };
+      }
+
       const config = fetchConfig();
       config.body = JSON.stringify({
         items: [{

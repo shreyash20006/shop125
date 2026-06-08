@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html class="js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Escape Clothing 👣 — Premium Streetwear India</title>
+  
+  <!-- Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-background: #0a0a0a;
+      --color-surface: #121212;
+      --color-text: #ffffff;
+      --color-text-muted: #8e8e93;
+      --color-accent: #ffffff;
+      --color-border: #1c1c1e;
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+      --font-heading-weight: 900;
+      --font-body-weight: 400;
+      --page-width: 1400px;
+      --header-height: 80px;
+      --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+  </style>
+
+  <!-- Load real theme.css -->
+  <link rel="stylesheet" href="/assets/theme.css">
+</head>
+<body class="template-index">
+
+  <!-- 1. Announcement Bar -->
+  <div class="announcement-bar announcement-bar--marquee" role="region" aria-label="Announcement" style="--marquee-speed: 20s;" data-marquee-pause>
+    <div class="announcement-bar__track">
+      <div class="announcement-bar__content">
+        <span class="announcement-bar__item">
+          <span class="announcement-bar__icon">🚚</span> Free Shipping Above ₹999
+          <span class="announcement-bar__separator" aria-hidden="true">✦</span>
+        </span>
+        <span class="announcement-bar__item">
+          <span class="announcement-bar__icon">💵</span> Cash On Delivery Available
+          <span class="announcement-bar__separator" aria-hidden="true">✦</span>
+        </span>
+        <span class="announcement-bar__item">
+          <span class="announcement-bar__icon">🔒</span> Secure Payments via Cashfree
+          <span class="announcement-bar__separator" aria-hidden="true">✦</span>
+        </span>
+        <span class="announcement-bar__item">
+          <span class="announcement-bar__icon">⚡</span> Escape The Ordinary
+          <span class="announcement-bar__separator" aria-hidden="true">✦</span>
+        </span>
+      </div>
+      <div class="announcement-bar__content" aria-hidden="true">
+        <span class="announcement-bar__item">
+          <span class="announcement-bar__icon">🚚</span> Free Shipping Above ₹999
+          <span class="announcement-bar__separator" aria-hidden="true">✦</span>
+        </span>
+        <span class="announcement-bar__item">
+          <span class="announcement-bar__icon">💵</span> Cash On Delivery Available
+          <span class="announcement-bar__separator" aria-hidden="true">✦</span>
+        </span>
+        <span class="announcement-bar__item">
+          <span class="announcement-bar__icon">🔒</span> Secure Payments via Cashfree
+          <span class="announcement-bar__separator" aria-hidden="true">✦</span>
+        </span>
+        <span class="announcement-bar__item">
+          <span class="announcement-bar__icon">⚡</span> Escape The Ordinary
+          <span class="announcement-bar__separator" aria-hidden="true">✦</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Sticky Transparent Header -->
+  <div class="header-group">
+    <header class="site-header" data-sticky-header>
+      <div class="page-width">
+        <div class="site-header__inner">
+          
+          <button type="button" class="site-header__icon site-header__menu-toggle" data-mobile-menu-toggle aria-label="Open menu">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
+          </button>
+
+          <nav class="main-nav" aria-label="Main navigation">
+            <ul class="main-nav__list">
+              <li class="main-nav__item"><a href="/" class="main-nav__link active">Home</a></li>
+              <li class="main-nav__item"><a href="#" class="main-nav__link">Shop All</a></li>
+              <li class="main-nav__item has-dropdown">
+                <a href="#" class="main-nav__link">Collections <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.2"><path d="m1 1 4 4 4-4"/></svg></a>
+                <ul class="main-nav__dropdown">
+                  <li><a href="#" class="main-nav__dropdown-link">Jerseys</a></li>
+                  <li><a href="#" class="main-nav__dropdown-link">Oversized Tees</a></li>
+                  <li><a href="#" class="main-nav__dropdown-link">Shirts</a></li>
+                  <li><a href="#" class="main-nav__dropdown-link">Bottoms</a></li>
+                </ul>
+              </li>
+              <li class="main-nav__item"><a href="#" class="main-nav__link">₹999 Drop</a></li>
+            </ul>
+          </nav>
+
+          <div class="site-header__logo-wrapper">
+            <a href="/" class="site-header__logo-link">
+              <span class="logo-text">ESCAPE</span>
+            </a>
+          </div>
+
+          <div class="site-header__icons">
+            <button type="button" class="site-header__icon" data-search-open aria-label="Search">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="6"/><path d="m14 14 4.5 4.5"/></svg>
+            </button>
+            <a href="#" class="site-header__icon" aria-label="Account">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 17v-1a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v1"/><circle cx="10" cy="7" r="4"/></svg>
+            </a>
+            <a href="#" class="site-header__icon" data-wishlist-link aria-label="Wishlist">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 6.5A4.75 4.75 0 0 0 10 4.25a4.75 4.75 0 0 0-7.5 2.25c0 5 7.5 10.25 7.5 10.25s7.5-5.25 7.5-10.25Z"/></svg>
+            </a>
+            <a href="#" class="site-header__icon" data-cart-open aria-label="Cart">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2 11h10l2-8H6.5"/></svg>
+              <span class="site-header__cart-count" data-cart-count style="display: flex;">2</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <main id="MainContent" class="main-content" role="main">
+    
+    <!-- 3. Cinematic Hero Banner -->
+    <section class="hero" data-hero>
+      <div class="hero__media">
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1800&auto=format&fit=crop" class="hero__bg-image" alt="Cinematic Streetwear">
+        <div class="hero__overlay"></div>
+        <div class="hero__grain"></div>
+      </div>
+
+      <div class="hero__content page-width">
+        <div class="hero__text-block">
+          <p class="hero__eyebrow">DROP 01 &middot; ESCAPE CLOTHING</p>
+          <h1 class="hero__heading">ESCAPE THE<br>ORDINARY</h1>
+          <p class="hero__sub">Premium heavyweight streetwear, crafted for the concrete jungle.</p>
+          <div class="hero__actions">
+            <a href="#shop-all" class="hero__btn hero__btn--primary">
+              Shop The Drop
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#categories" class="hero__btn hero__btn--ghost">Explore Categories</a>
+          </div>
+        </div>
+
+        <div class="hero__scroll-hint" aria-hidden="true">
+          <div class="hero__scroll-line"></div>
+          <span>Scroll</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brand Tagline Scroll -->
+    <section class="home-brand-scroll section-reveal">
+      <div class="brand-scroll__track">
+        <div class="brand-scroll__content">
+          <span>ESCAPE THE ORDINARY</span>
+          <span class="brand-scroll__separator">✦</span>
+          <span>PREMIUM STREETWEAR</span>
+          <span class="brand-scroll__separator">✦</span>
+          <span>DESIGNED IN INDIA</span>
+          <span class="brand-scroll__separator">✦</span>
+          <span>LIMITED DROPS ONLY</span>
+          <span class="brand-scroll__separator">✦</span>
+        </div>
+        <div class="brand-scroll__content" aria-hidden="true">
+          <span>ESCAPE THE ORDINARY</span>
+          <span class="brand-scroll__separator">✦</span>
+          <span>PREMIUM STREETWEAR</span>
+          <span class="brand-scroll__separator">✦</span>
+          <span>DESIGNED IN INDIA</span>
+          <span class="brand-scroll__separator">✦</span>
+          <span>LIMITED DROPS ONLY</span>
+          <span class="brand-scroll__separator">✦</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Featured Categories -->
+    <section id="categories" class="featured-categories section-reveal page-width">
+      <div class="section-header">
+        <span class="section-eyebrow">CURATED FITS</span>
+        <h2 class="section-title">Shop by Category</h2>
+        <p class="section-subtitle">Heavyweight essentials designed to stand out</p>
+      </div>
+
+      <div class="categories-grid">
+        <a href="#" class="category-card">
+          <div class="category-card__media">
+            <img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?q=80&w=600&auto=format&fit=crop" alt="Jerseys" loading="lazy">
+            <div class="category-card__overlay"></div>
+          </div>
+          <div class="category-card__info">
+            <h3 class="category-card__title">Jerseys</h3>
+            <span class="category-card__btn">Explore</span>
+          </div>
+        </a>
+
+        <a href="#" class="category-card">
+          <div class="category-card__media">
+            <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=600&auto=format&fit=crop" alt="Oversized Tees" loading="lazy">
+            <div class="category-card__overlay"></div>
+          </div>
+          <div class="category-card__info">
+            <h3 class="category-card__title">Oversized Tees</h3>
+            <span class="category-card__btn">Explore</span>
+          </div>
+        </a>
+
+        <a href="#" class="category-card">
+          <div class="category-card__media">
+            <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=600&auto=format&fit=crop" alt="Shirts" loading="lazy">
+            <div class="category-card__overlay"></div>
+          </div>
+          <div class="category-card__info">
+            <h3 class="category-card__title">Shirts</h3>
+            <span class="category-card__btn">Explore</span>
+          </div>
+        </a>
+
+        <a href="#" class="category-card">
+          <div class="category-card__media">
+            <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=600&auto=format&fit=crop" alt="Bottoms" loading="lazy">
+            <div class="category-card__overlay"></div>
+          </div>
+          <div class="category-card__info">
+            <h3 class="category-card__title">Bottoms</h3>
+            <span class="category-card__btn">Explore</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 5. Best Sellers -->
+    <section id="shop-all" class="featured-collection section-reveal page-width">
+      <div class="section-header">
+        <span class="section-eyebrow">COMMUNITY FAVORITES</span>
+        <h2 class="section-title">Best Sellers</h2>
+        <p class="section-subtitle">Highly coveted streetwear pieces, selling fast</p>
+      </div>
+
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <a href="#" class="product-card__link">
+            <div class="product-card__media">
+              <span class="product-card__badge">BEST SELLER</span>
+              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=600&auto=format&fit=crop" alt="Seoul Street Jersey" class="product-card__image" loading="lazy">
+              <div class="product-card__quick-add-wrapper">
+                <form class="product-card__quick-add">
+                  <input type="hidden" name="id" value="1">
+                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
+                </form>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__title">Seoul Street Jersey</h3>
+              <p class="product-card__vendor">Escape Clothing</p>
+              <div class="product-card__price">
+                <span class="price-current">₹1,499.00</span>
+                <span class="price-compare">₹2,499.00</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+          <a href="#" class="product-card__link">
+            <div class="product-card__media">
+              <img src="https://images.unsplash.com/photo-1571945153237-4929e78394a9?q=80&w=600&auto=format&fit=crop" alt="Brooklyn Retro Jersey" class="product-card__image" loading="lazy">
+              <div class="product-card__quick-add-wrapper">
+                <form class="product-card__quick-add">
+                  <input type="hidden" name="id" value="2">
+                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
+                </form>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__title">Brooklyn Retro Jersey</h3>
+              <p class="product-card__vendor">Escape Clothing</p>
+              <div class="product-card__price">
+                <span class="price-current">₹1,299.00</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+          <a href="#" class="product-card__link">
+            <div class="product-card__media">
+              <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=600&auto=format&fit=crop" alt="Parachute Cargo Pants" class="product-card__image" loading="lazy">
+              <div class="product-card__quick-add-wrapper">
+                <form class="product-card__quick-add">
+                  <input type="hidden" name="id" value="3">
+                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
+                </form>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__title">Parachute Cargo Pants</h3>
+              <p class="product-card__vendor">Escape Clothing</p>
+              <div class="product-card__price">
+                <span class="price-current">₹2,199.00</span>
+                <span class="price-compare">₹3,499.00</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card">
+          <a href="#" class="product-card__link">
+            <div class="product-card__media">
+              <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=600&auto=format&fit=crop" alt="Zara Style Corduroy Shirt" class="product-card__image" loading="lazy">
+              <div class="product-card__quick-add-wrapper">
+                <form class="product-card__quick-add">
+                  <input type="hidden" name="id" value="4">
+                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
+                </form>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__title">Zara Style Corduroy Shirt</h3>
+              <p class="product-card__vendor">Escape Clothing</p>
+              <div class="product-card__price">
+                <span class="price-current">₹1,699.00</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. New Arrivals -->
+    <section class="featured-collection section-reveal page-width">
+      <div class="section-header">
+        <span class="section-eyebrow">JUST DROPPED</span>
+        <h2 class="section-title">New Arrivals</h2>
+        <p class="section-subtitle">The latest additions to the Escape vault</p>
+      </div>
+
+      <div class="products-grid">
+        <!-- Product 5 -->
+        <div class="product-card">
+          <a href="#" class="product-card__link">
+            <div class="product-card__media">
+              <span class="product-card__badge product-card__badge--new">NEW DROP</span>
+              <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=600&auto=format&fit=crop" alt="Vintage Wash Graphic Tee" class="product-card__image" loading="lazy">
+              <div class="product-card__quick-add-wrapper">
+                <form class="product-card__quick-add">
+                  <input type="hidden" name="id" value="5">
+                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
+                </form>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__title">Vintage Wash Graphic Tee</h3>
+              <p class="product-card__vendor">Escape Clothing</p>
+              <div class="product-card__price">
+                <span class="price-current">₹1,199.00</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card">
+          <a href="#" class="product-card__link">
+            <div class="product-card__media">
+              <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=600&auto=format&fit=crop" alt="Chronicles Graffiti Tee" class="product-card__image" loading="lazy">
+              <div class="product-card__quick-add-wrapper">
+                <form class="product-card__quick-add">
+                  <input type="hidden" name="id" value="6">
+                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
+                </form>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__title">Chronicles Graffiti Tee</h3>
+              <p class="product-card__vendor">Escape Clothing</p>
+              <div class="product-card__price">
+                <span class="price-current">₹999.00</span>
+                <span class="price-compare">₹1,499.00</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card">
+          <a href="#" class="product-card__link">
+            <div class="product-card__media">
+              <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=600&auto=format&fit=crop" alt="Cabana Oversized Shirt" class="product-card__image" loading="lazy">
+              <div class="product-card__quick-add-wrapper">
+                <form class="product-card__quick-add">
+                  <input type="hidden" name="id" value="7">
+                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
+                </form>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__title">Cabana Oversized Shirt</h3>
+              <p class="product-card__vendor">Escape Clothing</p>
+              <div class="product-card__price">
+                <span class="price-current">₹1,599.00</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card">
+          <a href="#" class="product-card__link">
+            <div class="product-card__media">
+              <img src="https://images.unsplash.com/photo-1565084888279-aca607ecad0c?q=80&w=600&auto=format&fit=crop" alt="Raw Edge Denim Shorts" class="product-card__image" loading="lazy">
+              <div class="product-card__quick-add-wrapper">
+                <form class="product-card__quick-add">
+                  <input type="hidden" name="id" value="8">
+                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
+                </form>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__title">Raw Edge Denim Shorts</h3>
+              <p class="product-card__vendor">Escape Clothing</p>
+              <div class="product-card__price">
+                <span class="price-current">₹1,899.00</span>
+                <span class="price-compare">₹2,799.00</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. ₹999 Drop Collection Banner with Countdown -->
+    <section class="collection-banner section-reveal">
+      <div class="collection-banner__media">
+        <img src="https://images.unsplash.com/photo-1554568218-0f1715e72254?q=80&w=1800&auto=format&fit=crop" alt="₹999 Drop Banner" loading="lazy">
+        <div class="collection-banner__overlay"></div>
+      </div>
+      <div class="collection-banner__content page-width">
+        <span class="collection-banner__label">⚡ LIMITED-TIME DEALS</span>
+        <h2 class="collection-banner__title">₹999 Drop Collection</h2>
+        <p class="collection-banner__desc">Buy 3 For ₹999. Upgrade your wardrobe with high-quality streetwear blanks and graphic tees. Deal ends soon!</p>
+        
+        <!-- Countdown Timer -->
+        <div class="countdown" data-countdown="2026-12-31T23:59:59">
+          <div class="countdown__item">
+            <span class="countdown__number" data-countdown-hours>12</span>
+            <span class="countdown__label">HRS</span>
+          </div>
+          <div class="countdown__divider">:</div>
+          <div class="countdown__item">
+            <span class="countdown__number" data-countdown-mins>45</span>
+            <span class="countdown__label">MINS</span>
+          </div>
+          <div class="countdown__divider">:</div>
+          <div class="countdown__item">
+            <span class="countdown__number" data-countdown-secs>22</span>
+            <span class="countdown__label">SECS</span>
+          </div>
+        </div>
+
+        <a href="#combo-deals" class="collection-banner__btn">Shop the Drop</a>
+      </div>
+    </section>
+
+    <!-- ₹999 Drop Collection Grid -->
+    <section id="combo-deals" class="featured-collection section-reveal page-width">
+      <div class="section-header">
+        <span class="section-eyebrow">COMBO OFFERS</span>
+        <h2 class="section-title">Buy 3 for ₹999</h2>
+        <p class="section-subtitle">Mix & match any 3 of these items to get the deal at checkout</p>
+      </div>
+
+      <div class="products-grid">
+        <!-- Product 9 -->
+        <div class="product-card">
+          <a href="#" class="product-card__link">
+            <div class="product-card__media">
+              <img src="https://images.unsplash.com/photo-1554568218-0f1715e72254?q=80&w=600&auto=format&fit=crop" alt="Boxy Drop Shoulder Blank" class="product-card__image" loading="lazy">
+              <div class="product-card__quick-add-wrapper">
+                <form class="product-card__quick-add">
+                  <input type="hidden" name="id" value="9">
+                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
+                </form>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__title">Boxy Drop Shoulder Blank</h3>
+              <p class="product-card__vendor">Escape Clothing</p>
+              <div class="product-card__price">
+                <span class="price-current">₹999.00</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 10 -->
+        <div class="product-card">
+          <a href="#" class="product-card__link">
+            <div class="product-card__media">
+              <img src="https://images.unsplash.com/photo-1534215754734-18e55d13ce35?q=80&w=600&auto=format&fit=crop" alt="Escape Streetwear Cap" class="product-card__image" loading="lazy">
+              <div class="product-card__quick-add-wrapper">
+                <form class="product-card__quick-add">
+                  <input type="hidden" name="id" value="10">
+                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
+                </form>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__title">Escape Streetwear Cap</h3>
+              <p class="product-card__vendor">Escape Clothing</p>
+              <div class="product-card__price">
+                <span class="price-current">₹999.00</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 11 -->
+        <div class="product-card">
+          <a href="#" class="product-card__link">
+            <div class="product-card__media">
+              <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=600&auto=format&fit=crop" alt="Heavyweight Jersey Tee" class="product-card__image" loading="lazy">
+              <div class="product-card__quick-add-wrapper">
+                <form class="product-card__quick-add">
+                  <input type="hidden" name="id" value="11">
+                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
+                </form>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__title">Heavyweight Jersey Tee</h3>
+              <p class="product-card__vendor">Escape Clothing</p>
+              <div class="product-card__price">
+                <span class="price-current">₹999.00</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 12 -->
+        <div class="product-card">
+          <a href="#" class="product-card__link">
+            <div class="product-card__media">
+              <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=600&auto=format&fit=crop" alt="Relaxed Cargo Shorts" class="product-card__image" loading="lazy">
+              <div class="product-card__quick-add-wrapper">
+                <form class="product-card__quick-add">
+                  <input type="hidden" name="id" value="12">
+                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
+                </form>
+              </div>
+            </div>
+            <div class="product-card__info">
+              <h3 class="product-card__title">Relaxed Cargo Shorts</h3>
+              <p class="product-card__vendor">Escape Clothing</p>
+              <div class="product-card__price">
+                <span class="price-current">₹999.00</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Why Choose Escape Clothing -->
+    <section class="why-choose-us section-reveal page-width">
+      <div class="section-header">
+        <span class="section-eyebrow">OUR PROMISE</span>
+        <h2 class="section-title">Why Choose Escape Clothing 👣</h2>
+        <p class="section-subtitle">Premium streetwear, built for comfort and durability</p>
+      </div>
+
+      <div class="why-choose-grid">
+        <div class="why-choose-card">
+          <div class="why-choose-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="why-choose-card__title">Premium Quality</h3>
+          <p class="why-choose-card__desc">Heavyweight 240+ GSM fabrics, double-stitched for custom oversized silhouette longevity.</p>
+        </div>
+
+        <div class="why-choose-card">
+          <div class="why-choose-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16.5 9.4 7.55 4.24M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="why-choose-card__title">Fast Shipping</h3>
+          <p class="why-choose-card__desc">Dispatched within 24 hours. Express shipping to major Indian metros (2-4 days transit).</p>
+        </div>
+
+        <div class="why-choose-card">
+          <div class="why-choose-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="why-choose-card__title">Secure Payments</h3>
+          <p class="why-choose-card__desc">Instant verification with UPI, Net Banking, and Cards powered securely by Cashfree.</p>
+        </div>
+
+        <div class="why-choose-card">
+          <div class="why-choose-card__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l6.73-6.73" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="why-choose-card__title">Easy Returns</h3>
+          <p class="why-choose-card__desc">Not the perfect fit? We offer a hassle-free 7-day return and size replacement policy.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. Instagram Gallery -->
+    <section class="instagram-gallery section-reveal">
+      <div class="page-width">
+        <div class="section-header">
+          <span class="section-eyebrow">INSTAGRAM</span>
+          <h2 class="section-title">@escapeclothing</h2>
+          <p class="section-subtitle">Tag us in your fits to get featured in the community vault</p>
+        </div>
+      </div>
+
+      <div class="instagram-grid">
+        <a href="#" class="instagram-item">
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=400&auto=format&fit=crop" alt="Aesthetic streetwear 1" loading="lazy">
+          <div class="instagram-item__overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 6.5A4.75 4.75 0 0 0 10 4.25a4.75 4.75 0 0 0-7.5 2.25c0 5 7.5 10.25 7.5 10.25s7.5-5.25 7.5-10.25Z"/></svg>
+          </div>
+        </a>
+        <a href="#" class="instagram-item">
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=400&auto=format&fit=crop" alt="Aesthetic streetwear 2" loading="lazy">
+          <div class="instagram-item__overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 6.5A4.75 4.75 0 0 0 10 4.25a4.75 4.75 0 0 0-7.5 2.25c0 5 7.5 10.25 7.5 10.25s7.5-5.25 7.5-10.25Z"/></svg>
+          </div>
+        </a>
+        <a href="#" class="instagram-item">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=400&auto=format&fit=crop" alt="Aesthetic streetwear 3" loading="lazy">
+          <div class="instagram-item__overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 6.5A4.75 4.75 0 0 0 10 4.25a4.75 4.75 0 0 0-7.5 2.25c0 5 7.5 10.25 7.5 10.25s7.5-5.25 7.5-10.25Z"/></svg>
+          </div>
+        </a>
+        <a href="#" class="instagram-item">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=400&auto=format&fit=crop" alt="Aesthetic streetwear 4" loading="lazy">
+          <div class="instagram-item__overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 6.5A4.75 4.75 0 0 0 10 4.25a4.75 4.75 0 0 0-7.5 2.25c0 5 7.5 10.25 7.5 10.25s7.5-5.25 7.5-10.25Z"/></svg>
+          </div>
+        </a>
+        <a href="#" class="instagram-item">
+          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=400&auto=format&fit=crop" alt="Aesthetic streetwear 5" loading="lazy">
+          <div class="instagram-item__overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 6.5A4.75 4.75 0 0 0 10 4.25a4.75 4.75 0 0 0-7.5 2.25c0 5 7.5 10.25 7.5 10.25s7.5-5.25 7.5-10.25Z"/></svg>
+          </div>
+        </a>
+        <a href="#" class="instagram-item">
+          <img src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?q=80&w=400&auto=format&fit=crop" alt="Aesthetic streetwear 6" loading="lazy">
+          <div class="instagram-item__overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 6.5A4.75 4.75 0 0 0 10 4.25a4.75 4.75 0 0 0-7.5 2.25c0 5 7.5 10.25 7.5 10.25s7.5-5.25 7.5-10.25Z"/></svg>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 10. Customer Reviews -->
+    <section class="customer-reviews section-reveal page-width">
+      <div class="section-header">
+        <span class="section-eyebrow">TESTIMONIALS</span>
+        <h2 class="section-title">What Our Community Says</h2>
+        <p class="section-subtitle">Join thousands of streetwear heads wearing Escape</p>
+      </div>
+
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">"Best streetwear brand in India. Fast delivery and premium quality. The oversized fit is exactly what I was looking for."</p>
+          <div class="review-card__author">
+            <strong>Arjun K.</strong>
+            <span>Verified Buyer &middot; Oversized Tee</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">"The ₹999 drop is an absolute steal. Already ordered twice! The jersey quality is unreal for the price."</p>
+          <div class="review-card__author">
+            <strong>Priya M.</strong>
+            <span>Verified Buyer &middot; ₹999 Drop Jersey</span>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-card__stars">★★★★★</div>
+          <p class="review-card__text">"Jerseys are fire. Exactly like the photos. Packaging was clean and delivery was super fast. 10/10."</p>
+          <div class="review-card__author">
+            <strong>Rohan S.</strong>
+            <span>Verified Buyer &middot; NBA Jersey</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. Newsletter Signup -->
+    <section class="newsletter section-reveal">
+      <div class="page-width">
+        <div class="newsletter__wrapper">
+          <span class="newsletter__label">STAY IN THE LOOP</span>
+          <h2 class="newsletter__title">Join the Escape Vault</h2>
+          <p class="newsletter__desc">Get early access to weekly drops, exclusive discounts, and secret combo deals.</p>
+          
+          <form class="newsletter__form">
+            <input type="email" placeholder="Enter your email address" class="newsletter__input" required autocomplete="off">
+            <button type="submit" class="newsletter__btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 13. Premium Footer -->
+  <footer class="site-footer">
+    <div class="page-width">
+      <div class="footer__grid">
+        
+        <div class="footer__col footer__col--about">
+          <h3 class="footer__title">ESCAPE CLOTHING 👣</h3>
+          <p class="footer__about-text">Premium dark streetwear designed and manufactured in India. Bold silhouettes, heavyweight fabrics, and uncompromising details.</p>
+          <div class="footer__socials">
+            <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg></a>
+            <a href="#" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+            <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <h3 class="footer__title">Shop</h3>
+          <ul class="footer__links">
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Best Sellers</a></li>
+            <li><a href="#">Jerseys</a></li>
+            <li><a href="#">Oversized Tees</a></li>
+            <li><a href="#">₹999 Drop Collection</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h3 class="footer__title">Info</h3>
+          <ul class="footer__links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h3 class="footer__title">Policies</h3>
+          <ul class="footer__links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Refund Policy</a></li>
+            <li><a href="#">Return Policy</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026, Escape Clothing. Built for the streets of India.</p>
+        <div class="footer__payment-icons">
+          <!-- Mock badges -->
+          <span class="payment-badge">COD</span>
+          <span class="payment-badge">UPI</span>
+          <span class="payment-badge">Cashfree</span>
+          <span class="payment-badge">Cards</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 12. Cart Drawer -->
+  <div id="cart-drawer" class="cart-drawer" data-cart-drawer aria-hidden="true">
+    <div class="cart-drawer__overlay" data-cart-close></div>
+    <div class="cart-drawer__panel">
+      <div class="cart-drawer__header">
+        <h2 class="cart-drawer__title">Your Cart (<span data-cart-count>2</span>)</h2>
+        <button type="button" class="cart-drawer__close" data-cart-close aria-label="Close cart">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5 5 15M5 5l10 10"/></svg>
+        </button>
+      </div>
+
+      <div class="cart-drawer__content" data-cart-drawer-content>
+        <!-- Mock Items -->
+        <div class="cart-drawer__items">
+          <div class="cart-item" data-cart-item="1">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=200&auto=format&fit=crop" class="cart-item__image" alt="Seoul Street Jersey">
+            <div class="cart-item__details">
+              <h4 class="cart-item__title">Seoul Street Jersey</h4>
+              <p class="cart-item__option">Size: L</p>
+              <div class="cart-item__qty-price">
+                <div class="quantity-selector" data-quantity-selector>
+                  <button type="button" data-quantity-minus>-</button>
+                  <input type="text" value="1" readonly data-quantity-input>
+                  <button type="button" data-quantity-plus>+</button>
+                </div>
+                <span class="cart-item__price">₹1,499.00</span>
+              </div>
+              <button type="button" class="cart-item__remove" data-cart-remove="1">Remove</button>
+            </div>
+          </div>
+
+          <div class="cart-item" data-cart-item="5">
+            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=200&auto=format&fit=crop" class="cart-item__image" alt="Vintage Wash Graphic Tee">
+            <div class="cart-item__details">
+              <h4 class="cart-item__title">Vintage Wash Graphic Tee</h4>
+              <p class="cart-item__option">Size: M</p>
+              <div class="cart-item__qty-price">
+                <div class="quantity-selector" data-quantity-selector>
+                  <button type="button" data-quantity-minus>-</button>
+                  <input type="text" value="1" readonly data-quantity-input>
+                  <button type="button" data-quantity-plus>+</button>
+                </div>
+                <span class="cart-item__price">₹1,199.00</span>
+              </div>
+              <button type="button" class="cart-item__remove" data-cart-remove="5">Remove</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-drawer__footer">
+          <!-- Progress to Free Shipping -->
+          <div class="free-shipping-bar">
+            <div class="free-shipping-bar__text">✨ You've unlocked <strong>FREE SHIPPING</strong>!</div>
+            <div class="free-shipping-bar__progress" style="--progress: 100%"></div>
+          </div>
+
+          <div class="cart-drawer__summary">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <strong>₹2,698.00</strong>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span>FREE</span>
+            </div>
+          </div>
+
+          <button type="button" class="checkout-btn">PROCEED TO SECURE CHECKOUT</button>
+          <p class="checkout-footer-text">🔒 256-bit SSL encrypted checkout powered by Cashfree</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load real theme.js -->
+  <script src="/assets/theme.js" defer></script>
+</body>
+</html>
