@@ -1,0 +1,25 @@
+{
+  "current": {
+    "logo_width": 140,
+    "brand_tagline": "Escape The Ordinary",
+    "color_background": "#0a0a0a",
+    "color_surface": "#141414",
+    "color_text": "#ffffff",
+    "color_text_muted": "#a3a3a3",
+    "color_accent": "#ffffff",
+    "color_border": "#2a2a2a",
+    "font_heading": "helvetica_n4",
+    "font_body": "helvetica_n4",
+    "cart_type": "drawer",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      }
+    }
+  }
+}

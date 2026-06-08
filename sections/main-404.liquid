@@ -1,0 +1,15 @@
+<div class="error-page">
+  <p class="error-page__title">404</p>
+  <h1>{{ 'general.404_title' | t }}</h1>
+  <p class="error-page__text">{{ 'general.404_subtext' | t }}</p>
+  <a href="{{ routes.root_url }}" class="btn btn--primary">{{ 'general.back_to_home' | t }}</a>
+</div>
+
+{% schema %}
+{
+  "name": "404 page",
+  "tag": "section",
+  "class": "main-404-section",
+  "settings": []
+}
+{% endschema %}

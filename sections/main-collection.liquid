@@ -1,0 +1,73 @@
+<div class="collection-page">
+  <div class="page-width">
+    {% render 'breadcrumbs' %}
+
+    <div class="collection-page__header">
+      <h1 class="collection-page__title">{{ collection.title | escape }}</h1>
+      {%- if collection.description != blank -%}
+        <div class="collection-page__description rte">{{ collection.description }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- if collection.products.size > 0 -%}
+      <div class="collection-toolbar">
+        <span>{{ 'collections.products_count' | t: count: collection.products_count }}</span>
+        <div class="collection-toolbar__sort">
+          <label for="SortBy">{{ 'collections.sort_by' | t }}</label>
+          <select id="SortBy" name="sort_by" onchange="window.location.href=this.value">
+            {%- for option in collection.sort_options -%}
+              <option
+                value="{{ collection.url }}?sort_by={{ option.value }}"
+                {% if collection.sort_by == option.value %}selected{% endif %}
+              >
+                {{ option.name }}
+              </option>
+            {%- endfor -%}
+          </select>
+        </div>
+      </div>
+
+      <div class="product-grid">
+        {%- paginate collection.products by section.settings.products_per_page -%}
+          {%- for product in collection.products -%}
+            {% render 'product-card', card_product: product %}
+          {%- endfor -%}
+
+          {%- if paginate.pages > 1 -%}
+            <nav class="pagination" style="grid-column: 1 / -1; display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
+              {%- if paginate.previous -%}
+                <a href="{{ paginate.previous.url }}" class="btn btn--secondary btn--small">{{ 'general.pagination.previous' | t }}</a>
+              {%- endif -%}
+              {%- if paginate.next -%}
+                <a href="{{ paginate.next.url }}" class="btn btn--secondary btn--small">{{ 'general.pagination.next' | t }}</a>
+              {%- endif -%}
+            </nav>
+          {%- endif -%}
+        {%- endpaginate -%}
+      </div>
+    {%- else -%}
+      <p style="text-align: center; color: var(--color-text-muted); padding: 4rem 0;">
+        {{ 'collections.empty' | t }}
+      </p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection products",
+  "tag": "section",
+  "class": "main-collection-section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 36,
+      "step": 4,
+      "label": "Products per page",
+      "default": 16
+    }
+  ]
+}
+{% endschema %}

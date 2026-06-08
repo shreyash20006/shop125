@@ -1,0 +1,47 @@
+<div class="collection-page">
+  <div class="page-width">
+    {% render 'breadcrumbs' %}
+    <h1 class="collection-page__title">
+      {%- if search.performed -%}
+        Search results for "{{ search.terms | escape }}"
+      {%- else -%}
+        {{ 'general.search' | t }}
+      {%- endif -%}
+    </h1>
+
+    <form action="{{ routes.search_url }}" method="get" role="search" style="margin-bottom: 2rem; display: flex; gap: 0.5rem;">
+      <input
+        type="search"
+        name="q"
+        value="{{ search.terms | escape }}"
+        placeholder="{{ 'general.search_placeholder' | t }}"
+        style="flex: 1; padding: 1rem; background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text);"
+      >
+      <input type="hidden" name="type" value="product">
+      <button type="submit" class="btn btn--primary">{{ 'general.search' | t }}</button>
+    </form>
+
+    {%- if search.performed -%}
+      {%- if search.results.size > 0 -%}
+        <div class="product-grid">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {% render 'product-card', card_product: item %}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <p style="text-align: center; color: var(--color-text-muted); padding: 3rem 0;">No results found.</p>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Search results",
+  "tag": "section",
+  "class": "main-search-section",
+  "settings": []
+}
+{% endschema %}

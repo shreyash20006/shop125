@@ -1,0 +1,28 @@
+<div class="quantity-selector" data-quantity-selector>
+  <button
+    type="button"
+    class="quantity-selector__btn"
+    data-quantity-minus
+    aria-label="{{ 'accessibility.decrease_quantity' | t }}"
+  >
+    &minus;
+  </button>
+  <input
+    type="number"
+    name="quantity"
+    id="Quantity-{{ section.id }}"
+    class="quantity-selector__input"
+    value="{{ quantity | default: 1 }}"
+    min="1"
+    step="1"
+    data-quantity-input
+  >
+  <button
+    type="button"
+    class="quantity-selector__btn"
+    data-quantity-plus
+    aria-label="{{ 'accessibility.increase_quantity' | t }}"
+  >
+    +
+  </button>
+</div>

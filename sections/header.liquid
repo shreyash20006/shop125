@@ -1,0 +1,115 @@
+<header class="site-header" data-section-id="{{ section.id }}" data-section-type="header">
+  <div class="page-width">
+    <div class="site-header__inner">
+      <button
+        type="button"
+        class="site-header__icon site-header__menu-toggle"
+        data-mobile-menu-toggle
+        aria-label="{{ 'accessibility.open_menu' | t }}"
+      >
+        {% render 'icon-menu' %}
+      </button>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="main-nav__list">
+          {%- for link in section.settings.menu.links -%}
+            <li class="main-nav__item{% if link.links.size > 0 %} has-dropdown{% endif %}">
+              <a href="{{ link.url }}" class="main-nav__link">
+                {{ link.title }}
+                {%- if link.links.size > 0 -%}
+                  {% render 'icon-chevron' %}
+                {%- endif -%}
+              </a>
+              {%- if link.links.size > 0 -%}
+                <ul class="main-nav__dropdown">
+                  {%- for child_link in link.links -%}
+                    <li>
+                      <a href="{{ child_link.url }}" class="main-nav__dropdown-link">
+                        {{ child_link.title }}
+                      </a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+
+      <a href="{{ routes.root_url }}" class="site-header__logo" style="--logo-width: {{ settings.logo_width }}px;">
+        {%- if settings.logo != blank -%}
+          {{
+            settings.logo
+            | image_url: width: 400
+            | image_tag: loading: 'eager', alt: shop.name
+          }}
+        {%- else -%}
+          <span class="site-header__logo-text">
+            Escape Clothing <span>👣</span>
+          </span>
+        {%- endif -%}
+      </a>
+
+      <div class="site-header__icons">
+        <button type="button" class="site-header__icon" data-search-open aria-label="{{ 'general.search' | t }}">
+          {% render 'icon-search' %}
+        </button>
+
+        <a href="{{ routes.account_url }}" class="site-header__icon" aria-label="{{ 'header.account' | t }}">
+          {% render 'icon-account' %}
+        </a>
+
+        <a href="#" class="site-header__icon" data-wishlist-link aria-label="{{ 'header.wishlist' | t }}">
+          {% render 'icon-wishlist' %}
+        </a>
+
+        <a
+          href="{{ routes.cart_url }}"
+          class="site-header__icon"
+          data-cart-open
+          aria-label="{{ 'header.cart' | t }}"
+        >
+          {% render 'icon-cart' %}
+          <span class="site-header__cart-count" data-cart-count{% if cart.item_count == 0 %} style="display:none"{% endif %}>
+            {{ cart.item_count }}
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-menu" data-mobile-menu aria-hidden="true">
+    <div class="mobile-menu__overlay" data-mobile-menu-close></div>
+    <div class="mobile-menu__panel">
+      <div class="mobile-menu__header">
+        <span class="site-header__logo-text">Escape Clothing 👣</span>
+        <button type="button" data-mobile-menu-close aria-label="{{ 'accessibility.close_menu' | t }}">
+          {% render 'icon-close' %}
+        </button>
+      </div>
+      <nav aria-label="Mobile navigation">
+        {%- for link in section.settings.menu.links -%}
+          <a href="{{ link.url }}" class="mobile-menu__nav-link">{{ link.title }}</a>
+          {%- for child_link in link.links -%}
+            <a href="{{ child_link.url }}" class="mobile-menu__sub-link">{{ child_link.title }}</a>
+          {%- endfor -%}
+        {%- endfor -%}
+      </nav>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "header-section",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

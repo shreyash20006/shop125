@@ -1,0 +1,94 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "eyebrow": "SS26 Drop Live",
+        "heading": "Escape Clothing 👣",
+        "subheading": "Escape The Ordinary",
+        "button_label": "Shop Now",
+        "button_label_2": "New Arrivals"
+      }
+    },
+    "categories": {
+      "type": "featured-categories",
+      "settings": {
+        "title": "Shop by Category",
+        "subtitle": "Curated streetwear for every vibe"
+      },
+      "blocks": {
+        "cat-1": { "type": "category", "settings": { "title": "Jerseys", "subtitle": "Korean · NBA · Football" } },
+        "cat-2": { "type": "category", "settings": { "title": "Oversized Tees", "subtitle": "Boxy · Graphic · Street" } },
+        "cat-3": { "type": "category", "settings": { "title": "Shirts", "subtitle": "Zara Style · Corduroy" } },
+        "cat-4": { "type": "category", "settings": { "title": "Bottoms", "subtitle": "Cargos · Denim · Track" } }
+      },
+      "block_order": ["cat-1", "cat-2", "cat-3", "cat-4"]
+    },
+    "new-arrivals": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "New Arrivals",
+        "subtitle": "Fresh drops every week",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "view_all_label": "View all"
+      }
+    },
+    "best-sellers": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Best Sellers",
+        "subtitle": "Community favorites",
+        "products_to_show": 4,
+        "show_view_all": true
+      }
+    },
+    "drop-banner": {
+      "type": "collection-banner",
+      "settings": {
+        "title": "₹999 Drop",
+        "text": "Buy 3 For ₹999. Combo offers & limited-time drops you can't miss.",
+        "button_label": "Shop the Drop"
+      }
+    },
+    "trending": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Trending Now",
+        "subtitle": "What's hot in streetwear",
+        "products_to_show": 4,
+        "show_view_all": true
+      }
+    },
+    "instagram": {
+      "type": "instagram-gallery",
+      "settings": {
+        "title": "@escapeclothing",
+        "subtitle": "Tag us in your fits"
+      },
+      "blocks": {
+        "ig-1": { "type": "image" },
+        "ig-2": { "type": "image" },
+        "ig-3": { "type": "image" },
+        "ig-4": { "type": "image" },
+        "ig-5": { "type": "image" },
+        "ig-6": { "type": "image" }
+      },
+      "block_order": ["ig-1", "ig-2", "ig-3", "ig-4", "ig-5", "ig-6"]
+    },
+    "reviews": {
+      "type": "customer-reviews",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "categories",
+    "new-arrivals",
+    "best-sellers",
+    "drop-banner",
+    "trending",
+    "instagram",
+    "reviews"
+  ]
+}

@@ -1,0 +1,16 @@
+<div class="page-content page-width">
+  {% render 'breadcrumbs' %}
+  <h1 class="page-content__title">{{ page.title | escape }}</h1>
+  <div class="rte">
+    {{ page.content }}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Page",
+  "tag": "section",
+  "class": "main-page-section",
+  "settings": []
+}
+{% endschema %}

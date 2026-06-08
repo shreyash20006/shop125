@@ -1,0 +1,87 @@
+{
+  "general": {
+    "search": "Search",
+    "search_placeholder": "Search products...",
+    "close": "Close",
+    "menu": "Menu",
+    "loading": "Loading...",
+    "404_title": "Page not found",
+    "404_subtext": "The page you're looking for doesn't exist.",
+    "back_to_home": "Back to home",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    }
+  },
+  "header": {
+    "account": "Account",
+    "wishlist": "Wishlist",
+    "cart": "Cart"
+  },
+  "products": {
+    "add_to_cart": "Add to cart",
+    "buy_now": "Buy now",
+    "sold_out": "Sold out",
+    "unavailable": "Unavailable",
+    "quantity": "Quantity",
+    "size": "Size",
+    "select_size": "Select size",
+    "related_products": "You may also like",
+    "recently_viewed": "Recently viewed",
+    "reviews": "Reviews",
+    "description": "Description",
+    "on_sale": "Sale",
+    "from_price": "From {{ price }}"
+  },
+  "collections": {
+    "title": "Collections",
+    "products_count": "{{ count }} products",
+    "empty": "No products found",
+    "sort_by": "Sort by",
+    "filter": "Filter"
+  },
+  "cart": {
+    "title": "Your cart",
+    "empty": "Your cart is empty",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "view_cart": "View cart",
+    "continue_shopping": "Continue shopping",
+    "remove": "Remove",
+    "discount_code": "Discount code",
+    "apply": "Apply",
+    "shipping_calculator": "Estimate shipping",
+    "recommended": "You might also like",
+    "note": "Order note",
+    "update": "Update cart",
+    "taxes_included": "Taxes included",
+    "shipping_at_checkout": "Shipping calculated at checkout"
+  },
+  "newsletter": {
+    "title": "Join the escape",
+    "subtitle": "Get early access to drops, exclusive deals & streetwear news.",
+    "placeholder": "Enter your email",
+    "submit": "Subscribe",
+    "success": "Thanks for subscribing!"
+  },
+  "contact": {
+    "title": "Contact us",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "submit": "Send message",
+    "success": "Thanks for reaching out. We'll get back to you soon."
+  },
+  "footer": {
+    "copyright": "© {{ year }} Escape Clothing. All rights reserved.",
+    "payment_methods": "We accept UPI, Cards, COD & more at checkout"
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu",
+    "increase_quantity": "Increase quantity",
+    "decrease_quantity": "Decrease quantity"
+  }
+}

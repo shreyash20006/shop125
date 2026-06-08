@@ -1,0 +1,23 @@
+# Shopify CLI
+.shopify/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (if using theme tooling)
+node_modules/
+package-lock.json
+
+# Environment
+.env
+.env.*
+
+# Logs
+*.log

@@ -1,0 +1,17 @@
+<div class="trust-badges">
+  {%- for block in blocks -%}
+    <div class="trust-badges__item" {{ block.shopify_attributes }}>
+      {%- if block.settings.icon != blank -%}
+        {{ block.settings.icon | image_url: width: 48 | image_tag: loading: 'lazy', class: 'trust-badges__icon' }}
+      {%- endif -%}
+      <div class="trust-badges__text">
+        {%- if block.settings.title != blank -%}
+          <strong>{{ block.settings.title }}</strong>
+        {%- endif -%}
+        {%- if block.settings.text != blank -%}
+          <span>{{ block.settings.text }}</span>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endfor -%}
+</div>

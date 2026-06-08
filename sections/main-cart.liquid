@@ -1,0 +1,82 @@
+<div class="cart-page page-width">
+  {% render 'breadcrumbs' %}
+  <h1 class="cart-page__title">{{ 'cart.title' | t }}</h1>
+
+  {%- if cart.item_count > 0 -%}
+    <form action="{{ routes.cart_url }}" method="post" id="CartForm">
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for item in cart.items -%}
+            <tr>
+              <td>
+                <div class="cart-table__product">
+                  {%- if item.image -%}
+                    <img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" class="cart-table__image" loading="lazy" width="80" height="107">
+                  {%- endif -%}
+                  <div>
+                    <a href="{{ item.url }}">{{ item.product.title }}</a>
+                    {%- unless item.variant.title == 'Default Title' -%}
+                      <p style="font-size: 0.75rem; color: var(--color-text-muted);">{{ item.variant.title }}</p>
+                    {%- endunless -%}
+                  </div>
+                </div>
+              </td>
+              <td>{{ item.final_price | money }}</td>
+              <td>
+                <input
+                  type="number"
+                  name="updates[]"
+                  value="{{ item.quantity }}"
+                  min="0"
+                  aria-label="{{ 'products.quantity' | t }}"
+                  style="width: 60px; padding: 0.5rem; background: var(--color-surface); border: 1px solid var(--color-border); color: var(--color-text);"
+                >
+              </td>
+              <td>{{ item.final_line_price | money }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+
+      <div class="cart-page__summary">
+        <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 1rem;">
+          {{ 'cart.discount_code' | t }} — applied at checkout. {{ 'cart.shipping_at_checkout' | t }}
+        </p>
+
+        <div class="cart-page__subtotal">
+          <span>{{ 'cart.subtotal' | t }}</span>
+          <span>{{ cart.total_price | money }}</span>
+        </div>
+
+        <button type="submit" name="update" class="btn btn--secondary" style="margin-bottom: 0.75rem;">
+          {{ 'cart.update' | t }}
+        </button>
+        <button type="submit" name="checkout" class="btn btn--primary btn--full">
+          {{ 'cart.checkout' | t }}
+        </button>
+      </div>
+    </form>
+  {%- else -%}
+    <div style="text-align: center; padding: 4rem 0;">
+      <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">{{ 'cart.empty' | t }}</p>
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary">{{ 'cart.continue_shopping' | t }}</a>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Cart",
+  "tag": "section",
+  "class": "main-cart-section",
+  "settings": []
+}
+{% endschema %}

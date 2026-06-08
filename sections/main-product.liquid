@@ -1,0 +1,184 @@
+<div class="product-page">
+  <div class="page-width">
+    {% render 'breadcrumbs' %}
+
+    <div class="product-page__grid">
+      <div class="product-gallery" data-product-gallery>
+        <div class="product-gallery__main" data-gallery-main>
+          {%- if product.featured_media -%}
+            {{
+              product.featured_media
+              | image_url: width: 1200
+              | image_tag:
+                loading: 'eager',
+                fetchpriority: 'high',
+                widths: '400,600,800,1000,1200',
+                sizes: '(min-width: 990px) 50vw, 100vw',
+                id: 'ProductMainImage'
+            }}
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag }}
+          {%- endif -%}
+        </div>
+
+        {%- if product.media.size > 1 -%}
+          <div class="product-gallery__thumbs">
+            {%- for media in product.media -%}
+              <button
+                type="button"
+                class="product-gallery__thumb{% if forloop.first %} is-active{% endif %}"
+                data-gallery-thumb="{{ media | image_url: width: 1200 }}"
+                data-gallery-srcset="{{ media | image_url: width: 400 }} 400w, {{ media | image_url: width: 800 }} 800w, {{ media | image_url: width: 1200 }} 1200w"
+                aria-label="View image {{ forloop.index }}"
+              >
+                {{
+                  media
+                  | image_url: width: 144
+                  | image_tag: loading: 'lazy'
+                }}
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="product-info">
+        <h1 class="product-info__title">{{ product.title | escape }}</h1>
+
+        <div class="product-info__price" data-product-price>
+          {% render 'price', product: product %}
+        </div>
+
+        <script type="application/json" id="ProductJson-{{ section.id }}">{{ product | json }}</script>
+        {%- form 'product', product, id: 'product-form', class: 'product-form', data-product-form: true -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+          {%- unless product.has_only_default_variant -%}
+            {%- for option in product.options_with_values -%}
+              <fieldset class="product-form__option">
+                <legend class="product-form__label">{{ option.name }}</legend>
+                <div class="variant-selector">
+                  {%- for value in option.values -%}
+                    <div class="variant-selector__option">
+                      <input
+                        type="radio"
+                        id="Option-{{ section.id }}-{{ forloop.parentloop.index0 }}-{{ forloop.index0 }}"
+                        name="options[{{ option.name | escape }}]"
+                        value="{{ value | escape }}"
+                        {% if option.selected_value == value %}checked{% endif %}
+                        data-variant-option
+                        class="variant-selector__input"
+                      >
+                      <label
+                        for="Option-{{ section.id }}-{{ forloop.parentloop.index0 }}-{{ forloop.index0 }}"
+                        class="variant-selector__label"
+                      >
+                        {{ value }}
+                      </label>
+                    </div>
+                  {%- endfor -%}
+                </div>
+              </fieldset>
+            {%- endfor -%}
+          {%- endunless -%}
+
+          <div class="product-form__quantity">
+            <label class="product-form__label" for="Quantity-{{ section.id }}">{{ 'products.quantity' | t }}</label>
+            {% render 'quantity-selector', section: section %}
+          </div>
+
+          <div class="product-form__actions">
+            <button
+              type="submit"
+              name="add"
+              class="btn btn--primary btn--full"
+              data-add-to-cart
+              {% unless product.available %}disabled{% endunless %}
+            >
+              {%- if product.available -%}
+                {{ 'products.add_to_cart' | t }}
+              {%- else -%}
+                {{ 'products.sold_out' | t }}
+              {%- endif -%}
+            </button>
+            <button type="button" class="btn btn--secondary btn--full" data-buy-now>
+              {{ 'products.buy_now' | t }}
+            </button>
+          </div>
+        {%- endform -%}
+
+        {%- if section.settings.show_trust_badges -%}
+          {% render 'trust-badges', blocks: section.blocks %}
+        {%- endif -%}
+
+        {%- if product.description != blank -%}
+          <div class="product-info__description rte">
+            <h2 class="product-form__label">{{ 'products.description' | t }}</h2>
+            {{ product.description }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product information",
+  "tag": "section",
+  "class": "main-product-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_trust_badges",
+      "label": "Show trust badges",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Trust badge",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Secure Checkout"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "UPI, Cards, COD & Razorpay ready"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "badge",
+        "settings": {
+          "title": "Secure Checkout",
+          "text": "UPI, Cards, COD & Razorpay ready"
+        }
+      },
+      {
+        "type": "badge",
+        "settings": {
+          "title": "Premium Quality",
+          "text": "Streetwear-grade fabrics & fits"
+        }
+      },
+      {
+        "type": "badge",
+        "settings": {
+          "title": "Fast Shipping",
+          "text": "Pan-India delivery in 3-7 days"
+        }
+      }
+    ]
+  }
+}
+{% endschema %}

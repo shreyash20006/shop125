@@ -1,0 +1,59 @@
+<div data-cart-drawer-inner>
+  <div class="cart-drawer__items">
+    {%- if cart.item_count > 0 -%}
+      {%- for item in cart.items -%}
+        <div class="cart-drawer__item" data-cart-item="{{ item.key }}">
+          {%- if item.image -%}
+            <img
+              src="{{ item.image | image_url: width: 160 }}"
+              alt="{{ item.title | escape }}"
+              class="cart-drawer__item-image"
+              loading="lazy"
+              width="80"
+              height="107"
+            >
+          {%- endif -%}
+          <div>
+            <p class="cart-drawer__item-title">{{ item.product.title }}</p>
+            {%- unless item.variant.title == 'Default Title' -%}
+              <p class="cart-drawer__item-variant">{{ item.variant.title }}</p>
+            {%- endunless -%}
+            <p class="cart-drawer__item-price">{{ item.final_line_price | money }}</p>
+            {% render 'quantity-selector', quantity: item.quantity %}
+            <button type="button" class="cart-drawer__item-remove" data-cart-remove="{{ item.key }}">
+              {{ 'cart.remove' | t }}
+            </button>
+          </div>
+          <div class="cart-drawer__item-price">{{ item.final_line_price | money }}</div>
+        </div>
+      {%- endfor -%}
+    {%- else -%}
+      <div class="cart-drawer__empty">
+        <p>{{ 'cart.empty' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary" style="margin-top: 1.5rem;">
+          {{ 'cart.continue_shopping' | t }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if cart.item_count > 0 -%}
+    <div class="cart-drawer__footer">
+      <p class="cart-drawer__note">{{ 'cart.discount_code' | t }} — applied at checkout</p>
+
+      <div class="cart-drawer__subtotal">
+        <span>{{ 'cart.subtotal' | t }}</span>
+        <span>{{ cart.total_price | money }}</span>
+      </div>
+
+      <div class="cart-drawer__actions">
+        <a href="{{ routes.cart_url }}" class="btn btn--secondary btn--full">{{ 'cart.view_cart' | t }}</a>
+        <form action="{{ routes.cart_url }}" method="post">
+          <button type="submit" name="checkout" class="btn btn--primary btn--full">
+            {{ 'cart.checkout' | t }}
+          </button>
+        </form>
+      </div>
+    </div>
+  {%- endif -%}
+</div>

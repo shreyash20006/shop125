@@ -1,0 +1,73 @@
+{%- liquid
+  assign card_product = card_product | default: product
+  assign show_vendor = show_vendor | default: false
+  assign show_quick_add = show_quick_add | default: true
+-%}
+
+<article class="product-card" data-product-card>
+  <div class="product-card__media">
+    <a href="{{ card_product.url }}" class="product-card__link" aria-label="{{ card_product.title | escape }}">
+      {%- if card_product.featured_media -%}
+        {{
+          card_product.featured_media
+          | image_url: width: 800
+          | image_tag:
+            loading: 'lazy',
+            widths: '400,600,800',
+            sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
+            class: 'product-card__image product-card__image--primary'
+        }}
+        {%- if card_product.media[1] != blank -%}
+          {{
+            card_product.media[1]
+            | image_url: width: 800
+            | image_tag:
+              loading: 'lazy',
+              widths: '400,600,800',
+              sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
+              class: 'product-card__image product-card__image--secondary'
+          }}
+        {%- endif -%}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'product-card__placeholder' }}
+      {%- endif -%}
+    </a>
+
+    {%- if card_product.compare_at_price > card_product.price -%}
+      <span class="product-card__badge">{{ 'products.on_sale' | t }}</span>
+    {%- endif -%}
+
+    <button
+      type="button"
+      class="product-card__wishlist"
+      data-wishlist-toggle
+      data-product-id="{{ card_product.id }}"
+      aria-label="{{ 'header.wishlist' | t }}"
+    >
+      {% render 'icon-wishlist' %}
+    </button>
+  </div>
+
+  <div class="product-card__info">
+    {%- if show_vendor and card_product.vendor != blank -%}
+      <p class="product-card__vendor">{{ card_product.vendor }}</p>
+    {%- endif -%}
+
+    <h3 class="product-card__title">
+      <a href="{{ card_product.url }}">{{ card_product.title | escape }}</a>
+    </h3>
+
+    <div class="product-card__price">
+      {% render 'price', product: card_product %}
+    </div>
+
+    {%- if show_quick_add and card_product.available -%}
+      <form method="post" action="{{ routes.cart_add_url }}" class="product-card__quick-add">
+        <input type="hidden" name="id" value="{{ card_product.selected_or_first_available_variant.id }}">
+        <button type="submit" class="btn btn--secondary btn--small product-card__add-btn">
+          {{ 'products.add_to_cart' | t }}
+        </button>
+      </form>
+    {%- endif -%}
+  </div>
+</article>

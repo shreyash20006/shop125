@@ -1,0 +1,53 @@
+<section class="section-padding" data-recently-viewed data-product-id="{{ product.id }}">
+  <div class="page-width">
+    <div class="section-header">
+      <h2 class="section-header__title">{{ section.settings.title | default: 'products.recently_viewed' | t }}</h2>
+    </div>
+    <div class="product-grid" id="RecentlyViewedProducts">
+      <noscript>
+        <p style="color: var(--color-text-muted); text-align: center; grid-column: 1 / -1;">
+          Enable JavaScript to see recently viewed products.
+        </p>
+      </noscript>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    const container = document.getElementById('RecentlyViewedProducts');
+    const currentId = '{{ product.id }}';
+    const STORAGE_KEY = 'escape_recently_viewed';
+    let recent = [];
+
+    try {
+      recent = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    } catch (e) {
+      recent = [];
+    }
+
+    recent = recent.filter(function(id) { return id !== currentId; });
+
+    if (recent.length === 0 || !container) return;
+
+    fetch('/search?q=' + recent.slice(0, 4).map(function(id) { return 'id:' + id; }).join(' OR ') + '&type=product&view=recently-viewed')
+      .then(function(r) { return r.text(); })
+      .catch(function() {});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Recently viewed",
+  "tag": "section",
+  "class": "recently-viewed-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Recently viewed"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,86 @@
+<section class="section-padding">
+  <div class="page-width">
+    <div class="section-header">
+      <h2 class="section-header__title">{{ section.settings.title | default: 'Follow Us' }}</h2>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="section-header__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="instagram-grid">
+      {%- for block in section.blocks -%}
+        <a
+          href="{{ block.settings.link | default: settings.social_instagram | default: '#' }}"
+          class="instagram-grid__item"
+          target="_blank"
+          rel="noopener noreferrer"
+          {{ block.shopify_attributes }}
+        >
+          {%- if block.settings.image != blank -%}
+            {{
+              block.settings.image
+              | image_url: width: 600
+              | image_tag: loading: 'lazy', widths: '300,600', sizes: '(min-width: 750px) 16vw, 33vw'
+            }}
+          {%- else -%}
+            {{ 'lifestyle-' | append: forloop.index | placeholder_svg_tag }}
+          {%- endif -%}
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Instagram gallery",
+  "tag": "section",
+  "class": "instagram-gallery-section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "@escapeclothing"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Tag us in your fits"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram gallery",
+      "blocks": [
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}

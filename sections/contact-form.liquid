@@ -1,0 +1,44 @@
+<div class="page-content page-width">
+  {% render 'breadcrumbs' %}
+  <h1 class="page-content__title">{{ 'contact.title' | t }}</h1>
+
+  {%- if section.settings.text != blank -%}
+    <div class="rte">{{ section.settings.text }}</div>
+  {%- endif -%}
+
+  {% form 'contact', class: 'contact-form' %}
+    {%- if form.posted_successfully? -%}
+      <p style="color: var(--color-text-muted);">{{ 'contact.success' | t }}</p>
+    {%- endif -%}
+
+    {%- if form.errors -%}
+      <ul style="color: #ff4757; margin-bottom: 1rem;">
+        {%- for field in form.errors -%}
+          <li>{{ form.errors.messages[field] }}</li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    <input type="text" name="contact[name]" placeholder="{{ 'contact.name' | t }}" required value="{{ form.name }}">
+    <input type="email" name="contact[email]" placeholder="{{ 'contact.email' | t }}" required value="{{ form.email }}">
+    <input type="tel" name="contact[phone]" placeholder="{{ 'contact.phone' | t }}" value="{{ form.phone }}">
+    <textarea name="contact[body]" placeholder="{{ 'contact.message' | t }}" required>{{ form.body }}</textarea>
+    <button type="submit" class="btn btn--primary">{{ 'contact.submit' | t }}</button>
+  {% endform %}
+</div>
+
+{% schema %}
+{
+  "name": "Contact form",
+  "tag": "section",
+  "class": "contact-section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description",
+      "default": "<p>Have a question about your order, sizing, or a collab? Drop us a message.</p>"
+    }
+  ]
+}
+{% endschema %}

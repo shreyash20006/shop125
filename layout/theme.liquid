@@ -1,0 +1,119 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_background }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {%- unless settings.font_heading.system? and settings.font_body.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% render 'meta-tags' %}
+    {% render 'schema-org' %}
+
+    {{ content_for_header }}
+
+    {% style %}
+      {{ settings.font_heading | font_face: font_display: 'swap' }}
+      {{ settings.font_body | font_face: font_display: 'swap' }}
+
+      :root {
+        --color-background: {{ settings.color_background }};
+        --color-surface: {{ settings.color_surface }};
+        --color-text: {{ settings.color_text }};
+        --color-text-muted: {{ settings.color_text_muted }};
+        --color-accent: {{ settings.color_accent }};
+        --color-border: {{ settings.color_border }};
+        --font-heading: {{ settings.font_heading.family }}, {{ settings.font_heading.fallback_families }};
+        --font-body: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
+        --font-heading-weight: {{ settings.font_heading.weight }};
+        --font-body-weight: {{ settings.font_body.weight }};
+        --page-width: 1400px;
+        --header-height: 72px;
+        --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    {% endstyle %}
+
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+      window.Shopify = window.Shopify || {};
+      window.themeSettings = {
+        cartType: {{ settings.cart_type | json }},
+        routes: {
+          cartUrl: {{ routes.cart_url | json }},
+          cartAddUrl: {{ routes.cart_add_url | json }},
+          cartChangeUrl: {{ routes.cart_change_url | json }},
+          searchUrl: {{ routes.search_url | json }}
+        },
+        strings: {
+          addToCart: {{ 'products.add_to_cart' | t | json }},
+          soldOut: {{ 'products.sold_out' | t | json }},
+          unavailable: {{ 'products.unavailable' | t | json }}
+        }
+      };
+    </script>
+
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+  </head>
+
+  <body class="template-{{ template.name | handle }}">
+    <a class="skip-link visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_content' | t }}
+    </a>
+
+    {% sections 'header-group' %}
+
+    <main id="MainContent" class="main-content" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+
+    {%- if settings.cart_type == 'drawer' -%}
+      {% section 'cart-drawer' %}
+    {%- endif -%}
+
+    <div id="search-modal" class="search-modal" aria-hidden="true">
+      <div class="search-modal__overlay" data-search-close></div>
+      <div class="search-modal__content" role="dialog" aria-modal="true" aria-label="{{ 'general.search' | t }}">
+        <button type="button" class="search-modal__close" data-search-close aria-label="{{ 'general.close' | t }}">
+          {% render 'icon-close' %}
+        </button>
+        <form action="{{ routes.search_url }}" method="get" role="search" class="search-modal__form">
+          <input
+            type="search"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="{{ 'general.search_placeholder' | t }}"
+            class="search-modal__input"
+            autocomplete="off"
+          >
+          <input type="hidden" name="type" value="product">
+          <button type="submit" class="search-modal__submit">
+            {% render 'icon-search' %}
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
