@@ -1,5 +1,11 @@
 {%- liquid
-  assign collection = collections[section.settings.collection]
+  assign selected_collection = collections[section.settings.collection]
+  assign collection = selected_collection
+
+  if collection == blank
+    assign collection = collections.all
+  endif
+
   assign products_to_show = section.settings.products_to_show | default: 4
 -%}
 
@@ -19,26 +25,17 @@
         {%- endfor -%}
       </div>
 
-      {%- if section.settings.show_view_all and collection.url != blank -%}
+      {%- if section.settings.show_view_all -%}
         <div style="text-align: center; margin-top: 2.5rem;">
-          <a href="{{ collection.url }}" class="btn btn--secondary">
+          <a href="{{ collection.url | default: routes.all_products_collection_url }}" class="btn btn--secondary">
             {{ section.settings.view_all_label | default: 'View all' }}
           </a>
         </div>
       {%- endif -%}
     {%- else -%}
-      <div class="product-grid">
-        {%- for i in (1..products_to_show) -%}
-          <article class="product-card">
-            <div class="product-card__media">
-              {{ 'product-' | append: i | placeholder_svg_tag: 'product-card__placeholder' }}
-            </div>
-            <div class="product-card__info">
-              <h3 class="product-card__title">Sample product {{ i }}</h3>
-              <div class="product-card__price"><span>₹999.00</span></div>
-            </div>
-          </article>
-        {%- endfor -%}
+      <div class="collection-empty">
+        <p>{{ 'collections.empty' | t }}</p>
+        <p class="collection-empty__hint">Add products in Shopify Admin → Products, set status to <strong>Active</strong>, and publish to the <strong>Online Store</strong> sales channel.</p>
       </div>
     {%- endif -%}
   </div>
@@ -50,6 +47,10 @@
   "tag": "section",
   "class": "featured-collection-section",
   "settings": [
+    {
+      "type": "paragraph",
+      "content": "If no collection is selected, all store products are shown automatically."
+    },
     {
       "type": "text",
       "id": "title",
@@ -64,7 +65,8 @@
     {
       "type": "collection",
       "id": "collection",
-      "label": "Collection"
+      "label": "Collection",
+      "info": "Leave empty to show all products"
     },
     {
       "type": "range",

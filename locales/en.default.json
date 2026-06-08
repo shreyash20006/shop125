@@ -36,7 +36,7 @@
   "collections": {
     "title": "Collections",
     "products_count": "{{ count }} products",
-    "empty": "No products found",
+    "empty": "No products found yet",
     "sort_by": "Sort by",
     "filter": "Filter"
   },

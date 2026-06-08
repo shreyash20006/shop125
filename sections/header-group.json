@@ -47,7 +47,6 @@
     },
     "header": {
       "type": "header",
-      "disabled": true,
       "settings": {
         "menu": "main-menu"
       }

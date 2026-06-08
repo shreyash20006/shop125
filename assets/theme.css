@@ -836,6 +836,23 @@ h1, h2, h3, h4, h5, h6 {
 .trust-badges__text span { color: var(--color-text-muted); }
 
 /* Collection Page */
+.collection-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--color-text-muted);
+}
+.collection-empty__hint {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+.collection-empty__hint strong {
+  color: var(--color-text);
+}
+
 .collection-page { padding: 1.5rem 0 4rem; }
 .collection-page__header { margin-bottom: 2rem; }
 .collection-page__title {
