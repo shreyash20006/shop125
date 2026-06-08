@@ -87,7 +87,7 @@ function renderIndex() {
 <div id="main">
   <div id="topbar">
     <div>Shopify Theme Browser &mdash; <strong>Escape Clothing v2.0</strong></div>
-    <a href="/" class="view-store">⚡ Live Store Preview</a>
+    <a href="/preview" class="view-store">⚡ Live Store Preview</a>
   </div>
   <div id="content">
     <div id="welcome">
@@ -181,12 +181,12 @@ function renderFile(filePath, res) {
 <div id="main">
   <div id="topbar">
     <div class="nav-left">
-      <a href="/browse" class="back-link">← Code Explorer</a>
+      <a href="/" class="back-link">← Code Explorer</a>
       <span>/</span>
       <strong>${escapeHtml(filePath)}</strong>
       <span style="background:#1a1a1a;border:1px solid #333;border-radius:4px;padding:2px 8px;font-size:11px;color:#888">${ext || 'file'}</span>
     </div>
-    <a href="/" class="view-store">⚡ Live Store Preview</a>
+    <a href="/preview" class="view-store">⚡ Live Store Preview</a>
   </div>
   <div id="content"><pre>${escapeHtml(content)}</pre></div>
 </div>
@@ -240,8 +240,15 @@ const server = http.createServer((req, res) => {
     }
   }
 
-  // 2. Render Live Store Preview (Home)
+  // 2. Render Code Explorer (Home)
   if (pathname === '/' || pathname === '') {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end(renderIndex());
+    return;
+  }
+
+  // 3. Render Live Store Preview (Preview)
+  if (pathname === '/preview') {
     const previewFile = path.join(ROOT, 'preview.html');
     if (fs.existsSync(previewFile)) {
       res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -250,13 +257,6 @@ const server = http.createServer((req, res) => {
       res.writeHead(200, { 'Content-Type': 'text/html' });
       res.end(`<h1>Escape Clothing Preview</h1><p>Please wait while preview.html is being created...</p><script>setTimeout(() => location.reload(), 1000);</script>`);
     }
-    return;
-  }
-
-  // 3. Render Code Explorer (Browse)
-  if (pathname === '/browse') {
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.end(renderIndex());
     return;
   }
 
