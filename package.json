@@ -1,0 +1,10 @@
+{
+  "name": "escape-clothing-shopify-theme",
+  "version": "2.0.0",
+  "description": "Premium dark streetwear Shopify theme with mock browser server",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,42 @@
+<div class="category-tabs-wrapper" data-section-id="{{ section.id }}" data-section-type="category-tabs">
+  <div class="category-tabs" id="category-tabs-row">
+    <div class="category-tab active" data-category="all">Discover</div>
+    {%- for block in section.blocks -%}
+      <div class="category-tab" data-category="{{ block.settings.category_name }}" {{ block.shopify_attributes }}>
+        {{ block.settings.title }}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Category Tabs Menu",
+  "class": "category-tabs-section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Category Tab",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Tab Label", "default": "Category" },
+        { "type": "text", "id": "category_name", "label": "Category Code/Slug", "default": "category" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Tabs Menu",
+      "blocks": [
+        { "type": "tab", "settings": { "title": "Jerseys", "category_name": "Jerseys" } },
+        { "type": "tab", "settings": { "title": "T-shirts", "category_name": "Tees" } },
+        { "type": "tab", "settings": { "title": "Jeans", "category_name": "Jeans" } },
+        { "type": "tab", "settings": { "title": "Trousers", "category_name": "Trousers" } },
+        { "type": "tab", "settings": { "title": "Cargo Pants", "category_name": "Cargos" } },
+        { "type": "tab", "settings": { "title": "Shoes", "category_name": "Shoes" } },
+        { "type": "tab", "settings": { "title": "Overshirt", "category_name": "Overshirts" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

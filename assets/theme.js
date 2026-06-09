@@ -665,6 +665,212 @@
     });
   }
 
+  /* ── Theme Toggle Switcher ────────────────────────────────────── */
+  function initThemeToggle() {
+    const btn = qs('#theme-toggle-btn');
+    if (!btn) return;
+    const moonIcon = qs('#theme-icon-moon');
+    const sunIcon = qs('#theme-icon-sun');
+
+    // Check saved theme
+    const savedTheme = localStorage.getItem('escape_theme') || 'dark';
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-theme');
+      if (moonIcon) moonIcon.style.display = 'block';
+      if (sunIcon) sunIcon.style.display = 'none';
+    }
+
+    btn.addEventListener('click', () => {
+      const isLight = document.body.classList.toggle('light-theme');
+      localStorage.setItem('escape_theme', isLight ? 'light' : 'dark');
+      if (isLight) {
+        if (moonIcon) moonIcon.style.display = 'block';
+        if (sunIcon) sunIcon.style.display = 'none';
+      } else {
+        if (moonIcon) moonIcon.style.display = 'none';
+        if (sunIcon) sunIcon.style.display = 'block';
+      }
+    });
+  }
+
+  /* ── Pincode Delivery Check ────────────────────────────────────── */
+  function initPincodeCheck() {
+    const triggerBtn = qs('#pincode-trigger-btn');
+    const widgetBtn = qs('#floating-widget-pincode');
+    const modal = qs('#pincode-modal');
+    if (!modal) return;
+    const closeBtn = qs('#pincode-modal-close-btn');
+    const overlay = qs('#pincode-modal-overlay');
+    const verifyBtn = qs('#pincode-verify-btn');
+    const inputField = qs('#pincode-input-field');
+    const resultMsg = qs('#pincode-result-message');
+    const displaySpan = qs('#current-pincode-display');
+
+    // Load saved pincode
+    const savedPin = localStorage.getItem('escape_pincode');
+    if (savedPin && displaySpan) {
+      displaySpan.textContent = savedPin;
+    }
+
+    function openModal() {
+      modal.classList.add('is-open');
+      if (inputField) {
+        inputField.value = '';
+        inputField.focus();
+      }
+      if (resultMsg) resultMsg.innerHTML = '';
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+    }
+
+    triggerBtn?.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); openModal(); });
+    widgetBtn?.addEventListener('click', openModal);
+    closeBtn?.addEventListener('click', closeModal);
+    overlay?.addEventListener('click', closeModal);
+
+    verifyBtn?.addEventListener('click', () => {
+      const val = inputField.value.trim();
+      if (!/^\d{6}$/.test(val)) {
+        resultMsg.className = 'pincode-result error';
+        resultMsg.textContent = '❌ Please enter a valid 6-digit numeric pincode.';
+        return;
+      }
+
+      // Simulate estimation
+      resultMsg.className = 'pincode-result success';
+      localStorage.setItem('escape_pincode', val);
+      if (displaySpan) displaySpan.textContent = val;
+
+      if (val.startsWith('400') || val.startsWith('110') || val.startsWith('560')) {
+        resultMsg.innerHTML = `🟢 <strong>Eligible for Fast Delivery!</strong><br>Standard dispatch: 24 hrs.<br>Estimated transit: 2 days (COD available).`;
+      } else {
+        resultMsg.innerHTML = `🟢 <strong>Delivery Available!</strong><br>Standard dispatch: 24 hrs.<br>Estimated transit: 4-5 days (COD available).`;
+      }
+
+      setTimeout(closeModal, 1500);
+    });
+
+    inputField?.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') verifyBtn.click();
+    });
+  }
+
+  /* ── Category Tabs Mock Filtering ─────────────────────────────── */
+  function initCategoryFilter() {
+    const tabs = qsa('.category-tab');
+    if (!tabs.length) return;
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const cat = tab.dataset.category;
+        const products = qsa('.product-card');
+
+        products.forEach(card => {
+          const title = qs('.product-card__title', card)?.textContent.toLowerCase() || '';
+          let match = false;
+
+          if (cat === 'all') {
+            match = true;
+          } else if (cat === 'Jerseys' && title.includes('jersey')) {
+            match = true;
+          } else if (cat === 'Tees' && (title.includes('tee') || title.includes('blank'))) {
+            match = true;
+          } else if (cat === 'Jeans' && (title.includes('denim') || title.includes('cargo') || title.includes('pants'))) {
+            match = true;
+          } else if (cat === 'Trousers' && (title.includes('pants') || title.includes('shorts') || title.includes('cargo'))) {
+            match = true;
+          } else if (cat === 'Cargos' && title.includes('cargo')) {
+            match = true;
+          } else if (cat === 'Shorts' && title.includes('shorts')) {
+            match = true;
+          } else if (cat === 'Overshirts' && title.includes('shirt')) {
+            match = true;
+          } else if (cat === 'Shoes' && title.includes('shoes')) {
+            match = false;
+          } else if (cat === 'Sunglasses' && title.includes('sunglasses')) {
+            match = false;
+          } else if (cat === 'Perfumes' && title.includes('perfume')) {
+            match = false;
+          }
+
+          if (match) {
+            card.style.display = 'block';
+            card.style.opacity = '0';
+            setTimeout(() => {
+              card.style.transition = 'opacity 0.4s ease';
+              card.style.opacity = '1';
+            }, 50);
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  /* ── Gift Now action ───────────────────────────────────────────── */
+  function initGiftNow() {
+    const btn = qs('#gift-now-btn');
+    if (!btn) return;
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const comboSection = qs('#combo-deals');
+      if (comboSection) {
+        comboSection.scrollIntoView({ behavior: 'smooth' });
+        
+        // Show a nice snackbar alert
+        let snack = qs('#gift-snackbar');
+        if (!snack) {
+          snack = document.createElement('div');
+          snack.id = 'gift-snackbar';
+          snack.style.cssText = `
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #ff5722;
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            z-index: 9999;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          `;
+          document.body.appendChild(snack);
+        }
+        snack.innerHTML = `🎁 Father's Day Special Activated! Add 3 items below for ₹999 drop rate!`;
+        snack.style.opacity = '1';
+        snack.style.transform = 'translateY(0)';
+
+        setTimeout(() => {
+          snack.style.opacity = '0';
+          snack.style.transform = 'translateY(20px)';
+        }, 4000);
+      }
+    });
+
+    // Handle ask assistant chat widget
+    const chatBtn = qs('#floating-widget-chat');
+    chatBtn?.addEventListener('click', () => {
+      alert("💬 Escape Virtual Assistant:\nHow can I help you with styling today? Ask me about sizes or delivery speeds!");
+    });
+
+    // Handle notification widget
+    const notifBtn = qs('#floating-widget-notif');
+    notifBtn?.addEventListener('click', () => {
+      alert("🔔 Escape Notification:\nNew Drop incoming tomorrow at 12 PM! Set your alarms.");
+    });
+  }
+
   /* ── Init ─────────────────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
@@ -684,5 +890,11 @@
 
     initProductForms(cartDrawer);
     initQuickAdd(cartDrawer);
+
+    // Redesign elements init
+    initThemeToggle();
+    initPincodeCheck();
+    initCategoryFilter();
+    initGiftNow();
   });
 })();

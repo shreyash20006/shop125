@@ -10,16 +10,20 @@
 {
   "sections": {
     "hero": {
-      "type": "hero-banner",
+      "type": "hero-columns",
       "settings": {
-        "eyebrow": "New Season · 2026",
-        "heading": "ESCAPE THE ORDINARY",
-        "subheading": "Premium Streetwear for Every Drop",
-        "button_label": "Shop Now",
-        "button_link": "shopify://collections/all",
-        "button_label_2": "Explore Collections",
-        "button_link_2": ""
+        "title_1": "THE NEVER RUN-OUT COLLECTION",
+        "btn_label_1": "Shop The Drop",
+        "reminder_title": "Reminder",
+        "reminder_text": "Father's Day is on 21 June and you're seeing this for a reason.",
+        "reminder_btn_label": "GIFT NOW",
+        "title_3": "TROUSERS & CARGOS",
+        "btn_label_3": "Explore Fits"
       }
+    },
+    "category-tabs": {
+      "type": "category-tabs",
+      "settings": {}
     },
     "brand-scroll": {
       "type": "home-brand-scroll",
@@ -263,6 +267,7 @@
     }
   },
   "order": [
+    "category-tabs",
     "hero",
     "brand-scroll",
     "categories",

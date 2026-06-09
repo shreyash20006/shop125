@@ -1,868 +1,844 @@
 <!DOCTYPE html>
-<html class="js" lang="en">
+<html class="dark" lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Escape Clothing 👣 — Premium Streetwear India</title>
+  <title>ESCAPE CLOTHING | Premium Streetwear India</title>
   
-  <!-- Premium Typography -->
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  
+  <!-- Premium Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "surface-container-low": "#1c1b1b",
+                  "outline": "#8e9192",
+                  "on-tertiary-fixed-variant": "#930005",
+                  "surface": "#131313",
+                  "secondary-fixed-dim": "#c8c6c5",
+                  "primary": "#ffffff",
+                  "surface-dim": "#131313",
+                  "on-secondary": "#313030",
+                  "on-tertiary": "#690003",
+                  "on-error": "#690005",
+                  "tertiary-fixed-dim": "#ffb4aa",
+                  "tertiary-container": "#ffdad5",
+                  "tertiary": "#ffffff",
+                  "ink-muted": "#888888",
+                  "surface-container-highest": "#353534",
+                  "surface-tint": "#c6c6c7",
+                  "alert-drop": "#FF3B30",
+                  "inverse-surface": "#e5e2e1",
+                  "surface-bright": "#3a3939",
+                  "error": "#ffb4ab",
+                  "surface-accent": "#1A1A1A",
+                  "primary-fixed-dim": "#c6c6c7",
+                  "primary-container": "#e2e2e2",
+                  "surface-container-lowest": "#0e0e0e",
+                  "inverse-primary": "#5d5f5f",
+                  "on-primary-container": "#636565",
+                  "on-primary-fixed": "#1a1c1c",
+                  "on-primary": "#2f3131",
+                  "on-tertiary-fixed": "#410001",
+                  "on-surface-variant": "#c4c7c8",
+                  "inverse-on-surface": "#313030",
+                  "surface-container-high": "#2a2a2a",
+                  "on-primary-fixed-variant": "#454747",
+                  "on-secondary-fixed": "#1c1b1b",
+                  "on-secondary-fixed-variant": "#474746",
+                  "outline-variant": "#444748",
+                  "surface-variant": "#353534",
+                  "error-container": "#93000a",
+                  "primary-fixed": "#e2e2e2",
+                  "tertiary-fixed": "#ffdad5",
+                  "surface-container": "#201f1f",
+                  "secondary-fixed": "#e5e2e1",
+                  "on-secondary-container": "#b7b5b4",
+                  "secondary": "#c8c6c5",
+                  "surface-elevated": "#111111",
+                  "background": "#131313",
+                  "secondary-container": "#474746",
+                  "on-background": "#e5e2e1",
+                  "on-error-container": "#ffdad6",
+                  "on-tertiary-container": "#ca0a0f",
+                  "on-surface": "#e5e2e1"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "spacing": {
+                  "margin-mobile": "20px",
+                  "gutter": "24px",
+                  "margin-desktop": "64px",
+                  "unit": "4px",
+                  "container-max": "1440px"
+          },
+          "fontFamily": {
+                  "headline-lg-mobile": ["Bebas Neue"],
+                  "label-lg": ["Inter"],
+                  "body-md": ["Inter"],
+                  "price-display": ["Inter"],
+                  "headline-md": ["Bebas Neue"],
+                  "body-lg": ["Inter"],
+                  "title-lg": ["Inter"],
+                  "headline-lg": ["Bebas Neue"],
+                  "display-lg": ["Bebas Neue"]
+          },
+          "fontSize": {
+                  "headline-lg-mobile": ["36px", {"lineHeight": "36px", "fontWeight": "400"}],
+                  "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                  "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "price-display": ["24px", {"lineHeight": "24px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "headline-md": ["32px", {"lineHeight": "32px", "fontWeight": "400"}],
+                  "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                  "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "700"}],
+                  "headline-lg": ["48px", {"lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                  "display-lg": ["72px", {"lineHeight": "72px", "letterSpacing": "0.02em", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+  
   <style>
-    :root {
-      --color-background: #0a0a0a;
-      --color-surface: #121212;
-      --color-text: #ffffff;
-      --color-text-muted: #8e8e93;
-      --color-accent: #ffffff;
-      --color-border: #1c1c1e;
-      --font-heading: 'Outfit', sans-serif;
-      --font-body: 'Outfit', sans-serif;
-      --font-heading-weight: 900;
-      --font-body-weight: 400;
-      --page-width: 1400px;
-      --header-height: 80px;
-      --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    body { @apply bg-background text-on-background font-body-md; scroll-behavior: smooth; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .aspect-3-4 { aspect-ratio: 3 / 4; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    /* Header transition scroll effects */
+    .header-group {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+      transition: all 0.3s ease;
+    }
+    .header-group.is-scrolled header {
+      background-color: rgba(19, 19, 19, 0.85);
+      backdrop-filter: blur(12px);
+      border-color: #353534;
     }
   </style>
-
-  <!-- Load real theme.css -->
-  <link rel="stylesheet" href="/assets/theme.css">
 </head>
-<body class="template-index">
+<body class="dark overflow-x-hidden">
 
-  <!-- 1. Announcement Bar -->
-  <div class="announcement-bar announcement-bar--marquee" role="region" aria-label="Announcement" style="--marquee-speed: 20s;" data-marquee-pause>
-    <div class="announcement-bar__track">
-      <div class="announcement-bar__content">
-        <span class="announcement-bar__item">
-          <span class="announcement-bar__icon">🚚</span> Free Shipping Above ₹999
-          <span class="announcement-bar__separator" aria-hidden="true">✦</span>
-        </span>
-        <span class="announcement-bar__item">
-          <span class="announcement-bar__icon">💵</span> Cash On Delivery Available
-          <span class="announcement-bar__separator" aria-hidden="true">✦</span>
-        </span>
-        <span class="announcement-bar__item">
-          <span class="announcement-bar__icon">🔒</span> Secure Payments via Cashfree
-          <span class="announcement-bar__separator" aria-hidden="true">✦</span>
-        </span>
-        <span class="announcement-bar__item">
-          <span class="announcement-bar__icon">⚡</span> Escape The Ordinary
-          <span class="announcement-bar__separator" aria-hidden="true">✦</span>
-        </span>
-      </div>
-      <div class="announcement-bar__content" aria-hidden="true">
-        <span class="announcement-bar__item">
-          <span class="announcement-bar__icon">🚚</span> Free Shipping Above ₹999
-          <span class="announcement-bar__separator" aria-hidden="true">✦</span>
-        </span>
-        <span class="announcement-bar__item">
-          <span class="announcement-bar__icon">💵</span> Cash On Delivery Available
-          <span class="announcement-bar__separator" aria-hidden="true">✦</span>
-        </span>
-        <span class="announcement-bar__item">
-          <span class="announcement-bar__icon">🔒</span> Secure Payments via Cashfree
-          <span class="announcement-bar__separator" aria-hidden="true">✦</span>
-        </span>
-        <span class="announcement-bar__item">
-          <span class="announcement-bar__icon">⚡</span> Escape The Ordinary
-          <span class="announcement-bar__separator" aria-hidden="true">✦</span>
+  <!-- Sticky Announcement + Header Group -->
+  <div class="header-group">
+    <!-- Announcement Bar -->
+    <div class="bg-alert-drop text-white py-2 text-center font-label-lg text-[10px] tracking-widest uppercase relative z-50 overflow-hidden h-8 flex items-center justify-center">
+      <div class="max-w-container-max mx-auto px-4 w-full h-full relative">
+        <span class="flex items-center justify-center gap-2 h-full">
+          🚚 Free Shipping Above ₹999 ✦ 💵 Cash On Delivery Available ✦ 🔒 Secure Payments
         </span>
       </div>
     </div>
-  </div>
 
-  <!-- 2. Sticky Transparent Header -->
-  <div class="header-group">
-    <header class="site-header" data-sticky-header>
-      <div class="page-width">
-        <div class="site-header__inner">
-          
-          <button type="button" class="site-header__icon site-header__menu-toggle" data-mobile-menu-toggle aria-label="Open menu">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
+    <!-- TopNavBar -->
+    <header class="w-full border-b border-transparent h-20 transition-all duration-300">
+      <nav class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-full max-w-container-max mx-auto">
+        <div class="flex items-center gap-4 md:gap-8">
+          <!-- Mobile Menu Toggle Button -->
+          <button type="button" class="md:hidden flex flex-col justify-between w-6 h-4 text-primary" data-mobile-menu-toggle aria-label="Open menu">
+            <span class="w-full h-[2px] bg-primary"></span>
+            <span class="w-full h-[2px] bg-primary my-[5px]"></span>
+            <span class="w-full h-[2px] bg-primary"></span>
           </button>
 
-          <nav class="main-nav" aria-label="Main navigation">
-            <ul class="main-nav__list">
-              <li class="main-nav__item"><a href="/preview" class="main-nav__link active">Home</a></li>
-              <li class="main-nav__item"><a href="#" class="main-nav__link">Shop All</a></li>
-              <li class="main-nav__item has-dropdown">
-                <a href="#" class="main-nav__link">Collections <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.2"><path d="m1 1 4 4 4-4"/></svg></a>
-                <ul class="main-nav__dropdown">
-                  <li><a href="#" class="main-nav__dropdown-link">Jerseys</a></li>
-                  <li><a href="#" class="main-nav__dropdown-link">Oversized Tees</a></li>
-                  <li><a href="#" class="main-nav__dropdown-link">Shirts</a></li>
-                  <li><a href="#" class="main-nav__dropdown-link">Bottoms</a></li>
-                </ul>
-              </li>
-              <li class="main-nav__item"><a href="#" class="main-nav__link">₹999 Drop</a></li>
-            </ul>
-          </nav>
-
-          <div class="site-header__logo-wrapper">
-            <a href="/preview" class="site-header__logo-link">
-              <span class="logo-text">ESCAPE</span>
-            </a>
+          <!-- Delivery Pincode Trigger -->
+          <div class="hidden lg:flex items-center gap-2 text-[12px] text-outline cursor-pointer" id="pincode-trigger-btn">
+            <span class="material-symbols-outlined text-[16px]">location_on</span>
+            <span>Deliver to: <strong id="current-pincode-display">Select Pincode</strong></span>
           </div>
 
-          <div class="site-header__icons">
-            <button type="button" class="site-header__icon" data-search-open aria-label="Search">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="6"/><path d="m14 14 4.5 4.5"/></svg>
-            </button>
-            <a href="#" class="site-header__icon" aria-label="Account">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 17v-1a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v1"/><circle cx="10" cy="7" r="4"/></svg>
-            </a>
-            <a href="#" class="site-header__icon" data-wishlist-link aria-label="Wishlist">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 6.5A4.75 4.75 0 0 0 10 4.25a4.75 4.75 0 0 0-7.5 2.25c0 5 7.5 10.25 7.5 10.25s7.5-5.25 7.5-10.25Z"/></svg>
-            </a>
-            <a href="#" class="site-header__icon" data-cart-open aria-label="Cart">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2 11h10l2-8H6.5"/></svg>
-              <span class="site-header__cart-count" data-cart-count style="display: flex;">2</span>
-            </a>
-          </div>
+          <a class="font-display-lg text-headline-lg uppercase tracking-tighter text-primary flex items-center gap-2" href="#">
+            <img alt="ESCAPE CLOTHING" class="h-10 w-auto" src="https://res.cloudinary.com/dsqxboxoc/image/upload/q_auto/f_auto/v1780928834/639473422_17856452319665295_1281961209085143497_n_mmtgqs.jpg"/>
+            <span class="hidden lg:block">ESCAPE CLOTHING</span>
+          </a>
         </div>
-      </div>
+        
+        <div class="hidden md:flex items-center gap-8">
+          <a class="font-label-lg text-label-lg text-primary border-b-2 border-primary pb-1 category-tab" data-category="all" href="#">NEW ARRIVALS</a>
+          <a class="font-label-lg text-label-lg text-outline hover:text-primary transition-colors category-tab" data-category="Jerseys" href="#">JERSEYS</a>
+          <a class="font-label-lg text-label-lg text-outline hover:text-primary transition-colors category-tab" data-category="Tees" href="#">OVERSIZED TEES</a>
+          <a class="font-label-lg text-label-lg text-outline hover:text-primary transition-colors category-tab" data-category="all" href="#">₹999 DROP</a>
+        </div>
+        
+        <div class="flex items-center gap-4 md:gap-6">
+          <button class="hover:opacity-80 transition-opacity" data-search-open><span class="material-symbols-outlined text-primary">search</span></button>
+          <a href="#login" class="hover:opacity-80 transition-opacity flex items-center"><span class="material-symbols-outlined text-primary">person</span></a>
+          <button class="hover:opacity-80 transition-opacity" data-wishlist-link><span class="material-symbols-outlined text-primary">favorite</span></button>
+          <button class="hover:opacity-80 transition-opacity relative" data-cart-open>
+            <span class="material-symbols-outlined text-primary">shopping_cart</span>
+            <span class="absolute -top-1 -right-1 bg-alert-drop text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center" data-cart-count>2</span>
+          </button>
+        </div>
+      </nav>
     </header>
   </div>
 
-  <main id="MainContent" class="main-content" role="main">
-    
-    <!-- 3. Cinematic Hero Banner -->
-    <section class="hero" data-hero>
-      <div class="hero__media">
-        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=1800&auto=format&fit=crop" class="hero__bg-image" alt="Cinematic Streetwear">
-        <div class="hero__overlay"></div>
-        <div class="hero__grain"></div>
+  <!-- Mobile Navigation Slide-in Menu -->
+  <div class="fixed inset-0 w-full h-full bg-black/60 z-[1001] opacity-0 pointer-events-none transition-opacity duration-300" data-mobile-menu aria-hidden="true">
+    <div class="w-4/5 max-w-sm h-full bg-surface-container px-6 py-8 transform -translate-x-full transition-transform duration-300 flex flex-col">
+      <div class="flex justify-between items-center mb-10">
+        <span class="font-display-lg text-headline-md tracking-widest">ESCAPE CLOTHING</span>
+        <button class="text-3xl text-outline hover:text-primary" data-mobile-menu-close aria-label="Close Menu">×</button>
       </div>
-
-      <div class="hero__content page-width">
-        <div class="hero__text-block">
-          <p class="hero__eyebrow">DROP 01 &middot; ESCAPE CLOTHING</p>
-          <h1 class="hero__heading">ESCAPE THE<br>ORDINARY</h1>
-          <p class="hero__sub">Premium heavyweight streetwear, crafted for the concrete jungle.</p>
-          <div class="hero__actions">
-            <a href="#shop-all" class="hero__btn hero__btn--primary">
-              Shop The Drop
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a href="#categories" class="hero__btn hero__btn--ghost">Explore Categories</a>
-          </div>
-        </div>
-
-        <div class="hero__scroll-hint" aria-hidden="true">
-          <div class="hero__scroll-line"></div>
-          <span>Scroll</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Brand Tagline Scroll -->
-    <section class="home-brand-scroll section-reveal">
-      <div class="brand-scroll__track">
-        <div class="brand-scroll__content">
-          <span>ESCAPE THE ORDINARY</span>
-          <span class="brand-scroll__separator">✦</span>
-          <span>PREMIUM STREETWEAR</span>
-          <span class="brand-scroll__separator">✦</span>
-          <span>DESIGNED IN INDIA</span>
-          <span class="brand-scroll__separator">✦</span>
-          <span>LIMITED DROPS ONLY</span>
-          <span class="brand-scroll__separator">✦</span>
-        </div>
-        <div class="brand-scroll__content" aria-hidden="true">
-          <span>ESCAPE THE ORDINARY</span>
-          <span class="brand-scroll__separator">✦</span>
-          <span>PREMIUM STREETWEAR</span>
-          <span class="brand-scroll__separator">✦</span>
-          <span>DESIGNED IN INDIA</span>
-          <span class="brand-scroll__separator">✦</span>
-          <span>LIMITED DROPS ONLY</span>
-          <span class="brand-scroll__separator">✦</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. Featured Categories -->
-    <section id="categories" class="featured-categories section-reveal page-width">
-      <div class="section-header">
-        <span class="section-eyebrow">CURATED FITS</span>
-        <h2 class="section-title">Shop by Category</h2>
-        <p class="section-subtitle">Heavyweight essentials designed to stand out</p>
-      </div>
-
-      <div class="categories-grid">
-        <a href="#" class="category-card">
-          <div class="category-card__media">
-            <img src="https://images.unsplash.com/photo-1581655353564-df123a1eb820?q=80&w=600&auto=format&fit=crop" alt="Jerseys" loading="lazy">
-            <div class="category-card__overlay"></div>
-          </div>
-          <div class="category-card__info">
-            <h3 class="category-card__title">Jerseys</h3>
-            <span class="category-card__btn">Explore</span>
-          </div>
-        </a>
-
-        <a href="#" class="category-card">
-          <div class="category-card__media">
-            <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=600&auto=format&fit=crop" alt="Oversized Tees" loading="lazy">
-            <div class="category-card__overlay"></div>
-          </div>
-          <div class="category-card__info">
-            <h3 class="category-card__title">Oversized Tees</h3>
-            <span class="category-card__btn">Explore</span>
-          </div>
-        </a>
-
-        <a href="#" class="category-card">
-          <div class="category-card__media">
-            <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=600&auto=format&fit=crop" alt="Shirts" loading="lazy">
-            <div class="category-card__overlay"></div>
-          </div>
-          <div class="category-card__info">
-            <h3 class="category-card__title">Shirts</h3>
-            <span class="category-card__btn">Explore</span>
-          </div>
-        </a>
-
-        <a href="#" class="category-card">
-          <div class="category-card__media">
-            <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=600&auto=format&fit=crop" alt="Bottoms" loading="lazy">
-            <div class="category-card__overlay"></div>
-          </div>
-          <div class="category-card__info">
-            <h3 class="category-card__title">Bottoms</h3>
-            <span class="category-card__btn">Explore</span>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <!-- 5. Best Sellers -->
-    <section id="shop-all" class="featured-collection section-reveal page-width">
-      <div class="section-header">
-        <span class="section-eyebrow">COMMUNITY FAVORITES</span>
-        <h2 class="section-title">Best Sellers</h2>
-        <p class="section-subtitle">Highly coveted streetwear pieces, selling fast</p>
-      </div>
-
-      <div class="products-grid">
-        <!-- Product 1 -->
-        <div class="product-card">
-          <a href="#" class="product-card__link">
-            <div class="product-card__media">
-              <span class="product-card__badge">BEST SELLER</span>
-              <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=600&auto=format&fit=crop" alt="Seoul Street Jersey" class="product-card__image" loading="lazy">
-              <div class="product-card__quick-add-wrapper">
-                <form class="product-card__quick-add">
-                  <input type="hidden" name="id" value="1">
-                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
-                </form>
-              </div>
-            </div>
-            <div class="product-card__info">
-              <h3 class="product-card__title">Seoul Street Jersey</h3>
-              <p class="product-card__vendor">Escape Clothing</p>
-              <div class="product-card__price">
-                <span class="price-current">₹1,499.00</span>
-                <span class="price-compare">₹2,499.00</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="product-card">
-          <a href="#" class="product-card__link">
-            <div class="product-card__media">
-              <img src="https://images.unsplash.com/photo-1571945153237-4929e78394a9?q=80&w=600&auto=format&fit=crop" alt="Brooklyn Retro Jersey" class="product-card__image" loading="lazy">
-              <div class="product-card__quick-add-wrapper">
-                <form class="product-card__quick-add">
-                  <input type="hidden" name="id" value="2">
-                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
-                </form>
-              </div>
-            </div>
-            <div class="product-card__info">
-              <h3 class="product-card__title">Brooklyn Retro Jersey</h3>
-              <p class="product-card__vendor">Escape Clothing</p>
-              <div class="product-card__price">
-                <span class="price-current">₹1,299.00</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="product-card">
-          <a href="#" class="product-card__link">
-            <div class="product-card__media">
-              <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=600&auto=format&fit=crop" alt="Parachute Cargo Pants" class="product-card__image" loading="lazy">
-              <div class="product-card__quick-add-wrapper">
-                <form class="product-card__quick-add">
-                  <input type="hidden" name="id" value="3">
-                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
-                </form>
-              </div>
-            </div>
-            <div class="product-card__info">
-              <h3 class="product-card__title">Parachute Cargo Pants</h3>
-              <p class="product-card__vendor">Escape Clothing</p>
-              <div class="product-card__price">
-                <span class="price-current">₹2,199.00</span>
-                <span class="price-compare">₹3,499.00</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Product 4 -->
-        <div class="product-card">
-          <a href="#" class="product-card__link">
-            <div class="product-card__media">
-              <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=600&auto=format&fit=crop" alt="Zara Style Corduroy Shirt" class="product-card__image" loading="lazy">
-              <div class="product-card__quick-add-wrapper">
-                <form class="product-card__quick-add">
-                  <input type="hidden" name="id" value="4">
-                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
-                </form>
-              </div>
-            </div>
-            <div class="product-card__info">
-              <h3 class="product-card__title">Zara Style Corduroy Shirt</h3>
-              <p class="product-card__vendor">Escape Clothing</p>
-              <div class="product-card__price">
-                <span class="price-current">₹1,699.00</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. New Arrivals -->
-    <section class="featured-collection section-reveal page-width">
-      <div class="section-header">
-        <span class="section-eyebrow">JUST DROPPED</span>
-        <h2 class="section-title">New Arrivals</h2>
-        <p class="section-subtitle">The latest additions to the Escape vault</p>
-      </div>
-
-      <div class="products-grid">
-        <!-- Product 5 -->
-        <div class="product-card">
-          <a href="#" class="product-card__link">
-            <div class="product-card__media">
-              <span class="product-card__badge product-card__badge--new">NEW DROP</span>
-              <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=600&auto=format&fit=crop" alt="Vintage Wash Graphic Tee" class="product-card__image" loading="lazy">
-              <div class="product-card__quick-add-wrapper">
-                <form class="product-card__quick-add">
-                  <input type="hidden" name="id" value="5">
-                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
-                </form>
-              </div>
-            </div>
-            <div class="product-card__info">
-              <h3 class="product-card__title">Vintage Wash Graphic Tee</h3>
-              <p class="product-card__vendor">Escape Clothing</p>
-              <div class="product-card__price">
-                <span class="price-current">₹1,199.00</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Product 6 -->
-        <div class="product-card">
-          <a href="#" class="product-card__link">
-            <div class="product-card__media">
-              <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=600&auto=format&fit=crop" alt="Chronicles Graffiti Tee" class="product-card__image" loading="lazy">
-              <div class="product-card__quick-add-wrapper">
-                <form class="product-card__quick-add">
-                  <input type="hidden" name="id" value="6">
-                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
-                </form>
-              </div>
-            </div>
-            <div class="product-card__info">
-              <h3 class="product-card__title">Chronicles Graffiti Tee</h3>
-              <p class="product-card__vendor">Escape Clothing</p>
-              <div class="product-card__price">
-                <span class="price-current">₹999.00</span>
-                <span class="price-compare">₹1,499.00</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Product 7 -->
-        <div class="product-card">
-          <a href="#" class="product-card__link">
-            <div class="product-card__media">
-              <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?q=80&w=600&auto=format&fit=crop" alt="Cabana Oversized Shirt" class="product-card__image" loading="lazy">
-              <div class="product-card__quick-add-wrapper">
-                <form class="product-card__quick-add">
-                  <input type="hidden" name="id" value="7">
-                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
-                </form>
-              </div>
-            </div>
-            <div class="product-card__info">
-              <h3 class="product-card__title">Cabana Oversized Shirt</h3>
-              <p class="product-card__vendor">Escape Clothing</p>
-              <div class="product-card__price">
-                <span class="price-current">₹1,599.00</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Product 8 -->
-        <div class="product-card">
-          <a href="#" class="product-card__link">
-            <div class="product-card__media">
-              <img src="https://images.unsplash.com/photo-1565084888279-aca607ecad0c?q=80&w=600&auto=format&fit=crop" alt="Raw Edge Denim Shorts" class="product-card__image" loading="lazy">
-              <div class="product-card__quick-add-wrapper">
-                <form class="product-card__quick-add">
-                  <input type="hidden" name="id" value="8">
-                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
-                </form>
-              </div>
-            </div>
-            <div class="product-card__info">
-              <h3 class="product-card__title">Raw Edge Denim Shorts</h3>
-              <p class="product-card__vendor">Escape Clothing</p>
-              <div class="product-card__price">
-                <span class="price-current">₹1,899.00</span>
-                <span class="price-compare">₹2,799.00</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. ₹999 Drop Collection Banner with Countdown -->
-    <section class="collection-banner section-reveal">
-      <div class="collection-banner__media">
-        <img src="https://images.unsplash.com/photo-1554568218-0f1715e72254?q=80&w=1800&auto=format&fit=crop" alt="₹999 Drop Banner" loading="lazy">
-        <div class="collection-banner__overlay"></div>
-      </div>
-      <div class="collection-banner__content page-width">
-        <span class="collection-banner__label">⚡ LIMITED-TIME DEALS</span>
-        <h2 class="collection-banner__title">₹999 Drop Collection</h2>
-        <p class="collection-banner__desc">Buy 3 For ₹999. Upgrade your wardrobe with high-quality streetwear blanks and graphic tees. Deal ends soon!</p>
+      
+      <nav class="flex flex-col gap-6" role="navigation">
+        <a href="#" class="font-display-lg text-3xl tracking-widest uppercase text-alert-drop category-tab" data-category="all" data-mobile-menu-close>NEW ARRIVALS</a>
+        <a href="#" class="font-display-lg text-3xl tracking-widest uppercase text-primary category-tab" data-category="Jerseys" data-mobile-menu-close>JERSEYS</a>
+        <a href="#" class="font-display-lg text-3xl tracking-widest uppercase text-primary category-tab" data-category="Tees" data-mobile-menu-close>OVERSIZED TEES</a>
+        <a href="#" class="font-display-lg text-3xl tracking-widest uppercase text-primary category-tab" data-category="all" data-mobile-menu-close>₹999 DROP</a>
         
-        <!-- Countdown Timer -->
-        <div class="countdown" data-countdown="2026-12-31T23:59:59">
-          <div class="countdown__item">
-            <span class="countdown__number" data-countdown-hours>12</span>
-            <span class="countdown__label">HRS</span>
-          </div>
-          <div class="countdown__divider">:</div>
-          <div class="countdown__item">
-            <span class="countdown__number" data-countdown-mins>45</span>
-            <span class="countdown__label">MINS</span>
-          </div>
-          <div class="countdown__divider">:</div>
-          <div class="countdown__item">
-            <span class="countdown__number" data-countdown-secs>22</span>
-            <span class="countdown__label">SECS</span>
-          </div>
-        </div>
+        <div class="h-[1px] bg-outline-variant my-4"></div>
+        
+        <a href="#login" class="font-label-lg text-lg text-outline hover:text-primary uppercase" data-mobile-menu-close>My Account</a>
+        <a href="#" class="font-label-lg text-lg text-outline hover:text-primary uppercase" data-wishlist-link data-mobile-menu-close>My Wishlist</a>
+      </nav>
+    </div>
+  </div>
 
-        <a href="#combo-deals" class="collection-banner__btn">Shop the Drop</a>
+  <main class="pt-[112px]">
+    <!-- Section 1: Hero Banner -->
+    <section class="relative h-[calc(100vh-112px)] w-full flex items-center justify-center overflow-hidden">
+      <div class="absolute inset-0 bg-black/40 z-10"></div>
+      <img alt="Hero Background" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8R5LYV1JGkwb0p2Ps0GNmnPatXJ46b5XNJUuqkO4rNiLHXeo7lSVBHrMQvCOksNjLzQif0AJOntAsNieezNo5Ltn--3JYFUUVUBGHJ1-UBB1Zzh6ih-ffObJO2vv4JQ36S4iAuiqsU4ulpeu6EWJXfQdzetEmlx0FGyIDPVde-n9RqMAtIK2kJ9BmtgANgzxsVjYtdtrRVf3InpjsPN2kerIRUtnDUGhJ2Qp5hLQ-KxHQkNsK71Oda0vNg4QDootU4nW1Egxvqb4"/>
+      <div class="relative z-20 text-center px-4 max-w-4xl">
+        <span class="inline-block font-label-lg text-label-lg tracking-widest text-alert-drop mb-4 uppercase">NEW COLLECTION</span>
+        <h1 class="font-display-lg text-7xl md:text-9xl text-primary uppercase leading-none mb-8 tracking-tighter">ESCAPE THE ORDINARY</h1>
+        <div class="flex flex-col md:flex-row gap-4 justify-center">
+          <a href="#shop-grid" class="bg-primary text-on-primary px-10 py-4 font-label-lg text-label-lg uppercase tracking-wider hover:opacity-90 transition-all active:scale-95 rounded-sm inline-block">SHOP NOW</a>
+          <a href="#shop-grid" class="bg-transparent border border-primary text-primary px-10 py-4 font-label-lg text-label-lg uppercase tracking-wider hover:bg-primary/10 transition-all active:scale-95 rounded-sm inline-block">NEW ARRIVALS</a>
+        </div>
+      </div>
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce">
+        <span class="material-symbols-outlined text-primary text-3xl">expand_more</span>
       </div>
     </section>
 
-    <!-- ₹999 Drop Collection Grid -->
-    <section id="combo-deals" class="featured-collection section-reveal page-width">
-      <div class="section-header">
-        <span class="section-eyebrow">COMBO OFFERS</span>
-        <h2 class="section-title">Buy 3 for ₹999</h2>
-        <p class="section-subtitle">Mix & match any 3 of these items to get the deal at checkout</p>
+    <!-- Section 2: Featured Categories -->
+    <section class="py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      <div class="mb-12">
+        <h2 class="font-headline-lg text-headline-lg uppercase text-primary">CATEGORIES</h2>
       </div>
-
-      <div class="products-grid">
-        <!-- Product 9 -->
-        <div class="product-card">
-          <a href="#" class="product-card__link">
-            <div class="product-card__media">
-              <img src="https://images.unsplash.com/photo-1554568218-0f1715e72254?q=80&w=600&auto=format&fit=crop" alt="Boxy Drop Shoulder Blank" class="product-card__image" loading="lazy">
-              <div class="product-card__quick-add-wrapper">
-                <form class="product-card__quick-add">
-                  <input type="hidden" name="id" value="9">
-                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
-                </form>
-              </div>
-            </div>
-            <div class="product-card__info">
-              <h3 class="product-card__title">Boxy Drop Shoulder Blank</h3>
-              <p class="product-card__vendor">Escape Clothing</p>
-              <div class="product-card__price">
-                <span class="price-current">₹999.00</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Product 10 -->
-        <div class="product-card">
-          <a href="#" class="product-card__link">
-            <div class="product-card__media">
-              <img src="https://images.unsplash.com/photo-1534215754734-18e55d13ce35?q=80&w=600&auto=format&fit=crop" alt="Escape Streetwear Cap" class="product-card__image" loading="lazy">
-              <div class="product-card__quick-add-wrapper">
-                <form class="product-card__quick-add">
-                  <input type="hidden" name="id" value="10">
-                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
-                </form>
-              </div>
-            </div>
-            <div class="product-card__info">
-              <h3 class="product-card__title">Escape Streetwear Cap</h3>
-              <p class="product-card__vendor">Escape Clothing</p>
-              <div class="product-card__price">
-                <span class="price-current">₹999.00</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Product 11 -->
-        <div class="product-card">
-          <a href="#" class="product-card__link">
-            <div class="product-card__media">
-              <img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=600&auto=format&fit=crop" alt="Heavyweight Jersey Tee" class="product-card__image" loading="lazy">
-              <div class="product-card__quick-add-wrapper">
-                <form class="product-card__quick-add">
-                  <input type="hidden" name="id" value="11">
-                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
-                </form>
-              </div>
-            </div>
-            <div class="product-card__info">
-              <h3 class="product-card__title">Heavyweight Jersey Tee</h3>
-              <p class="product-card__vendor">Escape Clothing</p>
-              <div class="product-card__price">
-                <span class="price-current">₹999.00</span>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- Product 12 -->
-        <div class="product-card">
-          <a href="#" class="product-card__link">
-            <div class="product-card__media">
-              <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=600&auto=format&fit=crop" alt="Relaxed Cargo Shorts" class="product-card__image" loading="lazy">
-              <div class="product-card__quick-add-wrapper">
-                <form class="product-card__quick-add">
-                  <input type="hidden" name="id" value="12">
-                  <button type="submit" class="quick-add-btn">QUICK ADD +</button>
-                </form>
-              </div>
-            </div>
-            <div class="product-card__info">
-              <h3 class="product-card__title">Relaxed Cargo Shorts</h3>
-              <p class="product-card__vendor">Escape Clothing</p>
-              <div class="product-card__price">
-                <span class="price-current">₹999.00</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 8. Why Choose Escape Clothing -->
-    <section class="why-choose-us section-reveal page-width">
-      <div class="section-header">
-        <span class="section-eyebrow">OUR PROMISE</span>
-        <h2 class="section-title">Why Choose Escape Clothing 👣</h2>
-        <p class="section-subtitle">Premium streetwear, built for comfort and durability</p>
-      </div>
-
-      <div class="why-choose-grid">
-        <div class="why-choose-card">
-          <div class="why-choose-card__icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="why-choose-card__title">Premium Quality</h3>
-          <p class="why-choose-card__desc">Heavyweight 240+ GSM fabrics, double-stitched for custom oversized silhouette longevity.</p>
-        </div>
-
-        <div class="why-choose-card">
-          <div class="why-choose-card__icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16.5 9.4 7.55 4.24M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="why-choose-card__title">Fast Shipping</h3>
-          <p class="why-choose-card__desc">Dispatched within 24 hours. Express shipping to major Indian metros (2-4 days transit).</p>
-        </div>
-
-        <div class="why-choose-card">
-          <div class="why-choose-card__icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="why-choose-card__title">Secure Payments</h3>
-          <p class="why-choose-card__desc">Instant verification with UPI, Net Banking, and Cards powered securely by Cashfree.</p>
-        </div>
-
-        <div class="why-choose-card">
-          <div class="why-choose-card__icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l6.73-6.73" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <h3 class="why-choose-card__title">Easy Returns</h3>
-          <p class="why-choose-card__desc">Not the perfect fit? We offer a hassle-free 7-day return and size replacement policy.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. Instagram Gallery -->
-    <section class="instagram-gallery section-reveal">
-      <div class="page-width">
-        <div class="section-header">
-          <span class="section-eyebrow">INSTAGRAM</span>
-          <h2 class="section-title">@escapeclothing</h2>
-          <p class="section-subtitle">Tag us in your fits to get featured in the community vault</p>
-        </div>
-      </div>
-
-      <div class="instagram-grid">
-        <a href="#" class="instagram-item">
-          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=400&auto=format&fit=crop" alt="Aesthetic streetwear 1" loading="lazy">
-          <div class="instagram-item__overlay">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 6.5A4.75 4.75 0 0 0 10 4.25a4.75 4.75 0 0 0-7.5 2.25c0 5 7.5 10.25 7.5 10.25s7.5-5.25 7.5-10.25Z"/></svg>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-gutter">
+        <!-- Jerseys -->
+        <a class="group relative overflow-hidden aspect-3-4 bg-surface-container category-tab" data-category="Jerseys" href="#shop-grid">
+          <img alt="Jerseys" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmJ7k5ufWGBOcEhXOQt6_6iRH706PmLCDufd7zAqwBhTaqYk4Bmyrv4O982Bt2WV0my-GrUgvZJ6ZzUAx75VQhsuWy0nPQMXE76p7C9EebMgSigiyD6fyRFKwoJV75wyXNFPeIJYmQ-HklhRc0eL5aKOHLyJkBbMVwXvcBjj5FB7Moc8FQgyotINpMqRVUADWlLLZ_6RGBGfL4vOr1jZJqxYdvuTApp4uedkg9znnVh35XnAN4Lpm5dlTDXKTVt97C_KyRcYS7XJw"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6">
+            <p class="font-headline-md text-headline-md text-primary uppercase">JERSEYS</p>
           </div>
         </a>
-        <a href="#" class="instagram-item">
-          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=400&auto=format&fit=crop" alt="Aesthetic streetwear 2" loading="lazy">
-          <div class="instagram-item__overlay">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 6.5A4.75 4.75 0 0 0 10 4.25a4.75 4.75 0 0 0-7.5 2.25c0 5 7.5 10.25 7.5 10.25s7.5-5.25 7.5-10.25Z"/></svg>
+        <!-- Oversized Tees -->
+        <a class="group relative overflow-hidden aspect-3-4 bg-surface-container category-tab" data-category="Tees" href="#shop-grid">
+          <img alt="Oversized Tees" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUkk2GmPLID1uow4zfjEjPxmIk_uEYFrCM_agkhnGxcuLIsmsIz2qLEpGRD7E7Er4hi4JEKBV6Eh3gcYa4CVH_QOOch9nh6cM9pzsIcOHsyGgQH6vZOWUUpKRhV2BA_Y8Hj6anGf2Ht58g4M7IRYQB7AB-AKrxQv3AEt0FalvOv2auf8UsFl-VS6lYuLCYLaFhuzOWIpjYEuaOSt3lJNgicpkWPZ2LMnvEhMO525bnIu53Ph_m43tNI6XNfg5zyc5ayyiIxrchJ8o"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6">
+            <p class="font-headline-md text-headline-md text-primary uppercase text-nowrap">OVERSIZED TEES</p>
           </div>
         </a>
-        <a href="#" class="instagram-item">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=400&auto=format&fit=crop" alt="Aesthetic streetwear 3" loading="lazy">
-          <div class="instagram-item__overlay">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 6.5A4.75 4.75 0 0 0 10 4.25a4.75 4.75 0 0 0-7.5 2.25c0 5 7.5 10.25 7.5 10.25s7.5-5.25 7.5-10.25Z"/></svg>
+        <!-- Shirts -->
+        <a class="group relative overflow-hidden aspect-3-4 bg-surface-container category-tab" data-category="Overshirts" href="#shop-grid">
+          <img alt="Shirts" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASmFt1-pjZxSMKSWuq7X5E2FTVOSDNbJ2E0Wsxv1w4XoZjaZ03zqjEvWixzbO_mvBjGE9VSHKXnq-0KprOe5yOyAKzd1QvoBo3iA3ZFaf7h4o1hoJaD2_YwqTloAszMkaPvlRSrCL5cIEqiO0nsdg3O-uYTQPrM1CYXkukH0cNrOHYa4fTTrGs1zf--y_qSYHkNXTCxLpmeFi7FKCUcX72Dm9Vj2tMINOup_b9SO4hLbWPAPlMZqHks4ouVQEfTCnppLDhCPS4AhA"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6">
+            <p class="font-headline-md text-headline-md text-primary uppercase">SHIRTS</p>
           </div>
         </a>
-        <a href="#" class="instagram-item">
-          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=400&auto=format&fit=crop" alt="Aesthetic streetwear 4" loading="lazy">
-          <div class="instagram-item__overlay">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 6.5A4.75 4.75 0 0 0 10 4.25a4.75 4.75 0 0 0-7.5 2.25c0 5 7.5 10.25 7.5 10.25s7.5-5.25 7.5-10.25Z"/></svg>
+        <!-- Bottoms -->
+        <a class="group relative overflow-hidden aspect-3-4 bg-surface-container category-tab" data-category="Jeans" href="#shop-grid">
+          <img alt="Bottoms" class="w-full h-full object-cover grayscale transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzzBVxXu6ekmnDekc4vF3nsa-sCkYJakL5KEVdc7sYOyKzARV0XBqJMylWqt30IPhvWSWTWWD0XyUc7fCTSw7LuWMYdWiEouNzHn_7txoMqcLOz0Y4dPEyQJwjfTnt7x8VYsygynRvBI6pVX-Fz86VXgv_QN7GJqRwNLPrPKOU9SsINY-J6wkmmi-VOxVhHxNiJ1EREiIxcf70Ol3CKofYQndkNe3UXIW0nFc-9-PMx78AiJSKrd8RrWYMMuTvH-EELANnrQj-oSg"/>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6">
+            <p class="font-headline-md text-headline-md text-primary uppercase">BOTTOMS</p>
           </div>
         </a>
-        <a href="#" class="instagram-item">
-          <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=400&auto=format&fit=crop" alt="Aesthetic streetwear 5" loading="lazy">
-          <div class="instagram-item__overlay">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 6.5A4.75 4.75 0 0 0 10 4.25a4.75 4.75 0 0 0-7.5 2.25c0 5 7.5 10.25 7.5 10.25s7.5-5.25 7.5-10.25Z"/></svg>
-          </div>
-        </a>
-        <a href="#" class="instagram-item">
-          <img src="https://images.unsplash.com/photo-1496345875659-11f7dd282d1d?q=80&w=400&auto=format&fit=crop" alt="Aesthetic streetwear 6" loading="lazy">
-          <div class="instagram-item__overlay">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 6.5A4.75 4.75 0 0 0 10 4.25a4.75 4.75 0 0 0-7.5 2.25c0 5 7.5 10.25 7.5 10.25s7.5-5.25 7.5-10.25Z"/></svg>
+        <!-- ₹999 Drop -->
+        <a class="group relative overflow-hidden aspect-3-4 bg-surface-container col-span-2 md:col-span-1 category-tab" data-category="all" href="#shop-grid">
+          <img alt="₹999 Drop" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2CTtDMaO-JJji-oaiie76s4vZzcRr3eYmtgx3O6pYpDuWUU9y8dg6Vf47L00a_8C89VbiNqS3mwgEHSPCRwZlAwYX2QfiFhzR-p3w2cXMl1V84c1MN78HJCgQUlH_I35Hips1hq2o6JZS3VyKzmvMVy7XztfIbVTDeOh4rZ_WgQQHApXvxWZ0N604GZZTniLlJdpVZAUqkASgGUJexFVcOf6gX1rM953l6_jC3he7GxjMdlpj1nwauq_B5t3dJeAoGN_MKzchF3k"/>
+          <div class="absolute inset-0 bg-alert-drop/10 group-hover:bg-alert-drop/0 transition-colors"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6">
+            <p class="font-headline-md text-headline-md text-alert-drop uppercase tracking-tight">₹999 DROP</p>
           </div>
         </a>
       </div>
     </section>
 
-    <!-- 10. Customer Reviews -->
-    <section class="customer-reviews section-reveal page-width">
-      <div class="section-header">
-        <span class="section-eyebrow">TESTIMONIALS</span>
-        <h2 class="section-title">What Our Community Says</h2>
-        <p class="section-subtitle">Join thousands of streetwear heads wearing Escape</p>
+    <!-- Section 3: Shop / Product Grid -->
+    <section id="shop-grid" class="py-24 bg-surface-elevated">
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <div class="flex justify-between items-end mb-12">
+          <div>
+            <h2 class="font-headline-lg text-headline-lg uppercase text-primary" id="collection-grid-title">NEW ARRIVALS</h2>
+            <p class="font-label-lg text-label-lg text-outline">LATEST FROM THE STREETS</p>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-gutter" id="theme-products-grid">
+          <!-- Product cards will be dynamically loaded/filtered here -->
+        </div>
       </div>
+    </section>
 
-      <div class="reviews-grid">
-        <div class="review-card">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">"Best streetwear brand in India. Fast delivery and premium quality. The oversized fit is exactly what I was looking for."</p>
-          <div class="review-card__author">
-            <strong>Arjun K.</strong>
-            <span>Verified Buyer &middot; Oversized Tee</span>
+    <!-- Section 4: ₹999 Drop Banner -->
+    <section class="py-24 bg-[#111111] relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png')"></div>
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative z-10 text-center">
+        <h2 class="font-display-lg text-7xl md:text-[72px] text-primary uppercase tracking-tighter mb-4">3 FOR ₹999</h2>
+        <p class="font-label-lg text-label-lg text-alert-drop mb-12 tracking-widest uppercase">LIMITED TIME DROP — ENDING SOON</p>
+        
+        <!-- Countdown Container -->
+        <div class="flex justify-center gap-4 md:gap-8 mb-12" data-countdown="2026-12-31T23:59:59">
+          <div class="bg-surface-accent border border-outline-variant w-20 h-24 md:w-28 md:h-32 flex flex-col items-center justify-center">
+            <span class="font-headline-lg text-headline-lg text-primary" data-countdown-hours>12</span>
+            <span class="font-label-lg text-[10px] text-outline uppercase">Hours</span>
+          </div>
+          <div class="bg-surface-accent border border-outline-variant w-20 h-24 md:w-28 md:h-32 flex flex-col items-center justify-center">
+            <span class="font-headline-lg text-headline-lg text-primary" data-countdown-mins>45</span>
+            <span class="font-label-lg text-[10px] text-outline uppercase">Mins</span>
+          </div>
+          <div class="bg-surface-accent border border-outline-variant w-20 h-24 md:w-28 md:h-32 flex flex-col items-center justify-center">
+            <span class="font-headline-lg text-headline-lg text-primary" data-countdown-secs>22</span>
+            <span class="font-label-lg text-[10px] text-outline uppercase">Secs</span>
           </div>
         </div>
+        
+        <a href="#shop-grid" class="bg-alert-drop text-white px-12 py-5 font-label-lg text-label-lg uppercase tracking-widest hover:scale-105 transition-all active:scale-95 shadow-[0_0_20px_rgba(255,59,48,0.3)] inline-block">SHOP THE DROP</a>
+      </div>
+    </section>
 
-        <div class="review-card">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">"The ₹999 drop is an absolute steal. Already ordered twice! The jersey quality is unreal for the price."</p>
-          <div class="review-card__author">
-            <strong>Priya M.</strong>
-            <span>Verified Buyer &middot; ₹999 Drop Jersey</span>
+    <!-- Section 5: Why Choose Us -->
+    <section class="py-24 border-t border-outline-variant">
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-gutter">
+          <div class="flex flex-col items-center text-center p-8 border border-outline-variant hover:border-primary transition-colors group">
+            <span class="material-symbols-outlined text-4xl mb-4 text-primary group-hover:scale-110 transition-all">verified_user</span>
+            <h4 class="font-label-lg text-label-lg text-primary uppercase mb-2">PREMIUM QUALITY</h4>
+            <p class="font-body-md text-sm text-outline">Heavy-weight fabrics & superior stitching</p>
           </div>
-        </div>
-
-        <div class="review-card">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">"Jerseys are fire. Exactly like the photos. Packaging was clean and delivery was super fast. 10/10."</p>
-          <div class="review-card__author">
-            <strong>Rohan S.</strong>
-            <span>Verified Buyer &middot; NBA Jersey</span>
+          <div class="flex flex-col items-center text-center p-8 border border-outline-variant hover:border-primary transition-colors group">
+            <span class="material-symbols-outlined text-4xl mb-4 text-primary group-hover:scale-110 transition-all">local_shipping</span>
+            <h4 class="font-label-lg text-label-lg text-primary uppercase mb-2">FAST SHIPPING</h4>
+            <p class="font-body-md text-sm text-outline">Across India in 3-5 business days</p>
+          </div>
+          <div class="flex flex-col items-center text-center p-8 border border-outline-variant hover:border-primary transition-colors group">
+            <span class="material-symbols-outlined text-4xl mb-4 text-primary group-hover:scale-110 transition-all">encrypted</span>
+            <h4 class="font-label-lg text-label-lg text-primary uppercase mb-2">SECURE PAYMENTS</h4>
+            <p class="font-body-md text-sm text-outline">100% safe & encrypted transactions</p>
+          </div>
+          <div class="flex flex-col items-center text-center p-8 border border-outline-variant hover:border-primary transition-colors group">
+            <span class="material-symbols-outlined text-4xl mb-4 text-primary group-hover:scale-110 transition-all">keyboard_return</span>
+            <h4 class="font-label-lg text-label-lg text-primary uppercase mb-2">EASY RETURNS</h4>
+            <p class="font-body-md text-sm text-outline">No questions asked return policy</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 11. Newsletter Signup -->
-    <section class="newsletter section-reveal">
-      <div class="page-width">
-        <div class="newsletter__wrapper">
-          <span class="newsletter__label">STAY IN THE LOOP</span>
-          <h2 class="newsletter__title">Join the Escape Vault</h2>
-          <p class="newsletter__desc">Get early access to weekly drops, exclusive discounts, and secret combo deals.</p>
-          
-          <form class="newsletter__form">
-            <input type="email" placeholder="Enter your email address" class="newsletter__input" required autocomplete="off">
-            <button type="submit" class="newsletter__btn">Subscribe</button>
-          </form>
+    <!-- Section 6: Instagram Gallery -->
+    <section class="py-24 bg-surface-container-lowest">
+      <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center mb-12">
+        <h2 class="font-headline-lg text-headline-lg text-primary uppercase">JOIN THE CULT</h2>
+        <a class="font-label-lg text-label-lg text-outline hover:text-primary transition-colors" href="#">@escape_clothing17</a>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-6">
+        <div class="aspect-square overflow-hidden border border-background">
+          <img alt="IG 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 grayscale hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJyMFfyOYB-Jkp2ACuWTvj7CwLLbaMrweqf9UckQrMsU-BXLxB60_WBUPk9VbHbrydjqYLI_vHDcJXbia3kZO0YU3v80O0OOa1zMlVg4Ein8sro_T5wMRVaCMR7aPKLwWWc5qQbFcMSL7HV8djK3W6tiguHeMVgPlina5i1en__LmruQ6uoobVcw1HzkWY1S5mPRL2tEf3rFydUYystMPL4x0XTb1CjN3pioCHLAbK4uK8MFL1fnt_r4w0kC3u7R27FT1B2lDbH4w"/>
+        </div>
+        <div class="aspect-square overflow-hidden border border-background">
+          <img alt="IG 2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 grayscale hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9KXGtFhYYQrnWNq32HRk1rX3Fa9P74Pr-8xJyyQ54DGQVFZE38aUmxFSNETFp0x5x6KceJqeN50So5ZUsGtp1k3E5LtmHUR69JZu1REAVXLX_Wn-GJ6xO_OtGCgFVFwfEmMrsZ_6KfE0zbX7rmKYlQ4aSbtWBjnzw_DRfpXSB9LmdQYtWMmMdB4qSjrtL4Cl11uFHqijKYnnTuCDrDF-HLKKv2YZpHRyAVrP4y1EUYu_Z9HpDQwqGfYNjvCoLqel_e3kxlSUJn6w"/>
+        </div>
+        <div class="aspect-square overflow-hidden border border-background">
+          <img alt="IG 3" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 grayscale hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0_GtrTtwpyd2c6l8NOuMh0cPi3kSjrmEV5gEnFTrmcOlioSarGcBeOXHRUAsGPGwr9cQqVlfWCxzcYCqNw6qk1oND8AeVknsQ2T7XLKcOjivaY1nFbyuT2aSCQBayrq5cXZzrwYGAz15AzR1YytYwrNqCAYrFAsEGClfXiE2uV12PnCLT2Q0UIOjr0zmTKUfQxqOAewZq30QcHuGWSIUr3eAZsts-TSuNIuvPHUvYkWKsN-7RXsncmw5HvaianuObdf7bScBbGdo"/>
+        </div>
+        <div class="aspect-square overflow-hidden border border-background">
+          <img alt="IG 4" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 grayscale hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh69YuicQm06PfwKzYy1tyL8WWjcYUPELKbh9UwMWdQgjXimOT0DFz4P2Ik981hPSeBvPlEurMp61-ZdSZ0mvGjyvOqmGGnwvS84Bcg7tCL7n2CEDfHXmb-rI8QTMr9VWJP5QgANtpnkVeiYmmqRjqHvTOQRjm8V7oWicNCdW9j9-04DByim2BZ9QJfZH4YgPRd2fbBTRqrat5leBby37Nabb-yRVIiKddsvdgVvkRMLiXrldYK6Qvsz29MoEsYfU78rfPT3KVi1E"/>
+        </div>
+        <div class="aspect-square overflow-hidden border border-background">
+          <img alt="IG 5" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 grayscale hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqB5xAYl5x_Nt5Zx59gIiuxJJDCuuOJ8BfcJJRyKFTCO5YOU2w1fUVWICen6g4e0EAyLyro5JQhVOB4Nhzkq07JnAIu81mowvO38EcJ2WiGFV66MooSXLNHED_jouJl4I4Wsx0JESE9QnTOG_6zPT8L6jHMmYpDmf3G4J3kyjYZHjko9N3ZXk3te2OxnJVKpJPrFuGUAri3z3-0bKXkpQ2wojrgWGd85RFJ12UP2YztUml5z5hu-LM5-At9W02_PCeVyZHg6OuRfo"/>
+        </div>
+        <div class="aspect-square overflow-hidden border border-background">
+          <img alt="IG 6" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 grayscale hover:grayscale-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnkEjWzcf4TfjIAQeYZRSNdIzfw2IGwqvB_Yvg3M6UtjPm29iineHLzczS47mtGjVnXJ70knZn4E4RexWNl9f9bRAsVcRgl60ChLXLo-CxTOobDBYgxhd75ltmKaUkH5biLOZvx3iYuXZAqT6UXjeSSMTZYYMyXMHp6TBFAFD7pvzFN-cwqg90hCcVJKmRxQj_pDW9CT2IKL3fPxXZGeRKp7-tQrNaJwTbMGnfmov--INi7ZuCdjIu7LfwwcaUwYay5llo_vQtPpg"/>
         </div>
       </div>
     </section>
 
+    <!-- Section 7: Newsletter -->
+    <section class="py-24 bg-surface border-t border-outline-variant">
+      <div class="px-margin-mobile md:px-margin-desktop max-w-2xl mx-auto text-center">
+        <h2 class="font-headline-lg text-headline-lg text-primary uppercase mb-4">GET EARLY ACCESS TO DROPS</h2>
+        <p class="font-body-md text-outline mb-10">Sign up to our newsletter and be the first to know about new arrivals and exclusive limited-time discounts.</p>
+        <form class="flex flex-col md:flex-row gap-4" onsubmit="event.preventDefault(); alert('Subscribed successfully!'); this.reset();">
+          <input class="flex-1 bg-surface-accent border border-outline-variant p-4 text-primary font-label-lg focus:border-primary focus:ring-0 rounded-none transition-colors" placeholder="ENTER YOUR EMAIL" type="email" required/>
+          <button class="bg-primary text-on-primary px-10 py-4 font-label-lg text-label-lg uppercase tracking-widest hover:opacity-90 transition-all active:scale-95" type="submit">JOIN</button>
+        </form>
+      </div>
+    </section>
   </main>
 
-  <!-- 13. Premium Footer -->
-  <footer class="site-footer">
-    <div class="page-width">
-      <div class="footer__grid">
-        
-        <div class="footer__col footer__col--about">
-          <h3 class="footer__title">ESCAPE CLOTHING 👣</h3>
-          <p class="footer__about-text">Premium dark streetwear designed and manufactured in India. Bold silhouettes, heavyweight fabrics, and uncompromising details.</p>
-          <div class="footer__socials">
-            <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg></a>
-            <a href="#" aria-label="TikTok"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
-            <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
-          </div>
-        </div>
-
-        <div class="footer__col">
-          <h3 class="footer__title">Shop</h3>
-          <ul class="footer__links">
-            <li><a href="#">New Arrivals</a></li>
-            <li><a href="#">Best Sellers</a></li>
-            <li><a href="#">Jerseys</a></li>
-            <li><a href="#">Oversized Tees</a></li>
-            <li><a href="#">₹999 Drop Collection</a></li>
-          </ul>
-        </div>
-
-        <div class="footer__col">
-          <h3 class="footer__title">Info</h3>
-          <ul class="footer__links">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Track Order</a></li>
-            <li><a href="#">FAQ</a></li>
-          </ul>
-        </div>
-
-        <div class="footer__col">
-          <h3 class="footer__title">Policies</h3>
-          <ul class="footer__links">
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Refund Policy</a></li>
-            <li><a href="#">Return Policy</a></li>
-            <li><a href="#">Shipping Policy</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-          </ul>
-        </div>
-
+  <!-- Route View: Login -->
+  <div id="route-login" class="route-view hidden pt-[112px] min-h-[70vh] flex items-center bg-surface text-primary">
+    <div class="px-margin-mobile w-full max-w-md mx-auto py-24">
+      <div class="text-center mb-8">
+        <h1 class="font-display-lg text-5xl uppercase tracking-tighter">LOG IN</h1>
+        <p class="font-label-lg text-xs text-outline mt-2 uppercase tracking-widest">ENTER YOUR ACCOUNT TO JOIN THE CULT</p>
       </div>
-
-      <div class="footer__bottom">
-        <p class="footer__copyright">&copy; 2026, Escape Clothing. Built for the streets of India.</p>
-        <div class="footer__payment-icons">
-          <!-- Mock badges -->
-          <span class="payment-badge">COD</span>
-          <span class="payment-badge">UPI</span>
-          <span class="payment-badge">Cashfree</span>
-          <span class="payment-badge">Cards</span>
+      <form class="space-y-6" onsubmit="event.preventDefault(); window.location.hash = '#account';">
+        <div class="space-y-2">
+          <label class="block font-label-lg text-xs text-outline uppercase tracking-wider">Email Address</label>
+          <input type="email" required placeholder="name@domain.com" class="w-full bg-surface-accent border border-outline-variant p-4 text-primary font-label-lg focus:border-primary focus:ring-0 rounded-none transition-colors">
         </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- 12. Cart Drawer -->
-  <div id="cart-drawer" class="cart-drawer" data-cart-drawer aria-hidden="true">
-    <div class="cart-drawer__overlay" data-cart-close></div>
-    <div class="cart-drawer__panel">
-      <div class="cart-drawer__header">
-        <h2 class="cart-drawer__title">Your Cart (<span data-cart-count>2</span>)</h2>
-        <button type="button" class="cart-drawer__close" data-cart-close aria-label="Close cart">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 5 5 15M5 5l10 10"/></svg>
+        <div class="space-y-2">
+          <label class="block font-label-lg text-xs text-outline uppercase tracking-wider">Password</label>
+          <input type="password" required placeholder="••••••••" class="w-full bg-surface-accent border border-outline-variant p-4 text-primary font-label-lg focus:border-primary focus:ring-0 rounded-none transition-colors">
+        </div>
+        <button type="submit" class="w-full bg-primary text-on-primary py-4 font-label-lg text-label-lg uppercase tracking-widest hover:opacity-90 transition-all active:scale-95">
+          SIGN IN
         </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Route View: Account Dashboard -->
+  <div id="route-account" class="route-view hidden pt-[112px] bg-surface text-primary py-24">
+    <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center border-b border-outline-variant pb-8 mb-12">
+        <div>
+          <h1 class="font-display-lg text-5xl md:text-7xl uppercase tracking-tighter">MY ACCOUNT</h1>
+          <p class="font-label-lg text-label-lg text-outline mt-2">WELCOME BACK, UTKARSH LANJE</p>
+        </div>
+        <a href="#" onclick="event.preventDefault(); window.location.hash = '';" class="mt-4 md:mt-0 bg-transparent border border-outline hover:border-primary text-primary px-8 py-3 font-label-lg text-xs uppercase tracking-widest transition-all">
+          LOG OUT
+        </a>
       </div>
-
-      <div class="cart-drawer__content" data-cart-drawer-content>
-        <!-- Mock Items -->
-        <div class="cart-drawer__items">
-          <div class="cart-item" data-cart-item="1">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=200&auto=format&fit=crop" class="cart-item__image" alt="Seoul Street Jersey">
-            <div class="cart-item__details">
-              <h4 class="cart-item__title">Seoul Street Jersey</h4>
-              <p class="cart-item__option">Size: L</p>
-              <div class="cart-item__qty-price">
-                <div class="quantity-selector" data-quantity-selector>
-                  <button type="button" data-quantity-minus>-</button>
-                  <input type="text" value="1" readonly data-quantity-input>
-                  <button type="button" data-quantity-plus>+</button>
-                </div>
-                <span class="cart-item__price">₹1,499.00</span>
-              </div>
-              <button type="button" class="cart-item__remove" data-cart-remove="1">Remove</button>
-            </div>
-          </div>
-
-          <div class="cart-item" data-cart-item="5">
-            <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=200&auto=format&fit=crop" class="cart-item__image" alt="Vintage Wash Graphic Tee">
-            <div class="cart-item__details">
-              <h4 class="cart-item__title">Vintage Wash Graphic Tee</h4>
-              <p class="cart-item__option">Size: M</p>
-              <div class="cart-item__qty-price">
-                <div class="quantity-selector" data-quantity-selector>
-                  <button type="button" data-quantity-minus>-</button>
-                  <input type="text" value="1" readonly data-quantity-input>
-                  <button type="button" data-quantity-plus>+</button>
-                </div>
-                <span class="cart-item__price">₹1,199.00</span>
-              </div>
-              <button type="button" class="cart-item__remove" data-cart-remove="5">Remove</button>
-            </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div class="lg:col-span-2">
+          <h2 class="font-display-lg text-3xl uppercase tracking-widest mb-6">ORDER HISTORY</h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="border-b border-outline-variant text-outline font-label-lg text-xs uppercase tracking-wider">
+                  <th class="py-4 pr-4">Order</th>
+                  <th class="py-4 px-4">Date</th>
+                  <th class="py-4 px-4">Payment</th>
+                  <th class="py-4 px-4">Fulfillment</th>
+                  <th class="py-4 pl-4 text-right">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-outline-variant/40 hover:bg-surface-accent transition-colors font-body-md text-sm">
+                  <td class="py-4 pr-4"><span class="font-semibold text-primary">#ESC-1056</span></td>
+                  <td class="py-4 px-4 text-outline">Jun 09, 2026</td>
+                  <td class="py-4 px-4"><span class="inline-block px-3 py-1 text-[11px] font-semibold tracking-wider uppercase border border-green-500/30 text-green-500 bg-green-500/5">PAID</span></td>
+                  <td class="py-4 px-4"><span class="inline-block px-3 py-1 text-[11px] font-semibold tracking-wider uppercase border border-blue-500/30 text-blue-500 bg-blue-500/5">SHIPPED</span></td>
+                  <td class="py-4 pl-4 text-right font-semibold text-primary">₹5,097</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-
-        <div class="cart-drawer__footer">
-          <!-- Progress to Free Shipping -->
-          <div class="free-shipping-bar">
-            <div class="free-shipping-bar__text">✨ You've unlocked <strong>FREE SHIPPING</strong>!</div>
-            <div class="free-shipping-bar__progress" style="--progress: 100%"></div>
-          </div>
-
-          <div class="cart-drawer__summary">
-            <div class="summary-row">
-              <span>Subtotal</span>
-              <strong>₹2,698.00</strong>
+        <div>
+          <h2 class="font-display-lg text-3xl uppercase tracking-widest mb-6">ACCOUNT DETAILS</h2>
+          <div class="bg-surface-accent border border-outline-variant p-8">
+            <h3 class="font-label-lg text-sm uppercase tracking-wider text-primary mb-4">Utkarsh Lanje</h3>
+            <p class="font-body-md text-sm text-outline mb-6">utkarsh@escapeclothing.in</p>
+            <div class="font-body-md text-sm text-outline space-y-1">
+              <p class="text-primary font-semibold uppercase text-xs tracking-wider mb-2">DEFAULT ADDRESS</p>
+              <p>12, Pratap Nagar</p>
+              <p>Nagpur, MH 440022</p>
+              <p>India</p>
             </div>
-            <div class="summary-row">
-              <span>Shipping</span>
-              <span>FREE</span>
-            </div>
+            <a href="#addresses" class="mt-8 block text-center bg-primary text-on-primary px-8 py-4 font-label-lg text-xs uppercase tracking-widest hover:opacity-90 transition-all">
+              MANAGE ADDRESSES (1)
+            </a>
           </div>
-
-          <button type="button" class="checkout-btn">PROCEED TO SECURE CHECKOUT</button>
-          <p class="checkout-footer-text">🔒 256-bit SSL encrypted checkout powered by Cashfree</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Load real theme.js -->
+  <!-- Route View: Addresses -->
+  <div id="route-addresses" class="route-view hidden pt-[112px] bg-surface text-primary py-24">
+    <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      <div class="flex justify-between items-center border-b border-outline-variant pb-8 mb-12">
+        <div>
+          <a href="#account" class="text-xs font-label-lg text-outline hover:text-primary transition-colors uppercase tracking-widest flex items-center gap-2 mb-4">
+            <span class="material-symbols-outlined text-[14px]">arrow_back</span> Back to Account
+          </a>
+          <h1 class="font-display-lg text-5xl md:text-7xl uppercase tracking-tighter">MANAGE ADDRESSES</h1>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-surface-accent border border-outline-variant p-8 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <span class="font-label-lg text-sm uppercase tracking-wider text-primary">Utkarsh Lanje</span>
+              <span class="bg-primary text-on-primary px-3 py-1 text-[10px] font-bold tracking-widest uppercase">DEFAULT</span>
+            </div>
+            <div class="font-body-md text-sm text-outline space-y-1">
+              <p>12, Pratap Nagar</p>
+              <p>Nagpur, MH 440022</p>
+              <p>India</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Route View: Product Detail Page -->
+  <div id="route-product" class="route-view hidden pt-[112px] bg-surface text-primary pb-24">
+    <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+      
+      <!-- Back to shop link -->
+      <div class="border-b border-outline-variant pb-6 mb-10">
+        <a href="#" class="text-xs font-label-lg text-outline hover:text-primary transition-colors uppercase tracking-widest flex items-center gap-2">
+          <span class="material-symbols-outlined text-[14px]">arrow_back</span> Back to Storefront
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <!-- Gallery -->
+        <div class="w-full aspect-3-4 bg-surface-accent border border-outline-variant/30 overflow-hidden relative">
+          <img id="pdp-img" src="" alt="Product view" class="w-full h-full object-cover" loading="lazy">
+          <span class="absolute top-4 left-4 z-10 bg-primary text-on-primary font-label-lg text-[10px] px-2 py-1 uppercase">NEW</span>
+        </div>
+
+        <!-- Details -->
+        <div class="space-y-8">
+          <h1 id="pdp-title" class="font-display-lg text-5xl md:text-7xl uppercase tracking-tighter leading-none">OBSIDIAN HOODIE</h1>
+          
+          <div class="flex items-center gap-3">
+            <span class="text-alert-drop text-lg">★★★★★</span>
+            <span class="text-xs text-outline font-semibold tracking-wider uppercase">4.5 (128 Reviews)</span>
+          </div>
+
+          <div class="flex items-baseline gap-4">
+            <span id="pdp-price" class="font-price-display text-4xl font-bold">₹2,499</span>
+            <span class="text-xs text-outline font-semibold uppercase tracking-wider">Inclusive of all taxes</span>
+          </div>
+
+          <hr class="border-outline-variant/40">
+
+          <!-- Options -->
+          <div class="space-y-6">
+            <!-- Size -->
+            <div class="space-y-3">
+              <span class="text-xs font-label-lg text-outline uppercase tracking-wider block">Select Size</span>
+              <div class="flex gap-2">
+                <button class="border border-primary bg-primary text-on-primary w-12 h-12 font-bold text-sm">S</button>
+                <button class="border border-outline-variant hover:border-primary text-primary w-12 h-12 font-bold text-sm">M</button>
+                <button class="border border-outline-variant hover:border-primary text-primary w-12 h-12 font-bold text-sm">L</button>
+                <button class="border border-outline-variant hover:border-primary text-primary w-12 h-12 font-bold text-sm">XL</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="space-y-4 pt-4">
+            <button class="w-full bg-primary text-on-primary py-4 font-label-lg uppercase tracking-widest hover:opacity-90 transition-all active:scale-95" onclick="alert('Added to Cart!');">
+              ADD TO CART
+            </button>
+            <button class="w-full bg-transparent border border-primary text-primary py-4 font-label-lg uppercase tracking-widest hover:bg-primary/10 transition-all active:scale-95" onclick="alert('Redirecting to direct checkout...');">
+              BUY IT NOW
+            </button>
+            <a id="pdp-wa-link" href="https://wa.me/918261094774" target="_blank" class="w-full bg-[#25D366] text-white py-4 font-label-lg uppercase tracking-widest hover:opacity-90 transition-all flex items-center justify-center gap-3">
+              <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.335 4.975L2 22l5.197-1.362a9.926 9.926 0 0 0 4.814 1.248h.005c5.505 0 9.99-4.478 9.99-9.986 0-2.67-1.037-5.178-2.924-7.065A9.923 9.923 0 0 0 12.012 2zm5.727 14.047c-.244.688-1.22 1.26-1.68 1.32-.419.055-.956.088-2.969-.748-2.574-1.062-4.225-3.69-4.354-3.86-.127-.17-1.047-1.393-1.047-2.656 0-1.263.662-1.884.897-2.119.236-.235.514-.294.685-.294.17 0 .341.002.49.009.155.007.363-.059.568.44.21.512.72 1.76.782 1.884.062.126.104.272.02.44-.082.17-.123.272-.246.419-.123.147-.258.328-.369.44-.123.126-.252.264-.108.512.144.248.641 1.06 1.378 1.719.95.848 1.748 1.11 1.996 1.235.248.126.393.104.538-.063.146-.17.62-.72.786-.96.166-.24.33-.2.553-.118.224.082 1.417.67 1.666.793.248.123.414.185.476.294.062.11.062.637-.182 1.325z"/></svg>
+              ORDER ON WHATSAPP
+            </a>
+          </div>
+
+          <!-- Product description accordions -->
+          <div class="space-y-4 pt-6 border-t border-outline-variant/40">
+            <details class="group border-b border-outline-variant/40 pb-4" open>
+              <summary class="flex justify-between items-center font-label-lg text-sm uppercase tracking-wider cursor-pointer list-none">
+                Description <span class="group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <p class="font-body-md text-sm text-outline mt-3 leading-relaxed">
+                Premium heavyweight streetwear item designed in Nagpur. Boxy oversized profile with drop shoulder seams. Crafted from 100% combed cotton fleece for ultimate comfort and durability.
+              </p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-surface-container-highest w-full py-20">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+      <div class="col-span-2">
+        <h2 class="font-headline-lg text-headline-lg text-primary mb-6 uppercase tracking-tighter">ESCAPE CLOTHING</h2>
+        <p class="font-body-md text-ink-muted max-w-xs mb-8">Premium urban streetwear engineered for those who refuse to fit in. Designed in India, inspired by global street culture.</p>
+        <div class="flex gap-4">
+          <a class="w-10 h-10 border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all" href="#">
+            <span class="material-symbols-outlined text-lg">public</span>
+          </a>
+          <a class="w-10 h-10 border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all" href="#">
+            <span class="material-symbols-outlined text-lg">share</span>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-label-lg text-label-lg text-primary uppercase mb-6">SHOP</h4>
+        <ul class="space-y-4">
+          <li><a class="font-label-lg text-label-lg text-ink-muted hover:text-primary transition-colors category-tab" data-category="all" href="#shop-grid">NEW ARRIVALS</a></li>
+          <li><a class="font-label-lg text-label-lg text-ink-muted hover:text-primary transition-colors category-tab" data-category="Jerseys" href="#shop-grid">JERSEYS</a></li>
+          <li><a class="font-label-lg text-label-lg text-ink-muted hover:text-primary transition-colors category-tab" data-category="Tees" href="#shop-grid">OVERSIZED TEES</a></li>
+          <li><a class="font-label-lg text-label-lg text-ink-muted hover:text-primary transition-colors category-tab" data-category="all" href="#shop-grid">₹999 DROP</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-label-lg text-label-lg text-primary uppercase mb-6">SUPPORT</h4>
+        <ul class="space-y-4">
+          <li><a class="font-label-lg text-label-lg text-ink-muted hover:text-primary transition-colors" href="#">CONTACT US</a></li>
+
+          <li><a class="font-label-lg text-label-lg text-ink-muted hover:text-primary transition-colors" href="#">TRACK ORDER</a></li>
+          <li><a class="font-label-lg text-label-lg text-ink-muted hover:text-primary transition-colors" href="#">RETURNS</a></li>
+          <li><a class="font-label-lg text-label-lg text-ink-muted hover:text-primary transition-colors" href="#">SHIPPING</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-label-lg text-label-lg text-primary uppercase mb-6">POLICIES</h4>
+        <ul class="space-y-4">
+          <li><a class="font-label-lg text-label-lg text-ink-muted hover:text-primary transition-colors" href="#">PRIVACY POLICY</a></li>
+          <li><a class="font-label-lg text-label-lg text-ink-muted hover:text-primary transition-colors" href="#">TERMS OF SERVICE</a></li>
+          <li><a class="font-label-lg text-label-lg text-ink-muted hover:text-primary transition-colors" href="#">WHATSAPP</a></li>
+          <li><a class="font-label-lg text-label-lg text-ink-muted hover:text-primary transition-colors" href="#">INSTAGRAM</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-20 pt-8 border-t border-outline-variant px-margin-desktop max-w-container-max mx-auto text-center">
+      <p class="font-label-lg text-xs text-ink-muted">© 2026 ESCAPE CLOTHING. ALL RIGHTS RESERVED.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a class="fixed bottom-8 right-8 z-[100] group" href="https://wa.me/918261094774" target="_blank">
+    <div class="relative w-16 h-16 flex items-center justify-center bg-[#25D366] text-white rounded-full shadow-lg hover:scale-110 transition-transform duration-300">
+      <div class="absolute inset-0 bg-[#25D366] rounded-full blur-xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+      <svg class="w-8 h-8 relative z-10" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.335 4.975L2 22l5.197-1.362a9.926 9.926 0 0 0 4.814 1.248h.005c5.505 0 9.99-4.478 9.99-9.986 0-2.67-1.037-5.178-2.924-7.065A9.923 9.923 0 0 0 12.012 2zm5.727 14.047c-.244.688-1.22 1.26-1.68 1.32-.419.055-.956.088-2.969-.748-2.574-1.062-4.225-3.69-4.354-3.86-.127-.17-1.047-1.393-1.047-2.656 0-1.263.662-1.884.897-2.119.236-.235.514-.294.685-.294.17 0 .341.002.49.009.155.007.363-.059.568.44.21.512.72 1.76.782 1.884.062.126.104.272.02.44-.082.17-.123.272-.246.419-.123.147-.258.328-.369.44-.123.126-.252.264-.108.512.144.248.641 1.06 1.378 1.719.95.848 1.748 1.11 1.996 1.235.248.126.393.104.538-.063.146-.17.62-.72.786-.96.166-.24.33-.2.553-.118.224.082 1.417.67 1.666.793.248.123.414.185.476.294.062.11.062.637-.182 1.325z"/>
+      </svg>
+    </div>
+  </a>
+
+  <!-- Cart Drawer Component (Styled in Tailwind Dark Mode) -->
+  <div id="cart-drawer" class="cart-drawer fixed inset-y-0 right-0 w-full max-w-md bg-surface border-l border-outline-variant z-[1002] flex flex-col translate-x-full transition-transform duration-300" data-cart-drawer aria-hidden="true">
+    <div class="cart-drawer__overlay fixed inset-0 bg-black/60 -z-10 cursor-pointer" data-cart-close></div>
+    <div class="flex flex-col h-full bg-surface-container relative z-10">
+      <div class="cart-drawer__header p-6 border-b border-outline-variant flex justify-between items-center">
+        <h2 class="text-xl font-bold tracking-wider">YOUR CART (<span data-cart-count>2</span>)</h2>
+        <button type="button" class="text-outline hover:text-primary text-2xl" data-cart-close aria-label="Close cart">×</button>
+      </div>
+
+      <!-- Scrollable Content container -->
+      <div class="flex-1 overflow-y-auto p-6" data-cart-drawer-content>
+        <!-- Mock Items rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Sidebar (Styled in Tailwind) -->
+  <div class="floating-sidebar fixed right-4 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-40">
+    <div class="floating-widget w-12 h-12 bg-surface border border-outline-variant hover:border-primary flex items-center justify-center cursor-pointer rounded-none relative group transition-all" id="floating-widget-notif" aria-label="Notifications">
+      <span class="material-symbols-outlined text-primary text-xl">notifications</span>
+      <span class="absolute right-14 bg-surface-accent border border-outline-variant text-[11px] font-semibold tracking-wider text-primary px-3 py-1 uppercase opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">Notifications</span>
+    </div>
+    <div class="floating-widget w-12 h-12 bg-surface border border-outline-variant hover:border-primary flex items-center justify-center cursor-pointer rounded-none relative group transition-all" id="floating-widget-pincode" aria-label="Pincode Check">
+      <span class="material-symbols-outlined text-primary text-xl">location_on</span>
+      <span class="absolute right-14 bg-surface-accent border border-outline-variant text-[11px] font-semibold tracking-wider text-primary px-3 py-1 uppercase opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">Pincode Check</span>
+    </div>
+    <div class="floating-widget w-12 h-12 bg-surface border border-outline-variant hover:border-primary flex items-center justify-center cursor-pointer rounded-none relative group transition-all" id="floating-widget-wishlist" aria-label="Wishlist">
+      <span class="material-symbols-outlined text-primary text-xl">favorite</span>
+      <span class="absolute right-14 bg-surface-accent border border-outline-variant text-[11px] font-semibold tracking-wider text-primary px-3 py-1 uppercase opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">My Wishlist</span>
+    </div>
+    <div class="floating-widget w-12 h-12 bg-[#25D366]/20 border border-[#25D366]/40 hover:bg-[#25D366] hover:text-white flex items-center justify-center cursor-pointer rounded-none relative group transition-all" id="floating-widget-chat" aria-label="Shopping Assistant">
+      <span class="material-symbols-outlined text-primary text-xl group-hover:text-white">chat</span>
+      <span class="absolute right-14 bg-surface-accent border border-outline-variant text-[11px] font-semibold tracking-wider text-primary px-3 py-1 uppercase opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">Shopping Assistant</span>
+    </div>
+  </div>
+
+  <!-- Pincode Check Modal -->
+  <div class="pincode-modal-container fixed inset-0 z-[1003] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300" id="pincode-modal">
+    <div class="pincode-modal-overlay fixed inset-0 bg-black/60" id="pincode-modal-overlay"></div>
+    <div class="bg-surface-container border border-outline-variant w-full max-w-md p-8 relative z-10 shadow-2xl">
+      <button class="absolute top-4 right-4 text-outline hover:text-primary text-2xl" id="pincode-modal-close-btn">&times;</button>
+      <h3 class="font-title-lg text-2xl text-primary uppercase mb-2">Check Delivery Pincode</h3>
+      <p class="font-body-md text-sm text-outline mb-6">Enter your 6-digit PIN code to check shipping speed and COD availability.</p>
+      
+      <div class="flex border border-outline-variant focus-within:border-primary transition-colors">
+        <input type="text" maxlength="6" placeholder="Enter pincode (e.g. 400001)" class="flex-1 bg-surface-accent p-4 text-primary font-label-lg focus:outline-none focus:ring-0" id="pincode-input-field">
+        <button type="button" class="bg-primary text-on-primary px-6 font-semibold uppercase tracking-wider hover:opacity-90" id="pincode-verify-btn">Verify</button>
+      </div>
+      <div class="pincode-result mt-4 text-sm font-semibold text-center" id="pincode-result-message"></div>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div class="fixed inset-0 z-[1003] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300" id="search-modal" aria-hidden="true">
+    <div class="search-modal__overlay fixed inset-0 bg-black/80"></div>
+    <div class="w-full max-w-2xl px-6 relative z-10">
+      <div class="flex items-center border-b border-primary py-4">
+        <input type="search" placeholder="SEARCH STREETWEAR..." class="w-full bg-transparent border-none text-3xl font-display-lg uppercase tracking-wider text-primary focus:outline-none focus:ring-0 p-0" id="search-input">
+        <button class="text-3xl text-outline hover:text-primary ml-4" data-search-close>&times;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom Styles for Theme States -->
+  <style>
+    .cart-drawer.is-open {
+      transform: translateX(0);
+    }
+    #pincode-modal.is-open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    #search-modal.is-open {
+      opacity: 1;
+      pointer-events: all;
+    }
+  </style>
+
+  <!-- Load mock store engine script -->
   <script src="/assets/theme.js" defer></script>
+  
+  <!-- Overwrite category tabs render function to match the redesign -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Inject product list rendering matching Section 3 mockup
+      const grid = document.getElementById('theme-products-grid');
+      const titleEl = document.getElementById('collection-grid-title');
+      if (!grid) return;
+
+      const PRODUCTS = [
+        { id: "1", title: "Obsidian Hoodie", price: 2499, badge: "NEW", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCW2bXLgmindKtIYfhJYcms1uuafD98WgQ4kKKO1MNjOIYzUcm2F2ZzQ9Dv5MoNeqjBn6BtMNrjXfiao9yhpxZofEEobXcVdtu-PBQUE-qLhfn8j9YFQrpjva5sEGhr9tyLDpxRZ-F66pSMpmXHkTyObp1FuI8ce4IdWObS56brr6P2A9hhL_uGDoQlcqPfRYE8eftc5zo7ItcnjeX2OwEZICmYw9B9rke4A8F3gKBs-_6ZlvH2Y9V8lrLGl1fZNgNbEXNcgI4LGuo" },
+        { id: "2", title: "Acid Wash Tee", price: 1299, badge: "🔥 HOT", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBiZeFwWN5yHtrfiTlGjMZHnUUY9oQq1pDZIVPt2gfmPAXvgSRgFach-CgxP158jidRFk5WQeG924nK-jLjs9cxPHRhwcFlT4VfysJAjh1OELkoZ0jfnBNCObHQGC7jLiPY67QQseIuTzvq4BmWA0JJqveUhKU5I8OgHRjGOKu3wIc8UmFN6mScZU1TXU3ZkZPU-WpWPH7pbeo_2l-2c114bdvFM298mqqE4dHVgyeNFkTpJb93DIQXRvD7-Tf5Svi421KUeh7zW5E" },
+        { id: "3", title: "Technical Cargo", price: 3999, badge: "", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAphwd82DYZ-XMbYifMdZCDeRTOih6cVUseP7N7h_haHdqTVFTGOhEwALQ4UwVS3ITNAxohMdPgr0VwcLEL7u5FDi3c1u4RuZWoBctyiKgFt6phmf1I9gHfxAYuw7TmBG6d2FXUCS1BPiS539dgBESD3yG12uWYcNfxVZBaXj9lLXlqESc5Ct_4l5IVdhAsyDFoZ2qx8-GeoSijqyIC5-bVPhFGSZy7hXcbrkYeemWJ_h17c7QChGv5NuxWegaqYsd4I7yrycupVos" },
+        { id: "4", title: "Graphite Jersey", price: 1899, badge: "NEW", img: "https://lh3.googleusercontent.com/aida-public/AB6AXuArYZZOoAhqAsoZFmfK8a5uj1kWnnQG5X9pYFw46S94LSNBfOLC1quwH125R_eOWrVA8fsNrXeTUQ8dl-OHBnNPamF6Al9_zqm55Dp5z6GmhSeAUJ3FF3yLUXHzwswAeSUw2e1K-BS1DvUBwgNlvrYL-3MV4XJuknzBnsC08O7V9g6trur4jcK8dGRP9nGiF13xj23E6W0rJ07e2F3P29kfW4Lgr4K0Svo2hVfT7hFjWUtqIXv7u34-CIPk-s5bZgUvs0Yo0YdDyHA" }
+      ];
+
+      function render(products) {
+        grid.innerHTML = products.map(p => `
+          <div class="group cursor-pointer flex flex-col relative" onclick="window.showProductDetail('${p.id}')">
+            <div class="relative aspect-3-4 bg-surface mb-4 overflow-hidden">
+              ${p.badge ? `<span class="absolute top-4 left-4 z-10 ${p.badge.includes('HOT') ? 'bg-alert-drop text-white' : 'bg-primary text-on-primary'} font-label-lg text-[10px] px-2 py-1 uppercase">${p.badge}</span>` : ''}
+              
+              <button class="absolute top-4 right-4 z-10 w-9 h-9 bg-black/60 rounded-full flex items-center justify-center text-outline hover:text-alert-drop hover:scale-110 transition-all" onclick="event.stopPropagation(); alert('Added to Wishlist!');">
+                <span class="material-symbols-outlined text-[18px]">favorite</span>
+              </button>
+
+              <img alt="${p.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="${p.img}"/>
+              
+              <div class="absolute bottom-0 w-full transform translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-20">
+                <button class="w-full bg-primary text-on-primary py-4 font-label-lg uppercase hover:opacity-90 active:scale-95 transition-all" onclick="event.stopPropagation(); window.addItemToMockCart('${p.id}');">
+                  ADD TO CART
+                </button>
+              </div>
+            </div>
+            <h3 class="font-title-lg text-title-lg text-primary uppercase tracking-tight truncate">${p.title}</h3>
+            <p class="font-price-display text-price-display text-primary mt-1">₹${p.price.toLocaleString('en-IN')}</p>
+          </div>
+        `).join('');
+      }
+
+      window.addItemToMockCart = (id) => {
+        const cartEngine = window.cartEngineInstance;
+        if (cartEngine) {
+          const form = new FormData();
+          form.append('id', id);
+          form.append('quantity', '1');
+          cartEngine.addItem(form);
+        } else {
+          alert('Item added!');
+        }
+      };
+
+      // Expose to global scope for theme.js integration
+      setTimeout(() => {
+        const allTabTriggers = document.querySelectorAll('.category-tab');
+        allTabTriggers.forEach(trigger => {
+          trigger.addEventListener('click', (e) => {
+            const cat = trigger.getAttribute('data-category');
+            if (titleEl) {
+              if (cat === 'Jerseys') {
+                titleEl.textContent = 'JERSEYS DROP';
+                render(PRODUCTS.filter(p => p.title.toLowerCase().includes('jersey')));
+              } else if (cat === 'Tees') {
+                titleEl.textContent = 'OVERSIZED TEES';
+                render(PRODUCTS.filter(p => p.title.toLowerCase().includes('hoodie') || p.title.toLowerCase().includes('tee')));
+              } else {
+                titleEl.textContent = 'NEW ARRIVALS';
+                render(PRODUCTS);
+              }
+            }
+          });
+        });
+      }, 200);
+
+      window.showProductDetail = (id) => {
+        const product = PRODUCTS.find(prod => prod.id === id);
+        if (product) {
+          document.getElementById('pdp-title').textContent = product.title;
+          document.getElementById('pdp-price').textContent = '₹' + product.price.toLocaleString('en-IN');
+          document.getElementById('pdp-img').src = product.img;
+          document.getElementById('pdp-wa-link').href = 'https://wa.me/918261094774?text=Hi!%20I%20want%20to%20order%20the%20' + encodeURIComponent(product.title) + '%20from%20Escape%20Clothing.';
+          window.location.hash = '#product';
+        }
+      };
+
+      render(PRODUCTS);
+
+      // Client-side Router Logic
+      function handleRoute() {
+        const hash = window.location.hash;
+        const mainEl = document.querySelector('main');
+        const routeViews = document.querySelectorAll('.route-view');
+        
+        // Hide all views first
+        routeViews.forEach(v => v.classList.add('hidden'));
+        
+        if (hash === '#login') {
+          mainEl.classList.add('hidden');
+          document.getElementById('route-login').classList.remove('hidden');
+        } else if (hash === '#account') {
+          mainEl.classList.add('hidden');
+          document.getElementById('route-account').classList.remove('hidden');
+        } else if (hash === '#addresses') {
+          mainEl.classList.add('hidden');
+          document.getElementById('route-addresses').classList.remove('hidden');
+        } else if (hash === '#product') {
+          mainEl.classList.add('hidden');
+          document.getElementById('route-product').classList.remove('hidden');
+        } else {
+          // Default: show storefront main
+          mainEl.classList.remove('hidden');
+        }
+      }
+
+      window.addEventListener('hashchange', handleRoute);
+      handleRoute();
+    });
+  </script>
 </body>
 </html>

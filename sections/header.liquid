@@ -1,45 +1,40 @@
 <header class="site-header" data-sticky-header data-section-id="{{ section.id }}" data-section-type="header">
   <div class="page-width">
-    <div class="site-header__inner">
-      <button type="button" class="site-header__icon site-header__menu-toggle" data-mobile-menu-toggle aria-label="{{ 'accessibility.open_menu' | t }}">
-        {% render 'icon-menu' %}
-      </button>
+    <div class="site-header__inner" style="grid-template-columns: 1fr auto 1fr;">
+      
+      <!-- Left menu & Pincode check -->
+      <div class="site-header__menu-and-pincode">
+        <button type="button" class="site-header__icon site-header__menu-toggle" data-mobile-menu-toggle aria-label="{{ 'accessibility.open_menu' | t }}" style="display: flex; width: auto; height: auto; padding: 4px;">
+          {% render 'icon-menu' %}
+        </button>
+        <div class="pincode-trigger" id="pincode-trigger-btn">
+          📍 Deliver to: <span id="current-pincode-display">Select Pincode</span>
+        </div>
+      </div>
 
-      <nav class="main-nav" aria-label="Main navigation">
-        <ul class="main-nav__list">
-          <li class="main-nav__item"><a href="{{ routes.root_url }}" class="main-nav__link">Home</a></li>
-          {%- for link in section.settings.menu.links -%}
-            {%- unless link.title == 'Home' -%}
-              <li class="main-nav__item{% if link.links.size > 0 %} has-dropdown{% endif %}">
-                <a href="{{ link.url }}" class="main-nav__link">
-                  {{ link.title }}
-                  {%- if link.links.size > 0 -%}{% render 'icon-chevron' %}{%- endif -%}
-                </a>
-                {%- if link.links.size > 0 -%}
-                  <ul class="main-nav__dropdown">
-                    {%- for child_link in link.links -%}
-                      <li><a href="{{ child_link.url }}" class="main-nav__dropdown-link">{{ child_link.title }}</a></li>
-                    {%- endfor -%}
-                  </ul>
-                {%- endif -%}
-              </li>
-            {%- endunless -%}
-          {%- endfor -%}
-        </ul>
-      </nav>
+      <!-- Centered Logo -->
+      <div class="site-header__logo-wrapper" style="justify-self: center;">
+        {% render 'logo', class: 'site-header__logo', logo_width: settings.logo_width %}
+      </div>
 
-      {% render 'logo', class: 'site-header__logo', logo_width: settings.logo_width %}
+      <!-- Right side: Search Box and Action Icons -->
+      <div class="site-header__icons" style="justify-self: end;">
+        <!-- Snitch-style Search input inside Header (Desktop only) -->
+        <div class="snitch-search-wrapper">
+          <form action="{{ routes.search_url }}" method="get" role="search" class="snitch-search-form" style="display:flex; width:100%; align-items:center;">
+            <span class="snitch-search-icon">
+              {% render 'icon-search' %}
+            </span>
+            <input type="search" name="q" placeholder='Search "OVERSHIRT"' class="snitch-search-input" id="desktop-search-input" autocomplete="off">
+            <input type="hidden" name="type" value="product">
+          </form>
+        </div>
 
-      <form action="{{ routes.search_url }}" method="get" role="search" class="header-search">
-        <input type="search" name="q" placeholder="{{ 'general.search_placeholder' | t }}" class="header-search__input" autocomplete="off">
-        <input type="hidden" name="type" value="product">
-        <button type="submit" class="header-search__btn" aria-label="{{ 'general.search' | t }}">{% render 'icon-search' %}</button>
-      </form>
-
-      <div class="site-header__icons">
+        <!-- Mobile Search Icon Toggle -->
         <button type="button" class="site-header__icon site-header__search-toggle" data-search-open aria-label="{{ 'general.search' | t }}">
           {% render 'icon-search' %}
         </button>
+        
         <a href="{{ routes.account_url }}" class="site-header__icon" aria-label="{{ 'header.account' | t }}">{% render 'icon-account' %}</a>
         <a href="{{ pages['wishlist'].url | default: '/pages/wishlist' }}" class="site-header__icon" data-wishlist-link aria-label="{{ 'header.wishlist' | t }}">{% render 'icon-wishlist' %}</a>
         <a href="{{ routes.cart_url }}" class="site-header__icon" data-cart-open aria-label="{{ 'header.cart' | t }}">
@@ -47,6 +42,7 @@
           <span class="site-header__cart-count" data-cart-count{% if cart.item_count == 0 %} style="display:none"{% endif %}>{{ cart.item_count }}</span>
         </a>
       </div>
+
     </div>
   </div>
 
